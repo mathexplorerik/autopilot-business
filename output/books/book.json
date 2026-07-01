@@ -1,0 +1,20 @@
+{
+    "title": "Animals Coloring Book for Kids",
+    "subtitle": "Fun, Easy and Relaxing Coloring Pages",
+    "description": "Enjoy 40 beautiful animals coloring pages designed for kids. Thick outlines, easy illustrations and hours of creative fun.",
+    "keywords": [
+        "animals",
+        "animals coloring book",
+        "kids coloring book",
+        "easy coloring pages",
+        "activity book",
+        "gift for kids",
+        "black and white line art"
+    ],
+    "niche": "Animals",
+    "pages": 40,
+    "target_age": "4-8 Years",
+    "difficulty": "Easy",
+    "prompts_file": "output/prompts/prompts.txt",
+    "seo_file": "output/seo/seo.txt"
+}

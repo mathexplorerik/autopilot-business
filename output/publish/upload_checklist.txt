@@ -1,0 +1,10 @@
+
+KDP Upload Checklist
+
+✔ Interior PDF
+✔ Cover
+✔ Title
+✔ Subtitle
+✔ Description
+✔ Keywords
+✔ Categories
