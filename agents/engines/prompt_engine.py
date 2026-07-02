@@ -30,7 +30,82 @@ class PromptEngine:
             "near a castle", "in a magical garden", "at the playground"
         ]
 
-        # ✅ Pro: Style variations
+        # ✅ NEW: Expressions
+        self.expressions = [
+            "happy", "excited", "sleepy", "surprised",
+            "curious", "laughing", "shy", "brave",
+            "proud", "silly", "cheerful", "amazed"
+        ]
+
+        # ✅ NEW: Props
+        self.props = [
+            "holding an ice cream cone",
+            "carrying a teddy bear",
+            "holding a bunch of flowers",
+            "wearing a cape",
+            "carrying a backpack",
+            "holding a magnifying glass",
+            "carrying a lunchbox",
+            "holding a trophy",
+            "wearing sunglasses",
+            "carrying a watering can",
+            "holding a paintbrush",
+            "wearing a crown",
+            "carrying a lantern",
+            "holding a map",
+            "wearing a scarf"
+        ]
+
+        # ✅ NEW: Seasonal themes
+        self.seasonal = {
+            "christmas":  [
+                "decorating a Christmas tree",
+                "opening Christmas presents",
+                "making a snowman",
+                "hanging stockings",
+                "baking Christmas cookies",
+                "riding a sleigh"
+            ],
+            "halloween":  [
+                "trick or treating",
+                "carving a pumpkin",
+                "wearing a Halloween costume",
+                "exploring a haunted house",
+                "collecting candy"
+            ],
+            "easter":     [
+                "hunting Easter eggs",
+                "decorating Easter eggs",
+                "meeting the Easter bunny",
+                "planting spring flowers"
+            ],
+            "summer":     [
+                "building a sandcastle",
+                "having a water fight",
+                "eating watermelon",
+                "flying a kite",
+                "having a picnic"
+            ],
+            "winter":     [
+                "building a snowman",
+                "ice skating",
+                "drinking hot chocolate",
+                "making snow angels"
+            ]
+        }
+
+        # ✅ NEW: Camera angles
+        self.angles = [
+            "full body view",
+            "close-up portrait",
+            "side view",
+            "front view",
+            "action pose",
+            "sitting pose",
+            "standing pose"
+        ]
+
+        # ✅ NEW: Style variations
         self.styles = [
             "simple black and white line art",
             "cute cartoon line art",
@@ -38,33 +113,43 @@ class PromptEngine:
             "minimalist line drawing"
         ]
 
-        # ✅ Pro: Age-based complexity
+        # ✅ Age-based complexity
         self.age_styles = {
             "toddler": "very simple shapes, extra thick lines, minimal details",
             "kids":    "simple design, thick outlines, large spaces to color",
             "teens":   "detailed design, medium outlines, intricate patterns"
         }
 
-        # ✅ Pro: Track used combinations
+        # ✅ Duplicate tracker
         self._used = set()
 
-    def build_prompt(self, subject, age_group="kids"):
+    def build_prompt(self, subject, age_group="kids", season=None):
         max_attempts = 10
-        for _ in range(max_attempts):
-            action = random.choice(self.actions)
-            background = random.choice(self.backgrounds)
-            combo = f"{subject}_{action}_{background}"
 
-            # Duplicate avoid karo
+        for _ in range(max_attempts):
+            action     = random.choice(self.actions)
+            background = random.choice(self.backgrounds)
+            expression = random.choice(self.expressions)
+            prop       = random.choice(self.props)
+            angle      = random.choice(self.angles)
+
+            # Seasonal override
+            if season and season.lower() in self.seasonal:
+                action = random.choice(self.seasonal[season.lower()])
+
+            combo = f"{subject}_{action}_{background}_{prop}"
+
             if combo not in self._used:
                 self._used.add(combo)
                 break
 
-        style = random.choice(self.styles)
+        style      = random.choice(self.styles)
         age_detail = self.age_styles.get(age_group, self.age_styles["kids"])
 
         return (
-            f"Cute {subject} {action} {background}, "
+            f"Cute {expression} {subject} {action} {background}, "
+            f"{prop}, "
+            f"{angle}, "
             f"kids coloring book page, "
             f"{style}, "
             f"thick bold outlines, "
@@ -76,22 +161,27 @@ class PromptEngine:
             f"printable coloring page"
         )
 
-    def build_batch(self, subject, count=30, age_group="kids"):
-        """Ek baar mein saare prompts banao"""
+    def build_batch(self, subject, count=30, age_group="kids", season=None):
         self._used.clear()
         prompts = []
         for i in range(count):
-            prompt = self.build_prompt(subject, age_group)
+            prompt = self.build_prompt(subject, age_group, season)
             prompts.append(prompt)
-            print(f"✅ Prompt {i+1:02}: {prompt[:60]}...")
+            print(f"  ✅ Prompt {i+1:02}/{count}: {subject} — done")
         return prompts
 
     def random_action(self):
         return random.choice(self.actions)
 
     def stats(self):
-        """Kitne unique combinations possible hain"""
-        total = len(self.actions) * len(self.backgrounds)
-        print(f"📊 Total unique combinations: {total}")
-        print(f"📋 Used so far: {len(self._used)}")
+        total = len(self.actions) * len(self.backgrounds) * len(self.props)
+        print(f"\n📊 Prompt Engine Stats:")
+        print(f"   Actions     : {len(self.actions)}")
+        print(f"   Backgrounds : {len(self.backgrounds)}")
+        print(f"   Expressions : {len(self.expressions)}")
+        print(f"   Props       : {len(self.props)}")
+        print(f"   Angles      : {len(self.angles)}")
+        print(f"   Seasonal    : {len(self.seasonal)} themes")
+        print(f"   Unique combos: {total:,}")
+        print(f"   Used so far : {len(self._used)}")
         return total
