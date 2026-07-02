@@ -21,19 +21,23 @@ class AutopilotGUI(ctk.CTk):
             font=ctk.CTkFont(size=24, weight="bold")).pack(pady=(20,5))
         ctk.CTkLabel(self, text="Automated Coloring Book Generator",
             font=ctk.CTkFont(size=13), text_color="gray").pack(pady=(0,20))
+
         frame = ctk.CTkFrame(self)
         frame.pack(padx=30, pady=5, fill="x")
+
         ctk.CTkLabel(frame, text="📚 Book Niche",
             font=ctk.CTkFont(size=13, weight="bold")).grid(row=0, column=0, padx=15, pady=(15,5), sticky="w")
         self.niche_entry = ctk.CTkEntry(frame,
             placeholder_text="e.g. jungle animals, dinosaurs...", width=400, height=38)
         self.niche_entry.grid(row=1, column=0, padx=15, pady=(0,15), sticky="w")
+
         ctk.CTkLabel(frame, text="🎄 Season",
             font=ctk.CTkFont(size=13, weight="bold")).grid(row=0, column=1, padx=15, pady=(15,5), sticky="w")
         self.season_var = ctk.StringVar(value="skip")
         ctk.CTkOptionMenu(frame,
             values=["skip","christmas","halloween","easter","summer","winter"],
             variable=self.season_var, width=180, height=38).grid(row=1, column=1, padx=15, pady=(0,15), sticky="w")
+
         ctk.CTkLabel(frame, text="📄 Pages",
             font=ctk.CTkFont(size=13, weight="bold")).grid(row=2, column=0, padx=15, pady=(5,5), sticky="w")
         self.pages_slider = ctk.CTkSlider(frame, from_=20, to=80,
@@ -43,24 +47,31 @@ class AutopilotGUI(ctk.CTk):
         self.pages_label = ctk.CTkLabel(frame, text="40 pages",
             font=ctk.CTkFont(size=12), text_color="gray")
         self.pages_label.grid(row=4, column=0, padx=15, pady=(0,15), sticky="w")
+
         btn_frame = ctk.CTkFrame(self, fg_color="transparent")
         btn_frame.pack(padx=30, pady=10, fill="x")
+
         self.generate_btn = ctk.CTkButton(btn_frame, text="⚡ Generate Book",
             font=ctk.CTkFont(size=14, weight="bold"), height=45, width=220,
             command=self._start)
         self.generate_btn.pack(side="left", padx=(0,10))
+
         ctk.CTkButton(btn_frame, text="📁 Open Output",
             height=45, width=160, fg_color="gray30", hover_color="gray40",
             command=self._open_output).pack(side="left", padx=(0,10))
+
         ctk.CTkButton(btn_frame, text="🗑️ Clear Log",
             height=45, width=130, fg_color="gray30", hover_color="gray40",
             command=self._clear_log).pack(side="left")
+
         self.progress_bar = ctk.CTkProgressBar(self, width=740)
         self.progress_bar.pack(padx=30, pady=(10,5))
         self.progress_bar.set(0)
+
         self.status_label = ctk.CTkLabel(self, text="Ready...",
             font=ctk.CTkFont(size=12), text_color="gray")
         self.status_label.pack(pady=(0,5))
+
         ctk.CTkLabel(self, text="📋 Live Log",
             font=ctk.CTkFont(size=13, weight="bold")).pack(padx=30, anchor="w")
         self.log_box = ctk.CTkTextbox(self, width=740, height=220,
@@ -96,6 +107,7 @@ class AutopilotGUI(ctk.CTk):
         try:
             self.after(0, self._log, f"🚀 Starting: {niche}")
             self.after(0, self.status_label.configure, {"text": "Running..."})
+
             process = subprocess.Popen(
                 [sys.executable, "main.py"],
                 stdin=subprocess.PIPE,
@@ -106,6 +118,7 @@ class AutopilotGUI(ctk.CTk):
             process.stdin.write(f"{niche}\n{season}\n")
             process.stdin.flush()
             process.stdin.close()
+
             step_count = 0
             for line in process.stdout:
                 line = line.rstrip()
@@ -116,6 +129,7 @@ class AutopilotGUI(ctk.CTk):
                         self.after(0, self.progress_bar.set, step_count/10)
                         self.after(0, self.status_label.configure,
                             {"text": f"Step {step_count}/10..."})
+
             process.wait()
             if process.returncode == 0:
                 self.after(0, self._log, "🎉 Book ready! Check output/pdfs/")
@@ -124,6 +138,7 @@ class AutopilotGUI(ctk.CTk):
             else:
                 self.after(0, self._log, "❌ Error aaya!")
                 self.after(0, self.status_label.configure, {"text": "❌ Failed"})
+
         except Exception as e:
             self.after(0, self._log, f"❌ {e}")
         finally:

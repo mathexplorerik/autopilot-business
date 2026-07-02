@@ -16,6 +16,7 @@ from agents.marketing_agent import MarketingAgent
 from agents.publish_agent import PublishAgent
 from agents.analytics_agent import AnalyticsAgent
 from agents.seo_agent import SEOAgent
+from agents.image_generator_agent import ImageGeneratorAgent
 
 # ✅ Colors
 GREEN  = "\033[92m"
