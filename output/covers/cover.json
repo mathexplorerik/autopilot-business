@@ -1,16 +1,16 @@
 {
-    "title": "Animal Coloring Book for Kids",
+    "title": "Jungale Animal Coloring Book for Kids",
     "subtitle": "Fun, Easy and Relaxing Coloring Pages for Ages 4-8 Years",
-    "niche": "animal",
+    "niche": "JUNGALE ANIMAL",
     "size": "8.5 x 11 inches",
     "full_wrap_size": "17.5 x 11.25 inches",
     "dpi": 300,
     "color_mode": "RGB",
-    "created_at": "2026-07-02 13:15:08",
+    "created_at": "2026-07-02 15:42:53",
     "prompts": {
-        "front": "Professional kids coloring book cover, title 'Animal Coloring Book for Kids', cute cartoon animal characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age 4-8 Years, high quality illustration, no text overlap, centered composition",
-        "back": "Back cover of kids coloring book, simple design, white background, small cute animal illustration, space for book description, barcode placeholder at bottom right, Amazon KDP back cover style",
-        "spine": "Book spine design, title 'Animal Coloring Book for Kids', vertical text, colorful background, Amazon KDP spine style",
+        "front": "Professional kids coloring book cover, title 'Jungale Animal Coloring Book for Kids', cute cartoon JUNGALE ANIMAL characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age 4-8 Years, high quality illustration, no text overlap, centered composition",
+        "back": "Back cover of kids coloring book, simple design, white background, small cute JUNGALE ANIMAL illustration, space for book description, barcode placeholder at bottom right, Amazon KDP back cover style",
+        "spine": "Book spine design, title 'Jungale Animal Coloring Book for Kids', vertical text, colorful background, Amazon KDP spine style",
         "negative": "no blurry images, no watermark, no adult content, no dark themes, no violence, no scary elements, no copyright characters, no text errors"
     },
     "kdp_specs": {
