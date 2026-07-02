@@ -1,47 +1,293 @@
 {
-  "niche": "dinosaurs",
+  "niche": "animal",
   "age_group": "kids",
+  "season": null,
   "total": 40,
+  "complexity": {
+    "simple": 13,
+    "medium": 13,
+    "detailed": 14
+  },
   "prompts": [
-    "Cute T-Rex celebrating a birthday at the playground, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Triceratops fishing at the beach, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Stegosaurus having a picnic at school, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Brachiosaurus wearing a party hat on a farm, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Velociraptor being a police officer in a magical garden, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Ankylosaurus fishing at the zoo, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Parasaurolophus being a pirate on a farm, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Spinosaurus being a firefighter on a farm, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Pterodactyl swimming at home, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Diplodocus opening presents during winter, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute T-Rex playing piano at home, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Triceratops exploring space at the park, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Stegosaurus baking cookies during winter, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Brachiosaurus smiling under the stars, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Velociraptor playing with a puppy near a castle, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Ankylosaurus gardening near a rainbow, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Parasaurolophus playing piano near a rainbow, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Spinosaurus fishing at the park, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Pterodactyl surfing in the jungle, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Diplodocus having a picnic in the forest, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute T-Rex being a firefighter in the mountains, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Triceratops reading a book at the playground, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Stegosaurus baking cookies during summer, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Brachiosaurus building a snowman in a flower garden, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Velociraptor exploring the jungle near a rainbow, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Ankylosaurus celebrating a birthday during winter, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Parasaurolophus swimming near a rainbow, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Spinosaurus gardening near a rainbow, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Pterodactyl baking cookies at the park, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Diplodocus swimming on a farm, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute T-Rex making pizza near a waterfall, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Triceratops feeding ducks in the forest, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Stegosaurus holding balloons during summer, kids coloring book page, bold outline illustration, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Brachiosaurus holding balloons at the beach, kids coloring book page, minimalist line drawing, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Velociraptor being a pirate in space, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Ankylosaurus being a chef at the zoo, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Parasaurolophus having a picnic in the forest, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Spinosaurus wearing a party hat during summer, kids coloring book page, cute cartoon line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Pterodactyl drinking water near a waterfall, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page",
-    "Cute Diplodocus being a chef on a farm, kids coloring book page, simple black and white line art, thick bold outlines, large open spaces, simple design, thick outlines, large spaces to color, no shading, white background, centered composition, printable coloring page"
+    {
+      "page": 1,
+      "subject": "cow",
+      "complexity": "simple",
+      "positive": "Cute amazed cow camping at the playground, carrying a backpack, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 1 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 2,
+      "subject": "horse",
+      "complexity": "simple",
+      "positive": "Cute proud horse building a snowman at the park, holding a magnifying glass, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 2 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 3,
+      "subject": "pig",
+      "complexity": "simple",
+      "positive": "Cute amazed pig sleeping in a flower garden, wearing a crown, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 3 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 4,
+      "subject": "sheep",
+      "complexity": "simple",
+      "positive": "Cute proud sheep riding a bicycle in a magical garden, holding a magnifying glass, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 4 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 5,
+      "subject": "goat",
+      "complexity": "simple",
+      "positive": "Cute proud goat looking at stars near a rainbow, holding a bunch of flowers, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 5 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 6,
+      "subject": "chicken",
+      "complexity": "simple",
+      "positive": "Cute cheerful chicken being a superhero at school, wearing a cape, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 6 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 7,
+      "subject": "duck",
+      "complexity": "simple",
+      "positive": "Cute cheerful duck decorating a Christmas tree on a farm, wearing a scarf, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 7 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 8,
+      "subject": "rabbit",
+      "complexity": "simple",
+      "positive": "Cute shy rabbit ice skating in a flower garden, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 8 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 9,
+      "subject": "donkey",
+      "complexity": "simple",
+      "positive": "Cute brave donkey being a pirate at the playground, wearing a cape, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 9 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 10,
+      "subject": "turkey",
+      "complexity": "simple",
+      "positive": "Cute laughing turkey walking in the forest during summer, wearing a scarf, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 10 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 11,
+      "subject": "cow",
+      "complexity": "simple",
+      "positive": "Cute amazed cow jumping at school, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 11 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 12,
+      "subject": "horse",
+      "complexity": "simple",
+      "positive": "Cute cheerful horse surfing at the park, wearing a crown, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 12 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 13,
+      "subject": "pig",
+      "complexity": "simple",
+      "positive": "Cute curious pig being a doctor during summer, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 13 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 14,
+      "subject": "sheep",
+      "complexity": "medium",
+      "positive": "Cute amazed sheep building a snowman in the jungle, carrying a lantern, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 14 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 15,
+      "subject": "goat",
+      "complexity": "medium",
+      "positive": "Cute shy goat playing with butterflies during winter, holding a magnifying glass, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 15 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 16,
+      "subject": "chicken",
+      "complexity": "medium",
+      "positive": "Cute cheerful chicken playing with butterflies near a rainbow, wearing a scarf, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 16 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 17,
+      "subject": "duck",
+      "complexity": "medium",
+      "positive": "Cute laughing duck decorating a Christmas tree under the stars, carrying a lunchbox, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 17 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 18,
+      "subject": "rabbit",
+      "complexity": "medium",
+      "positive": "Cute sleepy rabbit running in a flower garden, holding a paintbrush, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 18 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 19,
+      "subject": "donkey",
+      "complexity": "medium",
+      "positive": "Cute surprised donkey riding a bicycle on a farm, wearing a cape, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 19 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 20,
+      "subject": "turkey",
+      "complexity": "medium",
+      "positive": "Cute excited turkey playing football at the beach, holding a paintbrush, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 20 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 21,
+      "subject": "cow",
+      "complexity": "medium",
+      "positive": "Cute surprised cow holding balloons under the stars, carrying a backpack, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 21 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 22,
+      "subject": "horse",
+      "complexity": "medium",
+      "positive": "Cute proud horse wearing a party hat at home, wearing a scarf, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 22 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 23,
+      "subject": "pig",
+      "complexity": "medium",
+      "positive": "Cute amazed pig exploring space in a magical garden, carrying a lantern, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 23 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 24,
+      "subject": "sheep",
+      "complexity": "medium",
+      "positive": "Cute cheerful sheep exploring the jungle under the stars, holding a magnifying glass, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 24 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 25,
+      "subject": "goat",
+      "complexity": "medium",
+      "positive": "Cute brave goat painting near a rainbow, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 25 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 26,
+      "subject": "chicken",
+      "complexity": "medium",
+      "positive": "Cute laughing chicken being an astronaut near a rainbow, holding a paintbrush, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 26 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 27,
+      "subject": "duck",
+      "complexity": "detailed",
+      "positive": "Cute cheerful duck surfing in a flower garden, carrying a backpack, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 27 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 28,
+      "subject": "rabbit",
+      "complexity": "detailed",
+      "positive": "Cute silly rabbit playing piano at school, wearing a cape, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 28 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 29,
+      "subject": "donkey",
+      "complexity": "detailed",
+      "positive": "Cute amazed donkey fishing on a farm, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 29 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 30,
+      "subject": "turkey",
+      "complexity": "detailed",
+      "positive": "Cute surprised turkey playing with butterflies in space, carrying a backpack, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 30 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 31,
+      "subject": "cow",
+      "complexity": "detailed",
+      "positive": "Cute silly cow being a police officer in the jungle, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 31 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 32,
+      "subject": "horse",
+      "complexity": "detailed",
+      "positive": "Cute happy horse ice skating during summer, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 32 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 33,
+      "subject": "pig",
+      "complexity": "detailed",
+      "positive": "Cute silly pig wearing a party hat at school, holding a bunch of flowers, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 33 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 34,
+      "subject": "sheep",
+      "complexity": "detailed",
+      "positive": "Cute happy sheep having a picnic in the mountains, carrying a teddy bear, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 34 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 35,
+      "subject": "goat",
+      "complexity": "detailed",
+      "positive": "Cute brave goat ice skating in the jungle, wearing sunglasses, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 35 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 36,
+      "subject": "chicken",
+      "complexity": "detailed",
+      "positive": "Cute silly chicken gardening at home, wearing sunglasses, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 36 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 37,
+      "subject": "duck",
+      "complexity": "detailed",
+      "positive": "Cute cheerful duck holding balloons near a castle, wearing a scarf, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 37 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 38,
+      "subject": "rabbit",
+      "complexity": "detailed",
+      "positive": "Cute amazed rabbit sleeping in a flower garden, holding a trophy, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 38 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 39,
+      "subject": "donkey",
+      "complexity": "detailed",
+      "positive": "Cute amazed donkey playing with a puppy under the stars, holding an ice cream cone, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 39 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    },
+    {
+      "page": 40,
+      "subject": "turkey",
+      "complexity": "detailed",
+      "positive": "Cute cheerful turkey jumping near a castle, carrying a backpack, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 40 of 40",
+      "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
+    }
   ]
 }

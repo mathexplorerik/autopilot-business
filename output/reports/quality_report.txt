@@ -1,1 +1,14 @@
-QUALITY CHECK PASSED
+QUALITY REPORT
+========================================
+Time    : 2026-07-02 13:15:08
+Niche   : animal
+
+PASSED:
+  ✅ Title     : Animal Coloring Book for Kids
+  ✅ Pages     : 40
+  ✅ Niche     : animal
+  ✅ Books folder exists
+  ✅ Prompts folder exists
+
+WARNINGS:
+  ⚠️  No images in output/images/
