@@ -30,158 +30,270 @@ class PromptEngine:
             "near a castle", "in a magical garden", "at the playground"
         ]
 
-        # ✅ NEW: Expressions
         self.expressions = [
-            "happy", "excited", "sleepy", "surprised",
-            "curious", "laughing", "shy", "brave",
-            "proud", "silly", "cheerful", "amazed"
+            "happy", "excited", "sleepy", "surprised", "curious",
+            "laughing", "shy", "brave", "proud", "silly",
+            "cheerful", "amazed"
         ]
 
-        # ✅ NEW: Props
         self.props = [
-            "holding an ice cream cone",
-            "carrying a teddy bear",
-            "holding a bunch of flowers",
-            "wearing a cape",
-            "carrying a backpack",
-            "holding a magnifying glass",
-            "carrying a lunchbox",
-            "holding a trophy",
-            "wearing sunglasses",
-            "carrying a watering can",
-            "holding a paintbrush",
-            "wearing a crown",
-            "carrying a lantern",
-            "holding a map",
-            "wearing a scarf"
+            "holding an ice cream cone", "carrying a teddy bear",
+            "holding a bunch of flowers", "wearing a cape",
+            "carrying a backpack", "holding a magnifying glass",
+            "carrying a lunchbox", "holding a trophy",
+            "wearing sunglasses", "carrying a watering can",
+            "holding a paintbrush", "wearing a crown",
+            "carrying a lantern", "holding a map", "wearing a scarf"
         ]
 
-        # ✅ NEW: Seasonal themes
+        self.angles = [
+            "full body view", "close-up portrait", "side view",
+            "front view", "action pose", "sitting pose", "standing pose"
+        ]
+
         self.seasonal = {
-            "christmas":  [
-                "decorating a Christmas tree",
-                "opening Christmas presents",
-                "making a snowman",
-                "hanging stockings",
-                "baking Christmas cookies",
-                "riding a sleigh"
+            "christmas": [
+                "decorating a Christmas tree", "opening Christmas presents",
+                "making a snowman", "hanging stockings",
+                "baking Christmas cookies", "riding a sleigh"
             ],
-            "halloween":  [
-                "trick or treating",
-                "carving a pumpkin",
-                "wearing a Halloween costume",
-                "exploring a haunted house",
+            "halloween": [
+                "trick or treating", "carving a pumpkin",
+                "wearing a Halloween costume", "exploring a haunted house",
                 "collecting candy"
             ],
-            "easter":     [
-                "hunting Easter eggs",
-                "decorating Easter eggs",
-                "meeting the Easter bunny",
-                "planting spring flowers"
+            "easter": [
+                "hunting Easter eggs", "decorating Easter eggs",
+                "meeting the Easter bunny", "planting spring flowers"
             ],
-            "summer":     [
-                "building a sandcastle",
-                "having a water fight",
-                "eating watermelon",
-                "flying a kite",
-                "having a picnic"
+            "summer": [
+                "building a sandcastle", "having a water fight",
+                "eating watermelon", "flying a kite", "having a picnic"
             ],
-            "winter":     [
-                "building a snowman",
-                "ice skating",
-                "drinking hot chocolate",
-                "making snow angels"
+            "winter": [
+                "building a snowman", "ice skating",
+                "drinking hot chocolate", "making snow angels"
             ]
         }
 
-        # ✅ NEW: Camera angles
-        self.angles = [
-            "full body view",
-            "close-up portrait",
-            "side view",
-            "front view",
-            "action pose",
-            "sitting pose",
-            "standing pose"
-        ]
+        # ✅ A: Niche-specific styles + backgrounds
+        self.niche_styles = {
+            "dinosaurs": {
+                "style": "bold thick lines, prehistoric style illustration",
+                "backgrounds": [
+                    "in a prehistoric jungle", "near a volcano",
+                    "in a swamp", "near a waterfall", "in a rocky canyon",
+                    "under a meteor shower", "in a dense forest"
+                ],
+                "line_weight": "extra thick bold outlines"
+            },
+            "butterflies": {
+                "style": "delicate fine lines, nature illustration style",
+                "backgrounds": [
+                    "in a flower garden", "near a pond",
+                    "in a meadow", "on a sunny day",
+                    "near colorful flowers", "in a butterfly sanctuary"
+                ],
+                "line_weight": "thin delicate outlines"
+            },
+            "ocean animals": {
+                "style": "flowing curved lines, underwater illustration",
+                "backgrounds": [
+                    "underwater near coral reef", "in the deep ocean",
+                    "near a shipwreck", "in a tropical lagoon",
+                    "near sea rocks", "in crystal clear water"
+                ],
+                "line_weight": "smooth flowing outlines"
+            },
+            "jungle animals": {
+                "style": "bold expressive lines, safari illustration",
+                "backgrounds": [
+                    "in the African savanna", "near a watering hole",
+                    "in a dense jungle", "on a rocky hill",
+                    "near a river", "under a big tree"
+                ],
+                "line_weight": "thick bold outlines"
+            },
+            "farm animals": {
+                "style": "cute rounded lines, countryside illustration",
+                "backgrounds": [
+                    "on a sunny farm", "near a red barn",
+                    "in a green meadow", "near a fence",
+                    "in a haystack", "near a farmhouse"
+                ],
+                "line_weight": "medium rounded outlines"
+            },
+            "space": {
+                "style": "geometric clean lines, space illustration",
+                "backgrounds": [
+                    "in outer space", "on the moon",
+                    "near a planet", "in a space station",
+                    "near a black hole", "in a galaxy"
+                ],
+                "line_weight": "clean sharp outlines"
+            },
+            "default": {
+                "style": "cute cartoon line art",
+                "backgrounds": [],
+                "line_weight": "thick bold outlines"
+            }
+        }
 
-        # ✅ NEW: Style variations
-        self.styles = [
-            "simple black and white line art",
-            "cute cartoon line art",
-            "bold outline illustration",
-            "minimalist line drawing"
-        ]
+        # ✅ B: Progressive complexity
+        self.complexity_levels = {
+            "simple": {
+                "details": "very simple design, 3-4 main elements only",
+                "spaces": "extra large coloring spaces",
+                "lines": "extra thick lines"
+            },
+            "medium": {
+                "details": "moderate detail, 5-7 elements",
+                "spaces": "large coloring spaces",
+                "lines": "thick lines"
+            },
+            "detailed": {
+                "details": "detailed design, 8-10 elements, patterns",
+                "spaces": "medium coloring spaces",
+                "lines": "medium lines with fine details"
+            }
+        }
 
-        # ✅ Age-based complexity
-        self.age_styles = {
+        # ✅ C: Negative prompts
+        self.negative_prompt = (
+            "no color fills, no shading, no gradients, "
+            "no gray areas, no crosshatching, no texture fills, "
+            "no background patterns, no watermark, no text, "
+            "no signature, no blur, no shadows, "
+            "no photorealistic style, no 3D rendering"
+        )
+
+        # Duplicate tracker
+        self._used = set()
+
+    def _get_complexity(self, page_number, total_pages):
+        """B: Page number se complexity decide karo"""
+        ratio = page_number / total_pages
+        if ratio <= 0.33:
+            return "simple"
+        elif ratio <= 0.66:
+            return "medium"
+        else:
+            return "detailed"
+
+    def _get_niche_data(self, niche):
+        """A: Niche se style + background lo"""
+        niche_lower = niche.lower() if niche else "default"
+        for key in self.niche_styles:
+            if key in niche_lower:
+                return self.niche_styles[key]
+        return self.niche_styles["default"]
+
+    def build_prompt(
+        self,
+        subject,
+        age_group="kids",
+        season=None,
+        niche=None,
+        page_number=1,
+        total_pages=30
+    ):
+        # Niche data lo
+        niche_data   = self._get_niche_data(niche or subject)
+        style        = niche_data["style"]
+        line_weight  = niche_data["line_weight"]
+
+        # Niche background ya default
+        if niche_data["backgrounds"]:
+            background = random.choice(niche_data["backgrounds"])
+        else:
+            background = random.choice(self.backgrounds)
+
+        # Complexity — progressive
+        complexity_key  = self._get_complexity(page_number, total_pages)
+        complexity      = self.complexity_levels[complexity_key]
+
+        # Age style
+        age_styles = {
             "toddler": "very simple shapes, extra thick lines, minimal details",
             "kids":    "simple design, thick outlines, large spaces to color",
             "teens":   "detailed design, medium outlines, intricate patterns"
         }
+        age_detail = age_styles.get(age_group, age_styles["kids"])
 
-        # ✅ Duplicate tracker
-        self._used = set()
-
-    def build_prompt(self, subject, age_group="kids", season=None):
+        # Random elements
         max_attempts = 10
-
         for _ in range(max_attempts):
             action     = random.choice(self.actions)
-            background = random.choice(self.backgrounds)
             expression = random.choice(self.expressions)
             prop       = random.choice(self.props)
             angle      = random.choice(self.angles)
 
-            # Seasonal override
             if season and season.lower() in self.seasonal:
                 action = random.choice(self.seasonal[season.lower()])
 
             combo = f"{subject}_{action}_{background}_{prop}"
-
             if combo not in self._used:
                 self._used.add(combo)
                 break
 
-        style      = random.choice(self.styles)
-        age_detail = self.age_styles.get(age_group, self.age_styles["kids"])
-
-        return (
+        # ✅ Final prompt
+        positive = (
             f"Cute {expression} {subject} {action} {background}, "
-            f"{prop}, "
-            f"{angle}, "
+            f"{prop}, {angle}, "
             f"kids coloring book page, "
             f"{style}, "
-            f"thick bold outlines, "
-            f"large open spaces, "
+            f"{line_weight}, "
+            f"{complexity['details']}, "
+            f"{complexity['spaces']}, "
             f"{age_detail}, "
-            f"no shading, "
             f"white background, "
             f"centered composition, "
-            f"printable coloring page"
+            f"printable coloring page, "
+            f"page {page_number} of {total_pages}"
         )
 
-    def build_batch(self, subject, count=30, age_group="kids", season=None):
+        # ✅ C: Negative prompt bhi return karo
+        return {
+            "positive": positive,
+            "negative": self.negative_prompt,
+            "complexity": complexity_key,
+            "page": page_number
+        }
+
+    def build_batch(self, subject, count=30, age_group="kids", season=None, niche=None):
+        """Sab prompts ek saath banao"""
         self._used.clear()
         prompts = []
-        for i in range(count):
-            prompt = self.build_prompt(subject, age_group, season)
-            prompts.append(prompt)
-            print(f"  ✅ Prompt {i+1:02}/{count}: {subject} — done")
-        return prompts
 
-    def random_action(self):
-        return random.choice(self.actions)
+        print(f"\n  📊 Complexity Distribution:")
+        print(f"     Simple   : Page 1-{count//3}")
+        print(f"     Medium   : Page {count//3+1}-{(count*2)//3}")
+        print(f"     Detailed : Page {(count*2)//3+1}-{count}\n")
+
+        for i in range(1, count + 1):
+            prompt = self.build_prompt(
+                subject=subject,
+                age_group=age_group,
+                season=season,
+                niche=niche,
+                page_number=i,
+                total_pages=count
+            )
+            prompts.append(prompt)
+            print(f"  ✅ Page {i:02}/{count} [{prompt['complexity']:8}] : {subject}")
+
+        return prompts
 
     def stats(self):
         total = len(self.actions) * len(self.backgrounds) * len(self.props)
-        print(f"\n📊 Prompt Engine Stats:")
-        print(f"   Actions     : {len(self.actions)}")
-        print(f"   Backgrounds : {len(self.backgrounds)}")
-        print(f"   Expressions : {len(self.expressions)}")
-        print(f"   Props       : {len(self.props)}")
-        print(f"   Angles      : {len(self.angles)}")
-        print(f"   Seasonal    : {len(self.seasonal)} themes")
-        print(f"   Unique combos: {total:,}")
-        print(f"   Used so far : {len(self._used)}")
-        return total
+        print(f"\n📊 Prompt Engine V3 Stats:")
+        print(f"   Actions       : {len(self.actions)}")
+        print(f"   Backgrounds   : {len(self.backgrounds)}")
+        print(f"   Expressions   : {len(self.expressions)}")
+        print(f"   Props         : {len(self.props)}")
+        print(f"   Angles        : {len(self.angles)}")
+        print(f"   Seasonal      : {len(self.seasonal)} themes")
+        print(f"   Niche styles  : {len(self.niche_styles)} niches")
+        print(f"   Complexity    : 3 levels")
+        print(f"   Unique combos : {total:,}")
+        print(f"   Used so far   : {len(self._used)}")
