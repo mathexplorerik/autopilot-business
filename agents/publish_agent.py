@@ -24,16 +24,32 @@ class PublishAgent:
 KDP Upload Checklist
 
 ✔ Interior PDF
-✔ Cover
+✔ Cover PDF
 ✔ Title
 ✔ Subtitle
 ✔ Description
 ✔ Keywords
 ✔ Categories
+✔ Pricing
+✔ Preview Before Publish
 """
 
+        # JSON
         with open("output/publish/metadata.json", "w", encoding="utf-8") as f:
             json.dump(metadata, f, indent=4)
+
+        # Individual Files
+        with open("output/publish/title.txt", "w", encoding="utf-8") as f:
+            f.write(seo["title"])
+
+        with open("output/publish/subtitle.txt", "w", encoding="utf-8") as f:
+            f.write(seo["subtitle"])
+
+        with open("output/publish/description.txt", "w", encoding="utf-8") as f:
+            f.write(seo["description"])
+
+        with open("output/publish/keywords.txt", "w", encoding="utf-8") as f:
+            f.write(", ".join(seo["keywords"]))
 
         with open("output/publish/upload_checklist.txt", "w", encoding="utf-8") as f:
             f.write(checklist)

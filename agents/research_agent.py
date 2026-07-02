@@ -1,6 +1,7 @@
 class ResearchAgent:
 
     def research(self, niche):
+
         print("\n🔍 Research Agent Running...\n")
 
         report = {
@@ -11,4 +12,5 @@ class ResearchAgent:
         }
 
         print("Research Complete ✅")
+
         return report

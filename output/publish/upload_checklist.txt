@@ -2,9 +2,11 @@
 KDP Upload Checklist
 
 ✔ Interior PDF
-✔ Cover
+✔ Cover PDF
 ✔ Title
 ✔ Subtitle
 ✔ Description
 ✔ Keywords
 ✔ Categories
+✔ Pricing
+✔ Preview Before Publish

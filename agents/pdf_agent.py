@@ -13,9 +13,13 @@ class PDFAgent:
 
         os.makedirs("output/pdfs", exist_ok=True)
 
-        pdf_path = "output/pdfs/book.pdf"
+        safe_title = book["title"].replace(" ", "_")
+        pdf_path = f"output/pdfs/{safe_title}.pdf"
 
-        c = canvas.Canvas(pdf_path, pagesize=(8.5 * inch, 11 * inch))
+        c = canvas.Canvas(
+            pdf_path,
+            pagesize=(8.5 * inch, 11 * inch)
+        )
 
         # Title Page
         c.setFont("Helvetica-Bold", 24)
