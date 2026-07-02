@@ -118,3 +118,49 @@ class AutopilotGUI(ctk.CTk):
             )
             process.stdin.write(f"{niche}\n{season}\n")
             process.stdin.flush()
+            process.stdin.close()
+
+step_count = 0
+
+for line in process.stdout:
+    line = line.rstrip()
+
+    if line:
+        self.after(0, self._log, line)
+
+        if "/10]" in line:
+            step_count += 1
+            self.after(0, self.progress_bar.set, step_count / 10)
+            self.after(
+                0,
+                self.status_label.configure,
+                {"text": f"Step {step_count}/10..."}
+            )
+
+process.wait()
+
+if process.returncode == 0:
+    self.after(0, self._log, "🎉 Book ready! Check output/pdfs/")
+    self.after(0, self.progress_bar.set, 1.0)
+    self.after(
+        0,
+        self.status_label.configure,
+        {"text": "✅ Complete!"}
+    )
+else:
+    self.after(0, self._log, "❌ Error aaya!")
+    self.after(
+        0,
+        self.status_label.configure,
+        {"text": "❌ Failed"}
+    )
+
+except Exception as e:
+    self.after(0, self._log, f"❌ {e}")
+
+finally:
+    self.after(
+        0,
+        self.generate_btn.configure,
+        {"state": "normal", "text": "⚡ Generate Book"}
+    )
