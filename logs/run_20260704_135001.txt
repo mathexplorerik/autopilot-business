@@ -1,0 +1,23 @@
+AI KDP AUTOPILOT V4 — Run Log
+========================================
+Niche    : dog
+Title    : Dog Coloring Book for Kids
+Pages    : 40
+PDF      : output/pdfs/Dog_Coloring_Book_for_Kids.pdf
+Started  : 2026-07-04 13:49:07
+Finished : 2026-07-04 13:50:01
+
+Keywords : dog, dog coloring book, kids coloring book, easy coloring pages, activity book, gift for kids, black and white line art
+
+STEPS:
+  Research: ok
+  Book: ok
+  Prompts: ok
+  Images: ok
+  Quality: ok
+  SEO: ok
+  PDF: ok
+  Cover: ok
+  Marketing: ok
+  Publish: ok
+  Analytics: ok

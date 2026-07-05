@@ -38,7 +38,7 @@ class PromptAgent:
         prompt_data   = []
         used_combos   = set()
 
-        complexity_counts = {"simple": 0, "medium": 0, "detailed": 0}
+        complexity_counts = {"simple": 0, "intermediate": 0, "advanced": 0, "pro": 0}
 
         for i in range(pages):
             subject = subjects[i % len(subjects)]
@@ -111,9 +111,10 @@ class PromptAgent:
         # ✅ Summary
         print(f"\n  {'─'*40}")
         print(f"  ✅ Total Prompts : {len(prompts)}")
-        print(f"  📊 Simple        : {complexity_counts['simple']}")
-        print(f"  📊 Medium        : {complexity_counts['medium']}")
-        print(f"  📊 Detailed      : {complexity_counts['detailed']}")
+        print(f"  📊 🟢 Simple       : {complexity_counts['simple']}")
+        print(f"  📊 🔵 Intermediate : {complexity_counts['intermediate']}")
+        print(f"  📊 🟠 Advanced     : {complexity_counts['advanced']}")
+        print(f"  📊 🔴 Pro          : {complexity_counts['pro']}")
         print(f"  📄 TXT           : {txt_path}")
         print(f"  📄 JSON          : {json_path}")
 

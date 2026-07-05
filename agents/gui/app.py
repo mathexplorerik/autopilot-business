@@ -8,159 +8,422 @@ from datetime import datetime
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
+
 class AutopilotGUI(ctk.CTk):
+
     def __init__(self):
         super().__init__()
-        self.title("🚀 AI KDP Autopilot V4")
-        self.geometry("800x650")
-        self.resizable(False, False)
-        self._build_ui()
 
-    def _build_ui(self):
-        ctk.CTkLabel(self, text="🚀 AI KDP Autopilot V4",
-            font=ctk.CTkFont(size=24, weight="bold")).pack(pady=(20,5))
-        ctk.CTkLabel(self, text="Automated Coloring Book Generator",
-            font=ctk.CTkFont(size=13), text_color="gray").pack(pady=(0,20))
+        self.title("🚀 AI KDP Autopilot V4")
+        self.geometry("850x700")
+        self.resizable(False, False)
+
+        self.build_ui()
+
+    # ----------------------------------
+    # UI
+    # ----------------------------------
+
+    def build_ui(self):
+
+        title = ctk.CTkLabel(
+            self,
+            text="🚀 AI KDP Autopilot V4",
+            font=ctk.CTkFont(size=28, weight="bold")
+        )
+        title.pack(pady=(20, 5))
+
+        subtitle = ctk.CTkLabel(
+            self,
+            text="Automated Coloring Book Generator",
+            text_color="gray"
+        )
+        subtitle.pack(pady=(0, 20))
 
         frame = ctk.CTkFrame(self)
-        frame.pack(padx=30, pady=5, fill="x")
+        frame.pack(fill="x", padx=25)
 
-        ctk.CTkLabel(frame, text="📚 Book Niche",
-            font=ctk.CTkFont(size=13, weight="bold")).grid(row=0, column=0, padx=15, pady=(15,5), sticky="w")
-        self.niche_entry = ctk.CTkEntry(frame,
-            placeholder_text="e.g. jungle animals, dinosaurs...", width=400, height=38)
-        self.niche_entry.grid(row=1, column=0, padx=15, pady=(0,15), sticky="w")
+        # -----------------------
+        # Niche
+        # -----------------------
 
-        ctk.CTkLabel(frame, text="🎄 Season",
-            font=ctk.CTkFont(size=13, weight="bold")).grid(row=0, column=1, padx=15, pady=(15,5), sticky="w")
-        self.season_var = ctk.StringVar(value="skip")
-        ctk.CTkOptionMenu(frame,
-            values=["skip","christmas","halloween","easter","summer","winter"],
-            variable=self.season_var, width=180, height=38).grid(row=1, column=1, padx=15, pady=(0,15), sticky="w")
+        ctk.CTkLabel(
+            frame,
+            text="📚 Book Niche"
+        ).grid(row=0, column=0, padx=15, pady=(15, 5), sticky="w")
 
-        ctk.CTkLabel(frame, text="📄 Pages",
-            font=ctk.CTkFont(size=13, weight="bold")).grid(row=2, column=0, padx=15, pady=(5,5), sticky="w")
-        self.pages_slider = ctk.CTkSlider(frame, from_=20, to=80,
-            number_of_steps=6, width=400, command=self._update_pages)
-        self.pages_slider.set(40)
-        self.pages_slider.grid(row=3, column=0, padx=15, pady=(0,5), sticky="w")
-        self.pages_label = ctk.CTkLabel(frame, text="40 pages",
-            font=ctk.CTkFont(size=12), text_color="gray")
-        self.pages_label.grid(row=4, column=0, padx=15, pady=(0,15), sticky="w")
+        self.niche_entry = ctk.CTkEntry(
+            frame,
+            width=380,
+            height=38,
+            placeholder_text="jungle animals"
+        )
 
-        btn_frame = ctk.CTkFrame(self, fg_color="transparent")
-        btn_frame.pack(padx=30, pady=10, fill="x")
+        self.niche_entry.grid(
+            row=1,
+            column=0,
+            padx=15,
+            pady=(0, 15)
+        )
 
-        self.generate_btn = ctk.CTkButton(btn_frame, text="⚡ Generate Book",
-            font=ctk.CTkFont(size=14, weight="bold"), height=45, width=220,
-            command=self._start)
-        self.generate_btn.pack(side="left", padx=(0,10))
+        # -----------------------
+        # Season
+        # -----------------------
 
-        ctk.CTkButton(btn_frame, text="📁 Open Output",
-            height=45, width=160, fg_color="gray30", hover_color="gray40",
-            command=self._open_output).pack(side="left", padx=(0,10))
+        ctk.CTkLabel(
+            frame,
+            text="🎄 Season"
+        ).grid(row=0, column=1, padx=15, pady=(15, 5), sticky="w")
 
-        ctk.CTkButton(btn_frame, text="🗑️ Clear Log",
-            height=45, width=130, fg_color="gray30", hover_color="gray40",
-            command=self._clear_log).pack(side="left")
+        self.season = ctk.StringVar(value="skip")
 
-        self.progress_bar = ctk.CTkProgressBar(self, width=740)
-        self.progress_bar.pack(padx=30, pady=(10,5))
-        self.progress_bar.set(0)
+        self.season_menu = ctk.CTkOptionMenu(
+            frame,
+            variable=self.season,
+            values=[
+                "skip",
+                "christmas",
+                "halloween",
+                "easter",
+                "summer",
+                "winter"
+            ],
+            width=170
+        )
 
-        self.status_label = ctk.CTkLabel(self, text="Ready...",
-            font=ctk.CTkFont(size=12), text_color="gray")
-        self.status_label.pack(pady=(0,5))
+        self.season_menu.grid(
+            row=1,
+            column=1,
+            padx=15,
+            pady=(0, 15)
+        )
 
-        ctk.CTkLabel(self, text="📋 Live Log",
-            font=ctk.CTkFont(size=13, weight="bold")).pack(padx=30, anchor="w")
-        self.log_box = ctk.CTkTextbox(self, width=740, height=220,
-            font=ctk.CTkFont(family="Courier", size=12))
-        self.log_box.pack(padx=30, pady=(5,20))
+        # -----------------------
+        # Pages
+        # -----------------------
 
-        self._log("🚀 AI KDP Autopilot V4 Ready!")
+        ctk.CTkLabel(
+            frame,
+            text="📄 Pages"
+        ).grid(row=2, column=0, padx=15, sticky="w")
 
-    def _update_pages(self, value):
-        self.pages_label.configure(text=f"{int(value)} pages")
+        self.page_slider = ctk.CTkSlider(
+            frame,
+            from_=20,
+            to=80,
+            number_of_steps=6,
+            width=380,
+            command=self.update_pages
+        )
 
-    def _log(self, msg):
-        t = datetime.now().strftime("%H:%M:%S")
-        self.log_box.insert("end", f"[{t}] {msg}\n")
+        self.page_slider.set(40)
+
+        self.page_slider.grid(
+            row=3,
+            column=0,
+            padx=15,
+            pady=(5, 5)
+        )
+
+        self.page_label = ctk.CTkLabel(
+            frame,
+            text="40 pages",
+            text_color="gray"
+        )
+
+        self.page_label.grid(
+            row=4,
+            column=0,
+            padx=15,
+            pady=(0, 15),
+            sticky="w"
+        )
+
+        # -----------------------
+        # Buttons
+        # -----------------------
+
+        button_frame = ctk.CTkFrame(
+            self,
+            fg_color="transparent"
+        )
+
+        button_frame.pack(
+            fill="x",
+            padx=25,
+            pady=15
+        )
+
+        self.generate_btn = ctk.CTkButton(
+            button_frame,
+            text="⚡ Generate Book",
+            width=220,
+            height=45,
+            command=self.start_generation
+        )
+
+        self.generate_btn.pack(side="left")
+
+        self.output_btn = ctk.CTkButton(
+            button_frame,
+            text="📁 Open Output",
+            width=160,
+            height=45,
+            command=self.open_output
+        )
+
+        self.output_btn.pack(side="left", padx=10)
+
+        self.clear_btn = ctk.CTkButton(
+            button_frame,
+            text="🗑 Clear Log",
+            width=140,
+            height=45,
+            command=self.clear_log
+        )
+
+        self.clear_btn.pack(side="left")
+
+        # -----------------------
+        # Progress
+        # -----------------------
+
+        self.progress = ctk.CTkProgressBar(
+            self,
+            width=780
+        )
+
+        self.progress.pack(
+            padx=25,
+            pady=(5, 5)
+        )
+
+        self.progress.set(0)
+
+        self.status = ctk.CTkLabel(
+            self,
+            text="Ready..."
+        )
+
+        self.status.pack()
+
+        # -----------------------
+        # Log
+        # -----------------------
+
+        ctk.CTkLabel(
+            self,
+            text="📋 Live Log"
+        ).pack(
+            anchor="w",
+            padx=25,
+            pady=(15, 5)
+        )
+
+        self.log_box = ctk.CTkTextbox(
+            self,
+            width=790,
+            height=250
+        )
+
+        self.log_box.pack(
+            padx=25,
+            pady=(0, 20)
+        )
+
+        self.log("🚀 GUI Ready")
+
+    # ----------------------------------
+
+    def update_pages(self, value):
+        self.page_label.configure(
+            text=f"{int(value)} pages"
+        )
+
+    # ----------------------------------
+
+    def log(self, message):
+        now = datetime.now().strftime("%H:%M:%S")
+        self.log_box.insert(
+            "end",
+            f"[{now}] {message}\n"
+        )
         self.log_box.see("end")
 
-    def _clear_log(self):
+    # ----------------------------------
+
+    def clear_log(self):
         self.log_box.delete("1.0", "end")
 
-    def _open_output(self):
-        subprocess.run(["open", os.path.join(os.getcwd(), "output")])
+    # ----------------------------------
 
-    def _start(self):
+    def open_output(self):
+
+        path = os.path.join(
+            os.getcwd(),
+            "output"
+        )
+
+        subprocess.run(["open", path])
+
+    # ----------------------------------
+
+    def start_generation(self):
+
         niche = self.niche_entry.get().strip()
-        if not niche:
-            self._log("❌ Niche daalo!")
-            return
-        self.generate_btn.configure(state="disabled", text="⏳ Generating...")
-        self.progress_bar.set(0)
-        threading.Thread(target=self._run, args=(niche,), daemon=True).start()
 
-    def _run(self, niche):
-        season = self.season_var.get()
+        if niche == "":
+            self.log("❌ Please enter a niche.")
+            return
+
+        self.generate_btn.configure(
+            state="disabled",
+            text="Generating..."
+        )
+
+        self.progress.set(0)
+
+        threading.Thread(
+            target=self.run_pipeline,
+            args=(niche,),
+            daemon=True
+        ).start()
+            # ----------------------------------
+    # Run Pipeline
+    # ----------------------------------
+
+    def run_pipeline(self, niche):
+
+        season = self.season.get()
+
         try:
-            self.after(0, self._log, f"🚀 Starting: {niche}")
-            self.after(0, self.status_label.configure, {"text": "Running..."})
+
+            self.after(
+                0,
+                lambda: self.status.configure(
+                    text="Running..."
+                )
+            )
+
+            self.after(
+                0,
+                lambda: self.log(
+                    f"🚀 Starting: {niche}"
+                )
+            )
 
             process = subprocess.Popen(
                 [sys.executable, "main.py"],
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True, bufsize=1
+                text=True,
+                bufsize=1
             )
-            process.stdin.write(f"{niche}\n{season}\n")
+
+            process.stdin.write(f"{niche}\n")
+            process.stdin.write(f"{season}\n")
+            process.stdin.write("2\n")
             process.stdin.flush()
             process.stdin.close()
 
-step_count = 0
+            total_steps = 10
+            current_step = 0
 
-for line in process.stdout:
-    line = line.rstrip()
+            while True:
 
-    if line:
-        self.after(0, self._log, line)
+                line = process.stdout.readline()
 
-        if "/10]" in line:
-            step_count += 1
-            self.after(0, self.progress_bar.set, step_count / 10)
+                if not line:
+                    break
+
+                line = line.rstrip()
+
+                self.after(
+                    0,
+                    lambda m=line: self.log(m)
+                )
+
+                if line.startswith("[") and "/10]" in line:
+
+                    current_step += 1
+
+                    progress = current_step / total_steps
+
+                    self.after(
+                        0,
+                        lambda p=progress: self.progress.set(p)
+                    )
+
+                    self.after(
+                        0,
+                        lambda s=current_step:
+                        self.status.configure(
+                            text=f"Step {s}/{total_steps}"
+                        )
+                    )
+
+            process.wait()
+
+            if process.returncode == 0:
+
+                self.after(
+                    0,
+                    lambda: self.progress.set(1)
+                )
+
+                self.after(
+                    0,
+                    lambda: self.status.configure(
+                        text="✅ Complete"
+                    )
+                )
+
+                self.after(
+                    0,
+                    lambda: self.log(
+                        "🎉 Book generated successfully."
+                    )
+                )
+
+            else:
+
+                self.after(
+                    0,
+                    lambda: self.status.configure(
+                        text="❌ Failed"
+                    )
+                )
+
+                self.after(
+                    0,
+                    lambda: self.log(
+                        "❌ Pipeline failed."
+                    )
+                )
+
+        except Exception as e:
+
             self.after(
                 0,
-                self.status_label.configure,
-                {"text": f"Step {step_count}/10..."}
+                lambda: self.log(
+                    f"❌ {e}"
+                )
             )
 
-process.wait()
+        finally:
 
-if process.returncode == 0:
-    self.after(0, self._log, "🎉 Book ready! Check output/pdfs/")
-    self.after(0, self.progress_bar.set, 1.0)
-    self.after(
-        0,
-        self.status_label.configure,
-        {"text": "✅ Complete!"}
-    )
-else:
-    self.after(0, self._log, "❌ Error aaya!")
-    self.after(
-        0,
-        self.status_label.configure,
-        {"text": "❌ Failed"}
-    )
+            self.after(
+                0,
+                lambda: self.generate_btn.configure(
+                    state="normal",
+                    text="⚡ Generate Book"
+                )
+            )
 
-except Exception as e:
-    self.after(0, self._log, f"❌ {e}")
 
-finally:
-    self.after(
-        0,
-        self.generate_btn.configure,
-        {"state": "normal", "text": "⚡ Generate Book"}
-    )
+if __name__ == "__main__":
+
+    app = AutopilotGUI()
+
+    app.mainloop()

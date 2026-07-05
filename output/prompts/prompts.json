@@ -1,292 +1,293 @@
 {
-  "niche": "jungale animal",
+  "niche": "jungle animals",
   "age_group": "kids",
   "season": null,
   "total": 40,
   "complexity": {
-    "simple": 13,
-    "medium": 13,
-    "detailed": 14
+    "simple": 10,
+    "intermediate": 10,
+    "advanced": 10,
+    "pro": 10
   },
   "prompts": [
     {
       "page": 1,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "lion",
       "complexity": "simple",
-      "positive": "Cute amazed JUNGALE ANIMAL being an astronaut on a farm, holding a trophy, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 1 of 40",
+      "positive": "Cute proud lion decorating a Christmas tree near a river, wearing a cape, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 2,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "tiger",
       "complexity": "simple",
-      "positive": "Cute happy JUNGALE ANIMAL being a superhero near a rainbow, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 2 of 40",
+      "positive": "Cute sleepy tiger jumping in a dense jungle, carrying a backpack, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 3,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "elephant",
       "complexity": "simple",
-      "positive": "Cute surprised JUNGALE ANIMAL painting at the beach, carrying a lunchbox, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 3 of 40",
+      "positive": "Cute shy elephant being a pirate under a big tree, carrying a backpack, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 4,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "giraffe",
       "complexity": "simple",
-      "positive": "Cute amazed JUNGALE ANIMAL walking on the beach in a flower garden, holding a paintbrush, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 4 of 40",
+      "positive": "Cute proud giraffe making pizza near a watering hole, carrying a lantern, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 5,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "zebra",
       "complexity": "simple",
-      "positive": "Cute cheerful JUNGALE ANIMAL feeding ducks in a magical garden, wearing a crown, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 5 of 40",
+      "positive": "Cute laughing zebra exploring the jungle on a rocky hill, wearing sunglasses, standing pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 6,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "monkey",
       "complexity": "simple",
-      "positive": "Cute brave JUNGALE ANIMAL opening presents near a rainbow, wearing a crown, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 6 of 40",
+      "positive": "Cute proud monkey painting near a watering hole, holding a magnifying glass, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 7,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "hippo",
       "complexity": "simple",
-      "positive": "Cute surprised JUNGALE ANIMAL jumping at school, carrying a watering can, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 7 of 40",
+      "positive": "Cute laughing hippo playing guitar in the African savanna, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 8,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "rhino",
       "complexity": "simple",
-      "positive": "Cute brave JUNGALE ANIMAL playing football during winter, wearing sunglasses, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 8 of 40",
+      "positive": "Cute cheerful rhino collecting flowers under a big tree, holding a magnifying glass, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 9,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "cheetah",
       "complexity": "simple",
-      "positive": "Cute surprised JUNGALE ANIMAL making pizza in the forest, carrying a lunchbox, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 9 of 40",
+      "positive": "Cute amazed cheetah being an astronaut on a rocky hill, carrying a backpack, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 10,
-      "subject": "JUNGALE ANIMAL",
+      "subject": "gorilla",
       "complexity": "simple",
-      "positive": "Cute amazed JUNGALE ANIMAL exploring space near a waterfall, wearing a cape, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 10 of 40",
+      "positive": "Cute proud gorilla celebrating a birthday in a dense jungle, holding a paintbrush, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 11,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "simple",
-      "positive": "Cute laughing JUNGALE ANIMAL playing with butterflies in a magical garden, wearing sunglasses, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 11 of 40",
+      "subject": "lion",
+      "complexity": "intermediate",
+      "positive": "Cute silly lion playing with kittens on a rocky hill, wearing sunglasses, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 12,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "simple",
-      "positive": "Cute shy JUNGALE ANIMAL playing guitar in the forest, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 12 of 40",
+      "subject": "tiger",
+      "complexity": "intermediate",
+      "positive": "Cute sleepy tiger being a chef near a river, holding a magnifying glass, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 13,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "simple",
-      "positive": "Cute amazed JUNGALE ANIMAL decorating a Christmas tree in a magical garden, holding a paintbrush, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 3-4 main elements only, extra large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 13 of 40",
+      "subject": "elephant",
+      "complexity": "intermediate",
+      "positive": "Cute excited elephant being an astronaut in the African savanna, holding an ice cream cone, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 14,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute happy JUNGALE ANIMAL being a chef under the stars, holding a bunch of flowers, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 14 of 40",
+      "subject": "giraffe",
+      "complexity": "intermediate",
+      "positive": "Cute excited giraffe playing in autumn leaves in the African savanna, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 15,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute proud JUNGALE ANIMAL walking in the forest in a flower garden, holding an ice cream cone, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 15 of 40",
+      "subject": "zebra",
+      "complexity": "intermediate",
+      "positive": "Cute happy zebra running near a river, holding a trophy, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 16,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute curious JUNGALE ANIMAL playing in the rain in the forest, holding an ice cream cone, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 16 of 40",
+      "subject": "monkey",
+      "complexity": "intermediate",
+      "positive": "Cute cheerful monkey playing in the rain in a dense jungle, wearing a scarf, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 17,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute sleepy JUNGALE ANIMAL playing in autumn leaves in the forest, carrying a lantern, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 17 of 40",
+      "subject": "hippo",
+      "complexity": "intermediate",
+      "positive": "Cute shy hippo walking on the beach on a rocky hill, holding a trophy, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 18,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute laughing JUNGALE ANIMAL being a superhero at school, wearing a scarf, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 18 of 40",
+      "subject": "rhino",
+      "complexity": "intermediate",
+      "positive": "Cute excited rhino camping on a rocky hill, carrying a watering can, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 19,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute laughing JUNGALE ANIMAL swimming on a farm, holding a paintbrush, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 19 of 40",
+      "subject": "cheetah",
+      "complexity": "intermediate",
+      "positive": "Cute shy cheetah decorating a Christmas tree under a big tree, wearing a cape, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 20,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute happy JUNGALE ANIMAL being a police officer at the playground, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 20 of 40",
+      "subject": "gorilla",
+      "complexity": "intermediate",
+      "positive": "Cute laughing gorilla riding a bicycle in the African savanna, carrying a backpack, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 21,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute brave JUNGALE ANIMAL feeding ducks in the jungle, wearing a cape, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 21 of 40",
+      "subject": "lion",
+      "complexity": "advanced",
+      "positive": "Cute silly lion running on a rocky hill, holding a trophy, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 22,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute excited JUNGALE ANIMAL jumping in space, holding a map, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 22 of 40",
+      "subject": "tiger",
+      "complexity": "advanced",
+      "positive": "Cute shy tiger playing with birds on a rocky hill, wearing a scarf, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 23,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute cheerful JUNGALE ANIMAL collecting flowers during winter, carrying a backpack, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 23 of 40",
+      "subject": "elephant",
+      "complexity": "advanced",
+      "positive": "Cute surprised elephant decorating a Christmas tree in a dense jungle, holding a paintbrush, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 24,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute happy JUNGALE ANIMAL walking in the forest under the stars, holding a map, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 24 of 40",
+      "subject": "giraffe",
+      "complexity": "advanced",
+      "positive": "Cute curious giraffe being a doctor near a watering hole, wearing a cape, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 25,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute curious JUNGALE ANIMAL playing in the rain in the jungle, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 25 of 40",
+      "subject": "zebra",
+      "complexity": "advanced",
+      "positive": "Cute amazed zebra watering flowers near a watering hole, carrying a backpack, standing pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 26,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "medium",
-      "positive": "Cute laughing JUNGALE ANIMAL walking in the forest in the jungle, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 5-7 elements, large coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 26 of 40",
+      "subject": "monkey",
+      "complexity": "advanced",
+      "positive": "Cute happy monkey swimming on a rocky hill, carrying a lantern, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 27,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute sleepy JUNGALE ANIMAL playing with a puppy during winter, holding a trophy, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 27 of 40",
+      "subject": "hippo",
+      "complexity": "advanced",
+      "positive": "Cute cheerful hippo playing with kittens near a river, wearing a crown, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 28,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute shy JUNGALE ANIMAL being a firefighter in the forest, wearing sunglasses, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 28 of 40",
+      "subject": "rhino",
+      "complexity": "advanced",
+      "positive": "Cute proud rhino building a snowman in the African savanna, carrying a lantern, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 29,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute curious JUNGALE ANIMAL playing with a puppy at home, wearing a scarf, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 29 of 40",
+      "subject": "cheetah",
+      "complexity": "advanced",
+      "positive": "Cute excited cheetah making pizza under a big tree, carrying a lunchbox, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 30,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute surprised JUNGALE ANIMAL smiling under the stars, wearing a scarf, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 30 of 40",
+      "subject": "gorilla",
+      "complexity": "advanced",
+      "positive": "Cute sleepy gorilla building a snowman on a rocky hill, holding a trophy, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 31,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute silly JUNGALE ANIMAL painting in space, carrying a teddy bear, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 31 of 40",
+      "subject": "lion",
+      "complexity": "pro",
+      "positive": "Cute excited lion running under a big tree, wearing a crown, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 32,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute excited JUNGALE ANIMAL flying a kite at school, carrying a teddy bear, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 32 of 40",
+      "subject": "tiger",
+      "complexity": "pro",
+      "positive": "Cute excited tiger walking on the beach under a big tree, wearing sunglasses, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 33,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute proud JUNGALE ANIMAL playing football at a birthday party, wearing a crown, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 33 of 40",
+      "subject": "elephant",
+      "complexity": "pro",
+      "positive": "Cute surprised elephant playing with a puppy near a watering hole, wearing a scarf, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 34,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute curious JUNGALE ANIMAL reading a book during winter, holding a bunch of flowers, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 34 of 40",
+      "subject": "giraffe",
+      "complexity": "pro",
+      "positive": "Cute silly giraffe playing in the rain under a big tree, holding an ice cream cone, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 35,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute brave JUNGALE ANIMAL feeding ducks at the playground, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 35 of 40",
+      "subject": "zebra",
+      "complexity": "pro",
+      "positive": "Cute amazed zebra reading a book in a dense jungle, carrying a lunchbox, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 36,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute curious JUNGALE ANIMAL being a firefighter at the park, wearing a crown, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 36 of 40",
+      "subject": "monkey",
+      "complexity": "pro",
+      "positive": "Cute shy monkey fishing in a dense jungle, holding a bunch of flowers, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 37,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute laughing JUNGALE ANIMAL being an astronaut during winter, holding a map, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 37 of 40",
+      "subject": "hippo",
+      "complexity": "pro",
+      "positive": "Cute brave hippo painting near a river, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 38,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute excited JUNGALE ANIMAL flying a kite on a farm, carrying a lunchbox, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 38 of 40",
+      "subject": "rhino",
+      "complexity": "pro",
+      "positive": "Cute sleepy rhino playing piano in the African savanna, carrying a watering can, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 39,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute cheerful JUNGALE ANIMAL being a police officer in a flower garden, carrying a lunchbox, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 39 of 40",
+      "subject": "cheetah",
+      "complexity": "pro",
+      "positive": "Cute excited cheetah riding a bicycle on a rocky hill, wearing sunglasses, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 40,
-      "subject": "JUNGALE ANIMAL",
-      "complexity": "detailed",
-      "positive": "Cute happy JUNGALE ANIMAL camping near a waterfall, holding a map, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 8-10 elements, patterns, medium coloring spaces, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page, page 40 of 40",
+      "subject": "gorilla",
+      "complexity": "pro",
+      "positive": "Cute proud gorilla building a sandcastle near a river, carrying a backpack, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     }
   ]

@@ -52,7 +52,7 @@ class ImageGeneratorAgent:
 
             try:
                 response = self.client.models.generate_images(
-                    model="gemini-2.5-flash-image-preview",
+                    model="imagen-4.0-generate-001",
                     prompt=positive
                 )
 
