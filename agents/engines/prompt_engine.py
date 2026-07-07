@@ -177,6 +177,7 @@ class PromptEngine:
         )
 
         self._used = set()
+        self.animal_engine = AnimalEngine()
 
     def _get_complexity(self, page_number, total_pages):
         """4 levels — equal distribution"""
@@ -198,6 +199,14 @@ class PromptEngine:
         return self.niche_styles["default"]
 
     def build_prompt(self, subject, age_group="kids", season=None, niche=None, page_number=1, total_pages=40):
+        animal_data = self.animal_engine.build(
+            subject=subject,
+            age_group=age_group,
+            page_number=page_number,
+            total_pages=total_pages,
+            season=season,
+)
+        print(animal_data)
         niche_data  = self._get_niche_data(niche or subject)
         style       = niche_data["style"]
         line_weight = niche_data["line_weight"]
@@ -213,11 +222,12 @@ class PromptEngine:
 
         max_attempts = 10
         for _ in range(max_attempts):
-            action     = random.choice(self.actions)
-            expression = random.choice(self.expressions)
-            prop       = random.choice(self.props)
-            angle      = random.choice(self.angles)
-
+            # ✅ AnimalEngine se data use karo
+            action     = animal_data.get("action",     random.choice(self.actions))
+            expression = animal_data.get("expression", random.choice(self.expressions))
+            prop       = animal_data.get("prop",       random.choice(self.props))
+            angle      = animal_data.get("angle",      random.choice(self.angles))
+            background = animal_data.get("background", background)
             if season and season.lower() in self.seasonal:
                 action = random.choice(self.seasonal[season.lower()])
 

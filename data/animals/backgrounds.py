@@ -1,0 +1,599 @@
+"""
+==========================================================
+ AI KDP AUTOPILOT V4
+ Animal Background Library
+==========================================================
+
+Version : 1.0
+Purpose : Reusable kid-friendly backgrounds for Animal Engine
+
+Rules:
+- Kid-friendly
+- Printable coloring book friendly
+- Easy to illustrate
+- No copyrighted places
+- No duplicate entries
+- Works with all animals
+
+==========================================================
+"""
+
+BACKGROUNDS = {
+
+    "forest": [
+    "peaceful pine forest",
+    "sunlit forest trail",
+    "forest filled with wildflowers",
+    "forest with tall oak trees",
+    "forest with colorful mushrooms",
+    "forest covered in autumn leaves",
+    "forest with butterflies",
+    "forest beside a small stream",
+    "forest clearing",
+    "forest picnic area",
+
+    "forest with wooden bridge",
+    "forest with tiny birds",
+    "forest after gentle rain",
+    "misty morning forest",
+    "forest with tree stumps",
+    "forest with blooming flowers",
+    "forest with winding path",
+    "forest surrounded by ferns",
+    "forest with giant rocks",
+    "forest under bright sunshine",
+
+    "forest with friendly squirrels",
+    "forest with fallen logs",
+    "forest near a waterfall",
+    "forest with colorful leaves",
+    "forest with berry bushes",
+    "forest filled with birdsong",
+    "forest with wooden signposts",
+    "forest beside a crystal pond",
+    "forest with climbing vines",
+    "enchanted forest"
+
+],
+
+    "jungle": [
+    "lush tropical jungle",
+    "dense jungle with tall trees",
+    "jungle filled with giant leaves",
+    "jungle beside a peaceful waterfall",
+    "jungle with hanging vines",
+    "jungle with colorful parrots",
+    "jungle with playful monkeys",
+    "jungle bamboo forest",
+    "jungle with ancient trees",
+    "jungle with wooden rope bridge",
+
+    "jungle with sparkling river",
+    "jungle with hidden cave",
+    "jungle with giant ferns",
+    "jungle with colorful flowers",
+    "jungle with tropical plants",
+    "jungle with sunny clearing",
+    "jungle with winding trail",
+    "jungle with butterfly garden",
+    "jungle with treehouse",
+    "jungle with explorer campsite",
+
+    "jungle near crystal pond",
+    "jungle with mossy rocks",
+    "jungle with wooden signpost",
+    "jungle with swinging vines",
+    "jungle with tall bamboo",
+    "jungle with rainforest canopy",
+    "jungle after gentle rain",
+    "jungle with exotic birds",
+    "jungle with hidden path",
+    "peaceful jungle paradise"
+
+],
+
+    "river": [
+    "peaceful riverbank",
+    "clear flowing river",
+    "river with smooth stepping stones",
+    "river beside a green meadow",
+    "river under a wooden bridge",
+    "river with colorful flowers",
+    "river with tall grass",
+    "river with friendly ducks",
+    "river with blooming lilies",
+    "river surrounded by trees",
+
+    "river with tiny fish",
+    "river flowing through the forest",
+    "river near a waterfall",
+    "river with butterflies",
+    "river with wooden dock",
+    "river beside a picnic area",
+    "river with colorful pebbles",
+    "river under sunny skies",
+    "river with gentle ripples",
+    "river beside bamboo trees",
+
+    "river with floating leaves",
+    "river near a small island",
+    "river with mossy rocks",
+    "river through a peaceful valley",
+    "river beside wildflowers",
+    "river with singing birds",
+    "river near a cozy campsite",
+    "river with wooden fence",
+    "river reflecting fluffy clouds",
+    "crystal clear jungle river"
+
+],
+
+    "lake": [
+    "peaceful lakeside",
+    "crystal clear lake",
+    "lake with wooden dock",
+    "lake surrounded by pine trees",
+    "lake with colorful water lilies",
+    "lake reflecting fluffy clouds",
+    "lake with friendly ducks",
+    "lake beside a flower meadow",
+    "lake with smooth pebbles",
+    "lake with tall reeds",
+
+    "lake near a cozy cabin",
+    "lake with a small wooden boat",
+    "lake under a bright blue sky",
+    "lake with butterflies",
+    "lake surrounded by wildflowers",
+    "lake beside gentle hills",
+    "lake with a tiny island",
+    "lake with calm ripples",
+    "lake near a peaceful forest",
+    "lake with singing birds",
+
+    "lake at sunrise",
+    "lake at sunset",
+    "lake with blooming lotus flowers",
+    "lake beside a picnic area",
+    "lake with stepping stones",
+    "lake with colorful dragonflies",
+    "lake near a wooden bridge",
+    "lake surrounded by green grass",
+    "lake with sparkling water",
+    "quiet mountain lake"
+
+],
+
+    "mountain": [
+    "gentle mountain trail",
+    "snow-capped mountain peaks",
+    "mountain with pine trees",
+    "mountain with colorful wildflowers",
+    "mountain beside a crystal lake",
+    "mountain with flowing waterfall",
+    "mountain with winding hiking path",
+    "mountain with wooden bridge",
+    "mountain with rocky cliffs",
+    "mountain with green valleys",
+
+    "mountain with fluffy clouds",
+    "mountain at sunrise",
+    "mountain at sunset",
+    "mountain with tiny cabin",
+    "mountain with peaceful meadow",
+    "mountain with colorful butterflies",
+    "mountain with singing birds",
+    "mountain with fresh spring",
+    "mountain with forest trail",
+    "mountain with gentle stream",
+
+    "mountain with wooden fence",
+    "mountain picnic area",
+    "mountain with colorful mushrooms",
+    "mountain with giant boulders",
+    "mountain with tall grass",
+    "mountain overlooking a valley",
+    "mountain with blooming flowers",
+    "mountain with fresh morning mist",
+    "mountain with friendly wildlife",
+    "peaceful mountain landscape"
+
+],
+
+    "garden": [
+    "flower garden with colorful tulips",
+    "rose garden in full bloom",
+    "sunflower garden under bright sunshine",
+    "butterfly garden with blooming flowers",
+    "vegetable garden with fresh plants",
+    "herb garden with stone pathway",
+    "garden with wooden bench",
+    "garden with small fountain",
+    "garden with winding brick path",
+    "garden with white picket fence",
+
+    "garden filled with daisies",
+    "garden with blooming lavender",
+    "garden with cherry blossom trees",
+    "garden with colorful butterflies",
+    "garden with friendly birds",
+    "garden with tiny birdhouse",
+    "garden with flowering bushes",
+    "garden with climbing roses",
+    "garden with hanging flower baskets",
+    "garden with trimmed hedges",
+
+    "garden beside a peaceful pond",
+    "garden with lily flowers",
+    "garden with shaded gazebo",
+    "garden with stepping stones",
+    "garden with picnic blanket",
+    "garden after gentle rain",
+    "garden under a rainbow",
+    "garden with fruit trees",
+    "garden with blooming orchids",
+    "peaceful botanical garden"
+
+],
+
+    "park": [
+    "city park with green lawns",
+    "park with colorful flower beds",
+    "park with shady oak trees",
+    "park with winding walking paths",
+    "park with wooden benches",
+    "park with small playground",
+    "park with peaceful pond",
+    "park with friendly ducks",
+    "park with picnic tables",
+    "park with colorful butterflies",
+
+    "park with blooming cherry trees",
+    "park with birdhouses",
+    "park with wooden gazebo",
+    "park with flower archway",
+    "park with stepping stones",
+    "park with trimmed hedges",
+    "park with open grassy field",
+    "park with tall maple trees",
+    "park with decorative fountain",
+    "park with flower baskets",
+
+    "park during spring bloom",
+    "park during autumn leaves",
+    "park with sunny meadow",
+    "park with tree-lined pathways",
+    "park with colorful kites",
+    "park beside a small stream",
+    "park with peaceful picnic area",
+    "park with flowering shrubs",
+    "park with gentle breeze",
+    "family-friendly community park"
+
+],
+
+    "farm": [
+    "peaceful countryside farm",
+    "farm with a classic red barn",
+    "farm with wooden fences",
+    "farm with green pastures",
+    "farm with blooming sunflower fields",
+    "farm with colorful vegetable garden",
+    "farm with fruit orchard",
+    "farm with hay bales",
+    "farm with windmill",
+    "farm with small chicken coop",
+
+    "farm with duck pond",
+    "farm with grazing fields",
+    "farm with rustic farmhouse",
+    "farm with flower garden",
+    "farm with wooden gate",
+    "farm with dirt pathways",
+    "farm with friendly scarecrow",
+    "farm with apple trees",
+    "farm with pumpkin patch",
+    "farm with cornfield",
+
+    "farm beside a peaceful river",
+    "farm with wildflower meadow",
+    "farm with wooden bridge",
+    "farm at sunrise",
+    "farm at sunset",
+    "farm after gentle rain",
+    "farm with rolling hills",
+    "farm with colorful butterflies",
+    "farm with tall oak trees",
+    "happy family farm"
+
+],
+
+    "meadow": [
+    "peaceful wildflower meadow",
+    "meadow filled with colorful flowers",
+    "meadow with tall green grass",
+    "meadow under bright sunshine",
+    "meadow with fluttering butterflies",
+    "meadow with buzzing bees",
+    "meadow beside a gentle stream",
+    "meadow with blooming daisies",
+    "meadow with colorful tulips",
+    "meadow with soft rolling hills",
+
+    "meadow with grazing animals",
+    "meadow with wooden fence",
+    "meadow with stepping stones",
+    "meadow beside a crystal lake",
+    "meadow with giant oak tree",
+    "meadow with cheerful birds",
+    "meadow with fresh spring flowers",
+    "meadow with gentle breeze",
+    "meadow after a light rain",
+    "meadow beneath a rainbow",
+
+    "meadow with tiny mushrooms",
+    "meadow with clover patches",
+    "meadow with flowering bushes",
+    "meadow at sunrise",
+    "meadow at sunset",
+    "meadow with scattered rocks",
+    "meadow with friendly ladybugs",
+    "meadow with dragonflies",
+    "meadow with picnic blanket",
+    "peaceful countryside meadow"
+
+],
+
+    "beach": [
+    "peaceful wildflower meadow",
+    "meadow filled with colorful flowers",
+    "meadow with tall green grass",
+    "meadow under bright sunshine",
+    "meadow with fluttering butterflies",
+    "meadow with buzzing bees",
+    "meadow beside a gentle stream",
+    "meadow with blooming daisies",
+    "meadow with colorful tulips",
+    "meadow with soft rolling hills",
+
+    "meadow with grazing animals",
+    "meadow with wooden fence",
+    "meadow with stepping stones",
+    "meadow beside a crystal lake",
+    "meadow with giant oak tree",
+    "meadow with cheerful birds",
+    "meadow with fresh spring flowers",
+    "meadow with gentle breeze",
+    "meadow after a light rain",
+    "meadow beneath a rainbow",
+
+    "meadow with tiny mushrooms",
+    "meadow with clover patches",
+    "meadow with flowering bushes",
+    "meadow at sunrise",
+    "meadow at sunset",
+    "meadow with scattered rocks",
+    "meadow with friendly ladybugs",
+    "meadow with dragonflies",
+    "meadow with picnic blanket",
+    "peaceful countryside meadow"
+
+],
+
+    "desert": [
+    "golden sandy desert",
+    "desert with rolling sand dunes",
+    "desert with tall cactus plants",
+    "desert with blooming desert flowers",
+    "desert with rocky cliffs",
+    "desert with smooth sandstone rocks",
+    "desert with a peaceful oasis",
+    "desert with palm trees",
+    "desert with clear blue sky",
+    "desert with gentle sand patterns",
+
+    "desert at sunrise",
+    "desert at sunset",
+    "desert beneath a starry sky",
+    "desert with winding walking trail",
+    "desert with scattered pebbles",
+    "desert with colorful wildflowers",
+    "desert with towering rock formations",
+    "desert canyon landscape",
+    "desert with dry riverbed",
+    "desert with natural stone arch",
+
+    "desert with friendly lizards",
+    "desert with soaring birds",
+    "desert with tiny desert shrubs",
+    "desert with hidden cave entrance",
+    "desert with ancient ruins",
+    "desert with wooden signpost",
+    "desert with soft sandy hills",
+    "desert with sparkling oasis lake",
+    "desert with warm sunshine",
+    "peaceful desert landscape"
+
+],
+
+    "snow": [
+    "snow-covered forest",
+    "snowy mountain landscape",
+    "snowy pine forest",
+    "snow-covered meadow",
+    "snowy village pathway",
+    "snow-covered wooden bridge",
+    "snowy frozen lake",
+    "snowy riverbank",
+    "snowy evergreen trees",
+    "snowy hillside",
+
+    "fresh snowfall in the forest",
+    "snow-covered cabin",
+    "snowy park with benches",
+    "snowy garden",
+    "snow-covered rocks",
+    "snowy trail through the woods",
+    "snowy valley",
+    "snow-covered waterfall",
+    "snowy fence line",
+    "snowy countryside",
+
+    "snowy sunrise landscape",
+    "snowy sunset landscape",
+    "snowy path with footprints",
+    "snow-covered tree stumps",
+    "snowy field with wildflowers peeking through",
+    "snowy sky with gentle snowflakes",
+    "snow-covered bushes",
+    "snowy woodland clearing",
+    "snowy mountain trail",
+    "peaceful winter wonderland"
+
+],
+
+    "rain": [
+    "gentle spring rain",
+    "light rain in the forest",
+    "rainy garden with blooming flowers",
+    "rainy day in the park",
+    "rainy jungle pathway",
+    "rainy countryside farm",
+    "rain beside a peaceful river",
+    "rain over a crystal lake",
+    "rainy mountain trail",
+    "rainy flower meadow",
+
+    "rain with colorful rainbow",
+    "rain with fluffy clouds",
+    "misty morning rain",
+    "rainy forest clearing",
+    "rain on a wooden bridge",
+    "rain around tall pine trees",
+    "rainy bamboo forest",
+    "rain over green grass",
+    "rain beside a tiny waterfall",
+    "rain with puddles",
+
+    "rainy woodland path",
+    "rain beside a cozy cabin",
+    "rain over wildflowers",
+    "rain in a peaceful village",
+    "rain through tropical plants",
+    "rain with fresh leaves",
+    "rain over stepping stones",
+    "rain beside flowering bushes",
+    "rain under cloudy skies",
+    "fresh rainy landscape"
+
+],
+
+    "night": [
+    "peaceful moonlit forest",
+    "starry night sky",
+    "moonlit jungle clearing",
+    "night beside a calm lake",
+    "night by a gentle river",
+    "forest under twinkling stars",
+    "mountain beneath the full moon",
+    "night garden with glowing flowers",
+    "quiet village at night",
+    "campfire beneath the stars",
+
+    "night with friendly fireflies",
+    "moonlit flower meadow",
+    "night beside a waterfall",
+    "snowy night landscape",
+    "night at a peaceful campsite",
+    "night with glowing lanterns",
+    "night under fluffy clouds",
+    "night with sparkling constellations",
+    "moonlit wooden bridge",
+    "night beside bamboo trees",
+
+    "quiet park at night",
+    "moonlit beach shoreline",
+    "night with gentle breeze",
+    "forest illuminated by moonlight",
+    "night beneath ancient oak trees",
+    "night with glowing mushrooms",
+    "peaceful countryside at night",
+    "night with shimmering stars",
+    "night with a crescent moon",
+    "calm enchanted night"
+
+],
+
+    "village": [
+    "peaceful countryside village",
+    "village with cozy cottages",
+    "village with cobblestone streets",
+    "village with colorful flower gardens",
+    "village with white picket fences",
+    "village with wooden cottages",
+    "village beside a peaceful river",
+    "village with a small bridge",
+    "village with an old water well",
+    "village with fruit orchards",
+
+    "village with blooming gardens",
+    "village surrounded by green fields",
+    "village with tall oak trees",
+    "village with friendly birdhouses",
+    "village with wooden signposts",
+    "village with a peaceful pond",
+    "village with charming windmill",
+    "village with vegetable gardens",
+    "village with flower-lined pathways",
+    "village with picnic area",
+
+    "village during spring bloom",
+    "village during autumn season",
+    "village at sunrise",
+    "village at sunset",
+    "village after gentle rain",
+    "village with colorful butterflies",
+    "village with small wooden fences",
+    "village with winding pathways",
+    "village with blooming sunflowers",
+    "storybook countryside village"
+
+],
+
+    "fantasy": [
+    "enchanted fairy forest",
+    "magical crystal cave",
+    "floating islands in the sky",
+    "rainbow valley",
+    "unicorn meadow",
+    "dragon valley",
+    "fairy village",
+    "wizard garden",
+    "magic mushroom forest",
+    "crystal waterfall",
+
+    "glowing enchanted forest",
+    "moonlit fairy garden",
+    "castle above the clouds",
+    "hidden magical kingdom",
+    "sparkling crystal lake",
+    "forest with glowing flowers",
+    "giant magical tree",
+    "floating rainbow bridge",
+    "garden filled with magical butterflies",
+    "forest with glowing mushrooms",
+
+    "magical treehouse village",
+    "ancient wizard tower",
+    "friendly dragon cave",
+    "secret fairy pathway",
+    "shimmering crystal mountain",
+    "enchanted flower meadow",
+    "mystical bamboo forest",
+    "floating crystal islands",
+    "peaceful unicorn forest",
+    "storybook fantasy world"
+
+],
+
+}

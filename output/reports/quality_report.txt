@@ -1,12 +1,12 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-07 08:44:57
-Niche   : diwali
+Time    : 2026-07-07 13:42:19
+Niche   : jungle animals
 
 PASSED:
-  ✅ Title     : Diwali Coloring Book for Kids
+  ✅ Title     : Jungle Animals Coloring Book for Kids
   ✅ Pages     : 40
-  ✅ Niche     : diwali
+  ✅ Niche     : jungle animals
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found
