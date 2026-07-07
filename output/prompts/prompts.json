@@ -3,291 +3,365 @@
   "age_group": "kids",
   "season": null,
   "total": 40,
-  "complexity": {
-    "simple": 10,
-    "intermediate": 10,
-    "advanced": 10,
-    "pro": 10
-  },
   "prompts": [
     {
       "page": 1,
       "subject": "diya lamp",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute laughing diya lamp looking at stars at the beach, holding a magnifying glass, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute sleepy diya lamp being a police officer in the mountains, holding a map, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 2,
       "subject": "rangoli pattern",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute surprised rangoli pattern decorating a Christmas tree at home, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute proud rangoli pattern fishing in the jungle, wearing a scarf, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 3,
       "subject": "fireworks",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute shy fireworks playing guitar during winter, carrying a lantern, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute sleepy fireworks baking cookies at school, wearing sunglasses, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 4,
       "subject": "Lakshmi goddess",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute sleepy Lakshmi goddess gardening in the jungle, wearing a crown, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute happy Lakshmi goddess reading a book at home, holding a magnifying glass, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 5,
       "subject": "Ganesh",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute brave Ganesh reading a book under the stars, carrying a lantern, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute silly Ganesh being a superhero in the jungle, holding a magnifying glass, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 6,
       "subject": "lotus flower",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute curious lotus flower playing in the rain in the jungle, wearing a crown, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute brave lotus flower reading a book at school, wearing a scarf, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 7,
       "subject": "lantern",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute shy lantern swimming during summer, wearing a cape, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute excited lantern being a firefighter near a castle, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 8,
       "subject": "sweet box",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute excited sweet box sleeping at home, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute laughing sweet box playing guitar near a castle, wearing a crown, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 9,
       "subject": "sparklers",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute excited sparklers decorating a Christmas tree at home, holding an ice cream cone, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute excited sparklers playing with butterflies at the zoo, carrying a backpack, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 10,
       "subject": "peacock",
+      "niche": "diwali",
       "complexity": "simple",
-      "positive": "Cute shy peacock flying a kite near a castle, holding a bunch of flowers, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟢 SIMPLE",
+      "positive": "Cute surprised peacock collecting flowers at the playground, holding a paintbrush, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 11,
       "subject": "diya lamp",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute amazed diya lamp watering flowers in the jungle, carrying a lantern, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute cheerful diya lamp building a sandcastle near a castle, holding a paintbrush, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 12,
       "subject": "rangoli pattern",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute shy rangoli pattern playing with butterflies during summer, holding a map, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute happy rangoli pattern collecting flowers in the forest, carrying a teddy bear, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 13,
       "subject": "fireworks",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute sleepy fireworks looking at stars at home, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute curious fireworks playing football under the stars, carrying a teddy bear, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 14,
       "subject": "Lakshmi goddess",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute laughing Lakshmi goddess playing with butterflies at the beach, wearing a scarf, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute silly Lakshmi goddess ice skating during summer, holding a map, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 15,
       "subject": "Ganesh",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute shy Ganesh playing with kittens during summer, holding a map, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute laughing Ganesh playing piano on a farm, wearing a cape, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 16,
       "subject": "lotus flower",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute surprised lotus flower painting in the forest, holding a bunch of flowers, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute curious lotus flower feeding ducks in a flower garden, holding a trophy, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 17,
       "subject": "lantern",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute surprised lantern drinking water in a flower garden, wearing a crown, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute excited lantern riding a scooter in the forest, wearing sunglasses, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 18,
       "subject": "sweet box",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute surprised sweet box walking on the beach on a farm, holding an ice cream cone, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute excited sweet box playing with a puppy at the beach, carrying a teddy bear, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 19,
       "subject": "sparklers",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute excited sparklers being a superhero near a waterfall, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute happy sparklers playing football under the stars, holding a magnifying glass, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 20,
       "subject": "peacock",
+      "niche": "diwali",
       "complexity": "intermediate",
-      "positive": "Cute curious peacock playing in the rain in a magical garden, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔵 INTERMEDIATE",
+      "positive": "Cute happy peacock collecting flowers at home, wearing a cape, side view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 21,
       "subject": "diya lamp",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute curious diya lamp being a chef at home, carrying a watering can, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute excited diya lamp surfing during winter, carrying a lantern, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 22,
       "subject": "rangoli pattern",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute sleepy rangoli pattern having a picnic in the forest, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute cheerful rangoli pattern decorating a Christmas tree at the playground, holding a magnifying glass, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 23,
       "subject": "fireworks",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute proud fireworks fishing at the playground, holding a trophy, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute happy fireworks riding a scooter at home, holding a paintbrush, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 24,
       "subject": "Lakshmi goddess",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute curious Lakshmi goddess smiling near a castle, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute brave Lakshmi goddess making pizza at the beach, holding an ice cream cone, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 25,
       "subject": "Ganesh",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute laughing Ganesh gardening near a castle, holding a trophy, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute laughing Ganesh being a pirate during summer, wearing a scarf, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 26,
       "subject": "lotus flower",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute amazed lotus flower flying a kite at the beach, holding a magnifying glass, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute happy lotus flower running at home, carrying a teddy bear, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 27,
       "subject": "lantern",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute cheerful lantern being a doctor in the mountains, wearing a scarf, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute laughing lantern riding a scooter near a waterfall, wearing a crown, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 28,
       "subject": "sweet box",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute excited sweet box being a firefighter at the playground, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute silly sweet box feeding ducks in a flower garden, holding an ice cream cone, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 29,
       "subject": "sparklers",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute excited sparklers baking cookies at home, wearing a scarf, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute proud sparklers playing football in a flower garden, holding a trophy, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 30,
       "subject": "peacock",
+      "niche": "diwali",
       "complexity": "advanced",
-      "positive": "Cute sleepy peacock jumping at home, carrying a lantern, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🟠 ADVANCED",
+      "positive": "Cute excited peacock watering flowers at the playground, wearing a scarf, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 31,
       "subject": "diya lamp",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute curious diya lamp running under the stars, holding a paintbrush, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute happy diya lamp being an astronaut at the zoo, holding a trophy, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 32,
       "subject": "rangoli pattern",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute brave rangoli pattern baking cookies at home, carrying a lantern, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute surprised rangoli pattern jumping at the park, wearing a crown, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 33,
       "subject": "fireworks",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute surprised fireworks playing with butterflies near a rainbow, carrying a teddy bear, front view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute excited fireworks being a police officer near a castle, carrying a lantern, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 34,
       "subject": "Lakshmi goddess",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute shy Lakshmi goddess riding a bicycle near a rainbow, wearing a cape, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute silly Lakshmi goddess being an astronaut in a magical garden, holding a bunch of flowers, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 35,
       "subject": "Ganesh",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute excited Ganesh holding balloons near a castle, holding an ice cream cone, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute proud Ganesh being a superhero at the playground, wearing sunglasses, front view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 36,
       "subject": "lotus flower",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute excited lotus flower exploring space under the stars, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute silly lotus flower drinking water in a magical garden, wearing a crown, front view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 37,
       "subject": "lantern",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute surprised lantern being a police officer at the beach, carrying a lantern, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute silly lantern being a firefighter at school, holding a bunch of flowers, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 38,
       "subject": "sweet box",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute laughing sweet box playing with kittens at the beach, holding an ice cream cone, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute sleepy sweet box playing with a puppy in the jungle, carrying a backpack, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 39,
       "subject": "sparklers",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute silly sparklers celebrating a birthday in the jungle, holding a paintbrush, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute silly sparklers surfing at the playground, holding a trophy, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     },
     {
       "page": 40,
       "subject": "peacock",
+      "niche": "diwali",
       "complexity": "pro",
-      "positive": "Cute sleepy peacock riding a scooter near a waterfall, holding a magnifying glass, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
+      "label": "🔴 PRO",
+      "positive": "Cute happy peacock ice skating in the mountains, carrying a lunchbox, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page",
       "negative": "no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering"
     }
   ]
