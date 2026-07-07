@@ -420,10 +420,3 @@ class AutopilotGUI(ctk.CTk):
                     text="⚡ Generate Book"
                 )
             )
-
-
-if __name__ == "__main__":
-
-    app = AutopilotGUI()
-
-    app.mainloop()

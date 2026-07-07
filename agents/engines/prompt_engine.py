@@ -1,4 +1,6 @@
 import random
+from agents.data.categories import get_engine
+from agents.engines.animal_engine import AnimalEngine
 
 class PromptEngine:
     def __init__(self):

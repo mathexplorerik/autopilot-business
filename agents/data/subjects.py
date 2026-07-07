@@ -87,6 +87,180 @@ SUBJECTS = {
         "difficulty": "easy"
     }
 }
+    # ✅ Indian Festivals + Special Days
+FESTIVAL_SUBJECTS = {
+    "diwali": {
+        "subjects": [
+            "diya lamp", "rangoli pattern", "fireworks",
+            "Lakshmi goddess", "Ganesh", "lotus flower",
+            "lantern", "sweet box", "sparklers", "peacock"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["diwali coloring book", "indian festival coloring", "diwali activity book kids"],
+        "difficulty": "easy",
+        "season": "diwali"
+    },
+    "holi": {
+        "subjects": [
+            "color powder", "water gun", "flowers",
+            "dancing kids", "drum", "bonfire",
+            "colored face", "bucket", "spring flowers", "peacock"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["holi coloring book", "holi activity book", "indian festival coloring book"],
+        "difficulty": "easy",
+        "season": "holi"
+    },
+    "dussehra": {
+        "subjects": [
+            "Rama", "Ravana", "bow and arrow",
+            "demon mask", "bonfire", "flowers",
+            "chariot", "sword", "victory flag", "temple"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["dussehra coloring book", "vijayadashami coloring", "indian festival coloring"],
+        "difficulty": "easy",
+        "season": "dussehra"
+    },
+    "navratri": {
+        "subjects": [
+            "Durga goddess", "garba dance", "dandiya sticks",
+            "colorful dress", "lamp", "flowers",
+            "peacock feather", "kalash", "temple", "rangoli"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["navratri coloring book", "garba coloring", "indian festival coloring book"],
+        "difficulty": "easy",
+        "season": "navratri"
+    },
+    "raksha bandhan": {
+        "subjects": [
+            "brother and sister", "rakhi bracelet", "diya",
+            "sweets", "flowers", "peacock",
+            "rangoli", "family", "gifts", "tilak"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["raksha bandhan coloring book", "rakhi coloring", "indian festival coloring"],
+        "difficulty": "easy",
+        "season": "raksha bandhan"
+    },
+    "christmas": {
+        "subjects": [
+            "Santa Claus", "Christmas tree", "reindeer",
+            "snowman", "elf", "gift box",
+            "candy cane", "gingerbread house", "stocking", "angel"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Christmas",
+        "keywords": ["christmas coloring book", "santa coloring pages", "christmas activity book kids"],
+        "difficulty": "easy",
+        "season": "christmas"
+    },
+    "eid": {
+        "subjects": [
+            "moon and star", "mosque", "lantern",
+            "henna pattern", "gift box", "family",
+            "crescent moon", "prayer mat", "dates", "eid clothes"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["eid coloring book", "eid activity book", "islamic coloring book kids"],
+        "difficulty": "easy",
+        "season": "eid"
+    },
+    "bakra eid": {
+        "subjects": [
+            "goat", "sheep", "family gathering",
+            "mosque", "crescent moon", "prayer",
+            "gifts", "henna", "lantern", "dates"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["eid ul adha coloring book", "bakra eid coloring", "islamic coloring book kids"],
+        "difficulty": "easy",
+        "season": "bakra eid"
+    },
+    "ganesh chaturthi": {
+        "subjects": [
+            "Ganesha", "modak sweet", "flowers",
+            "drum", "peacock", "lotus",
+            "elephant", "rangoli", "diya", "procession"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["ganesh chaturthi coloring book", "ganesh coloring pages", "indian festival coloring"],
+        "difficulty": "easy",
+        "season": "ganesh chaturthi"
+    },
+    "makar sankranti": {
+        "subjects": [
+            "kite", "sun", "sugarcane",
+            "bonfire", "til laddoo", "harvest",
+            "farmer", "birds", "river", "colorful kites"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["makar sankranti coloring book", "kite festival coloring", "indian festival coloring"],
+        "difficulty": "easy",
+        "season": "makar sankranti"
+    },
+    "onam": {
+        "subjects": [
+            "pookalam flower design", "boat race", "Mahabali king",
+            "Kerala elephant", "Onam feast", "flowers",
+            "traditional dress", "drum", "banana leaf", "temple"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["onam coloring book", "kerala festival coloring", "onam activity book kids"],
+        "difficulty": "easy",
+        "season": "onam"
+    },
+    "mothers day": {
+        "subjects": [
+            "mom and child", "flower bouquet", "heart",
+            "breakfast in bed", "hug", "butterfly",
+            "garden", "tea cup", "love letter", "crown"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["mothers day coloring book", "mom coloring pages", "mothers day activity book"],
+        "difficulty": "easy",
+        "season": "mothers day"
+    },
+    "fathers day": {
+        "subjects": [
+            "dad and child", "superhero dad", "fishing",
+            "bbq grill", "tools", "car",
+            "sports", "hug", "tie", "crown"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Holidays & Celebrations",
+        "keywords": ["fathers day coloring book", "dad coloring pages", "fathers day activity book"],
+        "difficulty": "easy",
+        "season": "fathers day"
+    },
+    "doctors day": {
+        "subjects": [
+            "doctor", "stethoscope", "hospital",
+            "nurse", "medicine", "ambulance",
+            "heart", "bandage", "syringe", "health"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Careers",
+        "keywords": ["doctors day coloring book", "doctor coloring pages", "medical coloring book kids"],
+        "difficulty": "easy",
+        "season": "doctors day"
+    }
+}
+
+# ✅ Merge with main SUBJECTS
+SUBJECTS.update(FESTIVAL_SUBJECTS)
 
 # ✅ Helper functions
 def get_subjects(niche: str) -> list:

@@ -1,160 +1,160 @@
-=== Page 01 | lion | simple ===
-POSITIVE: Cute proud lion decorating a Christmas tree near a river, wearing a cape, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 01 | diya lamp | simple ===
+POSITIVE: Cute laughing diya lamp looking at stars at the beach, holding a magnifying glass, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 02 | tiger | simple ===
-POSITIVE: Cute sleepy tiger jumping in a dense jungle, carrying a backpack, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 02 | rangoli pattern | simple ===
+POSITIVE: Cute surprised rangoli pattern decorating a Christmas tree at home, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 03 | elephant | simple ===
-POSITIVE: Cute shy elephant being a pirate under a big tree, carrying a backpack, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 03 | fireworks | simple ===
+POSITIVE: Cute shy fireworks playing guitar during winter, carrying a lantern, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 04 | giraffe | simple ===
-POSITIVE: Cute proud giraffe making pizza near a watering hole, carrying a lantern, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 04 | Lakshmi goddess | simple ===
+POSITIVE: Cute sleepy Lakshmi goddess gardening in the jungle, wearing a crown, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 05 | zebra | simple ===
-POSITIVE: Cute laughing zebra exploring the jungle on a rocky hill, wearing sunglasses, standing pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 05 | Ganesh | simple ===
+POSITIVE: Cute brave Ganesh reading a book under the stars, carrying a lantern, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 06 | monkey | simple ===
-POSITIVE: Cute proud monkey painting near a watering hole, holding a magnifying glass, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 06 | lotus flower | simple ===
+POSITIVE: Cute curious lotus flower playing in the rain in the jungle, wearing a crown, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 07 | hippo | simple ===
-POSITIVE: Cute laughing hippo playing guitar in the African savanna, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 07 | lantern | simple ===
+POSITIVE: Cute shy lantern swimming during summer, wearing a cape, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 08 | rhino | simple ===
-POSITIVE: Cute cheerful rhino collecting flowers under a big tree, holding a magnifying glass, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 08 | sweet box | simple ===
+POSITIVE: Cute excited sweet box sleeping at home, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 09 | cheetah | simple ===
-POSITIVE: Cute amazed cheetah being an astronaut on a rocky hill, carrying a backpack, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 09 | sparklers | simple ===
+POSITIVE: Cute excited sparklers decorating a Christmas tree at home, holding an ice cream cone, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 10 | gorilla | simple ===
-POSITIVE: Cute proud gorilla celebrating a birthday in a dense jungle, holding a paintbrush, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 10 | peacock | simple ===
+POSITIVE: Cute shy peacock flying a kite near a castle, holding a bunch of flowers, front view, kids coloring book page, cute cartoon line art, thick bold outlines, very simple design, 2-3 main elements only, big cute character, extra large coloring spaces, very easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 11 | lion | intermediate ===
-POSITIVE: Cute silly lion playing with kittens on a rocky hill, wearing sunglasses, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 11 | diya lamp | intermediate ===
+POSITIVE: Cute amazed diya lamp watering flowers in the jungle, carrying a lantern, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 12 | tiger | intermediate ===
-POSITIVE: Cute sleepy tiger being a chef near a river, holding a magnifying glass, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 12 | rangoli pattern | intermediate ===
+POSITIVE: Cute shy rangoli pattern playing with butterflies during summer, holding a map, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 13 | elephant | intermediate ===
-POSITIVE: Cute excited elephant being an astronaut in the African savanna, holding an ice cream cone, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 13 | fireworks | intermediate ===
+POSITIVE: Cute sleepy fireworks looking at stars at home, wearing a scarf, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 14 | giraffe | intermediate ===
-POSITIVE: Cute excited giraffe playing in autumn leaves in the African savanna, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 14 | Lakshmi goddess | intermediate ===
+POSITIVE: Cute laughing Lakshmi goddess playing with butterflies at the beach, wearing a scarf, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 15 | zebra | intermediate ===
-POSITIVE: Cute happy zebra running near a river, holding a trophy, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 15 | Ganesh | intermediate ===
+POSITIVE: Cute shy Ganesh playing with kittens during summer, holding a map, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 16 | monkey | intermediate ===
-POSITIVE: Cute cheerful monkey playing in the rain in a dense jungle, wearing a scarf, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 16 | lotus flower | intermediate ===
+POSITIVE: Cute surprised lotus flower painting in the forest, holding a bunch of flowers, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 17 | hippo | intermediate ===
-POSITIVE: Cute shy hippo walking on the beach on a rocky hill, holding a trophy, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 17 | lantern | intermediate ===
+POSITIVE: Cute surprised lantern drinking water in a flower garden, wearing a crown, front view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 18 | rhino | intermediate ===
-POSITIVE: Cute excited rhino camping on a rocky hill, carrying a watering can, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 18 | sweet box | intermediate ===
+POSITIVE: Cute surprised sweet box walking on the beach on a farm, holding an ice cream cone, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 19 | cheetah | intermediate ===
-POSITIVE: Cute shy cheetah decorating a Christmas tree under a big tree, wearing a cape, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 19 | sparklers | intermediate ===
+POSITIVE: Cute excited sparklers being a superhero near a waterfall, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 20 | gorilla | intermediate ===
-POSITIVE: Cute laughing gorilla riding a bicycle in the African savanna, carrying a backpack, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 20 | peacock | intermediate ===
+POSITIVE: Cute curious peacock playing in the rain in a magical garden, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, moderate detail, 4-5 elements, cute character with simple background, large coloring spaces, easy to color, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 21 | lion | advanced ===
-POSITIVE: Cute silly lion running on a rocky hill, holding a trophy, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 21 | diya lamp | advanced ===
+POSITIVE: Cute curious diya lamp being a chef at home, carrying a watering can, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 22 | tiger | advanced ===
-POSITIVE: Cute shy tiger playing with birds on a rocky hill, wearing a scarf, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 22 | rangoli pattern | advanced ===
+POSITIVE: Cute sleepy rangoli pattern having a picnic in the forest, holding a magnifying glass, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 23 | elephant | advanced ===
-POSITIVE: Cute surprised elephant decorating a Christmas tree in a dense jungle, holding a paintbrush, front view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 23 | fireworks | advanced ===
+POSITIVE: Cute proud fireworks fishing at the playground, holding a trophy, side view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 24 | giraffe | advanced ===
-POSITIVE: Cute curious giraffe being a doctor near a watering hole, wearing a cape, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 24 | Lakshmi goddess | advanced ===
+POSITIVE: Cute curious Lakshmi goddess smiling near a castle, holding a trophy, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 25 | zebra | advanced ===
-POSITIVE: Cute amazed zebra watering flowers near a watering hole, carrying a backpack, standing pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 25 | Ganesh | advanced ===
+POSITIVE: Cute laughing Ganesh gardening near a castle, holding a trophy, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 26 | monkey | advanced ===
-POSITIVE: Cute happy monkey swimming on a rocky hill, carrying a lantern, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 26 | lotus flower | advanced ===
+POSITIVE: Cute amazed lotus flower flying a kite at the beach, holding a magnifying glass, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 27 | hippo | advanced ===
-POSITIVE: Cute cheerful hippo playing with kittens near a river, wearing a crown, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 27 | lantern | advanced ===
+POSITIVE: Cute cheerful lantern being a doctor in the mountains, wearing a scarf, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 28 | rhino | advanced ===
-POSITIVE: Cute proud rhino building a snowman in the African savanna, carrying a lantern, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 28 | sweet box | advanced ===
+POSITIVE: Cute excited sweet box being a firefighter at the playground, wearing a cape, close-up portrait, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 29 | cheetah | advanced ===
-POSITIVE: Cute excited cheetah making pizza under a big tree, carrying a lunchbox, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 29 | sparklers | advanced ===
+POSITIVE: Cute excited sparklers baking cookies at home, wearing a scarf, front view, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 30 | gorilla | advanced ===
-POSITIVE: Cute sleepy gorilla building a snowman on a rocky hill, holding a trophy, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 30 | peacock | advanced ===
+POSITIVE: Cute sleepy peacock jumping at home, carrying a lantern, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, detailed design, 6-8 elements, character with scene and props, medium coloring spaces, some fine details, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 31 | lion | pro ===
-POSITIVE: Cute excited lion running under a big tree, wearing a crown, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 31 | diya lamp | pro ===
+POSITIVE: Cute curious diya lamp running under the stars, holding a paintbrush, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 32 | tiger | pro ===
-POSITIVE: Cute excited tiger walking on the beach under a big tree, wearing sunglasses, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 32 | rangoli pattern | pro ===
+POSITIVE: Cute brave rangoli pattern baking cookies at home, carrying a lantern, standing pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 33 | elephant | pro ===
-POSITIVE: Cute surprised elephant playing with a puppy near a watering hole, wearing a scarf, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 33 | fireworks | pro ===
+POSITIVE: Cute surprised fireworks playing with butterflies near a rainbow, carrying a teddy bear, front view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 34 | giraffe | pro ===
-POSITIVE: Cute silly giraffe playing in the rain under a big tree, holding an ice cream cone, action pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 34 | Lakshmi goddess | pro ===
+POSITIVE: Cute shy Lakshmi goddess riding a bicycle near a rainbow, wearing a cape, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 35 | zebra | pro ===
-POSITIVE: Cute amazed zebra reading a book in a dense jungle, carrying a lunchbox, full body view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 35 | Ganesh | pro ===
+POSITIVE: Cute excited Ganesh holding balloons near a castle, holding an ice cream cone, side view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 36 | monkey | pro ===
-POSITIVE: Cute shy monkey fishing in a dense jungle, holding a bunch of flowers, sitting pose, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 36 | lotus flower | pro ===
+POSITIVE: Cute excited lotus flower exploring space under the stars, holding a magnifying glass, full body view, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 37 | hippo | pro ===
-POSITIVE: Cute brave hippo painting near a river, wearing a crown, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 37 | lantern | pro ===
+POSITIVE: Cute surprised lantern being a police officer at the beach, carrying a lantern, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 38 | rhino | pro ===
-POSITIVE: Cute sleepy rhino playing piano in the African savanna, carrying a watering can, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 38 | sweet box | pro ===
+POSITIVE: Cute laughing sweet box playing with kittens at the beach, holding an ice cream cone, action pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 39 | cheetah | pro ===
-POSITIVE: Cute excited cheetah riding a bicycle on a rocky hill, wearing sunglasses, side view, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 39 | sparklers | pro ===
+POSITIVE: Cute silly sparklers celebrating a birthday in the jungle, holding a paintbrush, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
-=== Page 40 | gorilla | pro ===
-POSITIVE: Cute proud gorilla building a sandcastle near a river, carrying a backpack, close-up portrait, kids coloring book page, bold expressive lines, safari illustration, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
+=== Page 40 | peacock | pro ===
+POSITIVE: Cute sleepy peacock riding a scooter near a waterfall, holding a magnifying glass, sitting pose, kids coloring book page, cute cartoon line art, thick bold outlines, highly detailed, 9-12 elements, complex scene with patterns and textures, small detailed coloring spaces, intricate patterns, simple design, thick outlines, large spaces to color, white background, centered composition, printable coloring page
 NEGATIVE: no color fills, no shading, no gradients, no gray areas, no crosshatching, no texture fills, no background patterns, no watermark, no text, no signature, no blur, no shadows, no photorealistic style, no 3D rendering
 
