@@ -1,12 +1,12 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-08 08:20:25
-Niche   : cat
+Time    : 2026-07-08 10:39:37
+Niche   : dinosaurs
 
 PASSED:
-  ✅ Title     : Cat Coloring Book for Kids
+  ✅ Title     : Dinosaurs Coloring Book for Kids
   ✅ Pages     : 40
-  ✅ Niche     : cat
+  ✅ Niche     : dinosaurs
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found

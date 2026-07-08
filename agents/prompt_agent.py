@@ -3,6 +3,8 @@ import json
 from datetime import datetime
 from agents.engines.prompt_engine import PromptEngine
 from agents.data.subjects import SUBJECTS, get_subjects, get_age_group
+from agents.models.prompt import Prompt
+from agents.validators.prompt_validator import PromptValidator
 
 class PromptAgent:
 
@@ -10,6 +12,7 @@ class PromptAgent:
         print("\n✍️  Prompt Agent Running...\n")
 
         engine    = PromptEngine()
+        validator = PromptValidator()
         niche     = report["niche"].lower()
         age_group = report.get("age_group", "kids")
         pages     = report.get("pages", 30)
@@ -64,6 +67,14 @@ class PromptAgent:
             negative   = result["negative"]
             complexity = result["complexity"]
             label      = result.get("label", complexity)
+            validation = validator.validate(
+                positive,
+                negative
+            )
+
+            if not validation["valid"]:
+                print(f"⚠️ Invalid Prompt: {validation['errors']}")
+                continue
 
             # ✅ Duplicate avoid karo
             attempts = 0
@@ -84,16 +95,17 @@ class PromptAgent:
             used_combos.add(positive)
             complexity_counts[complexity] += 1
 
-            prompts.append(positive)
-            prompt_data.append({
-                "page":       i + 1,
-                "subject":    subject,
-                "niche":      niche,
-                "complexity": complexity,
-                "label":      label,
-                "positive":   positive,
-                "negative":   negative
-            })
+            prompt_data.append(
+                Prompt(
+                    page=i + 1,
+                    subject=subject,
+                    niche=niche,
+                    complexity=complexity,
+                    label=label,
+                    positive=positive,
+                    negative=negative
+                )
+            )
 
             print(f"  ✍️  Page {i+1:02}/{pages} {label:20} : {subject}")
 
@@ -124,6 +136,10 @@ class PromptAgent:
     def _save(self, prompt_data, prompts, niche, safe_niche, age_group, season, pages, complexity_counts):
         """Sab files save karo — niche specific naming"""
         os.makedirs("output/prompts", exist_ok=True)
+        prompt_data = [
+            p.to_dict() if isinstance(p, Prompt) else p
+            for p in prompt_data
+        ]
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
         # ✅ 1. Niche specific TXT — ChatGPT/Redpanda ke liye
@@ -133,7 +149,7 @@ class PromptAgent:
             f.write(f"Generated: {timestamp}\n")
             f.write(f"Total: {pages} prompts\n")
             f.write("="*60 + "\n\n")
-            for p in prompt_data:
+            for p in prompt_data:  
                 f.write(f"--- Page {p['page']:02}/{pages} | {p['subject'].upper()} | {p['label']} ---\n")
                 f.write(f"POSITIVE: {p['positive']}\n")
                 f.write(f"NEGATIVE: {p['negative']}\n\n")

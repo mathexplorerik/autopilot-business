@@ -1,14 +1,30 @@
-from agents.data.resolver import NicheResolver
+from data.resolver import NicheResolver
+
 
 class ResearchAgent:
+
+    def __init__(self):
+        self.resolver = NicheResolver()
 
     def research(self, niche):
         print("\n🔍 Research Agent Running...\n")
 
-        # ✅ Resolver use karo
-        resolver = NicheResolver()
-        resolved = resolver.resolve(niche)
+        resolved = self.resolver.resolve(niche)
 
-        niche    = resolved["niche"]
-        subjects = resolved["subjects"]
-        # ... baaki code same
+        report = {
+            "niche": resolved["niche"],
+            "subjects": resolved["subjects"],
+
+            "pages": 40,
+            "age_group": "kids",
+            "target_age": "4-8 Years",
+            "difficulty": "Easy",
+
+            "title": "",
+            "keywords": [],
+            "kdp_category": ""
+        }
+
+        print("Research Complete ✅")
+
+        return report
