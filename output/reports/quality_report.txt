@@ -1,12 +1,12 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-08 10:39:37
-Niche   : dinosaurs
+Time    : 2026-07-08 11:33:34
+Niche   : animals
 
 PASSED:
-  ✅ Title     : Dinosaurs Coloring Book for Kids
+  ✅ Title     : Animals Coloring Book for Kids
   ✅ Pages     : 40
-  ✅ Niche     : dinosaurs
+  ✅ Niche     : animals
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found

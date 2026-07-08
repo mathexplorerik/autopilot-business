@@ -5,6 +5,7 @@ from agents.engines.prompt_engine import PromptEngine
 from agents.data.subjects import SUBJECTS, get_subjects, get_age_group
 from agents.models.prompt import Prompt
 from agents.validators.prompt_validator import PromptValidator
+from agents.checkers.duplicate_engine import DuplicateEngine
 
 class PromptAgent:
 
@@ -13,6 +14,7 @@ class PromptAgent:
 
         engine    = PromptEngine()
         validator = PromptValidator()
+        duplicate_engine = DuplicateEngine()
         niche     = report["niche"].lower()
         age_group = report.get("age_group", "kids")
         pages     = report.get("pages", 30)
@@ -92,6 +94,21 @@ class PromptAgent:
                 complexity = result["complexity"]
                 attempts  += 1
 
+            # Duplicate prompt check
+            duplicate = duplicate_engine.validate(
+                prompt=positive,
+                subject=subject
+            )
+
+            if not duplicate["valid"]:
+                print(f"  🔁 Duplicate skipped: {duplicate['errors']}")
+                continue
+
+                duplicate_engine.add(
+                prompt=positive,
+                subject=subject
+            )
+            
             used_combos.add(positive)
             complexity_counts[complexity] += 1
 
