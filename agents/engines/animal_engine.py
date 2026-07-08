@@ -1,113 +1,146 @@
-from data.animals.scenes import SCENES
-
+import random
+from agents.data.animals.scenes import SCENES
+from agents.data.animals.backgrounds import BACKGROUNDS
+from agents.data.animals.actions import ACTIONS
+from agents.data.animals.poses import POSES
+from agents.data.animals.expressions import EXPRESSIONS
+from agents.data.animals.props import PROPS
+from agents.data.animals.accessories import ACCESSORIES
+from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
 
 class AnimalEngine:
-    """
-    Animal Engine V2 Foundation
-
-    Responsibilities:
-    - Select Scene
-    - Select Background
-    - Select Action
-    - Select Pose
-    - Select Expression
-    - Select Props
-    - Select Accessories
-    - Build Prompt
-    """
 
     def __init__(self):
+        self._used_combos = set()
 
-        self.scene = None
-        self.background = None
-        self.action = None
-        self.pose = None
-        self.expression = None
+    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None):
 
-        self.props = []
-        self.accessories = []
+        # ✅ Scene
+        category   = self._get_category(subject, season)
+        scene      = self._pick(SCENES, category, "in a beautiful garden")
 
-    def build(
-        self,
-        subject,
-        age_group,
-        page_number,
-        total_pages,
-        season=None,
-    ):
+        # ✅ Background
+        background = self._pick(BACKGROUNDS, category, "white background")
 
-        self.scene = self.select_scene(subject, season)
-        print(f"[AnimalEngine] Selected Scene: {self.scene}")
-        self.background = self.select_background(subject)
-        self.action = self.select_action(subject)
-        self.pose = self.select_pose(subject)
-        self.expression = self.select_expression(subject)
-        self.props = self.select_props(subject)
-        self.accessories = self.select_accessories(subject)
+        # ✅ Action
+        action     = self._pick(ACTIONS, category, "playing happily")
 
+        # ✅ Pose
+        pose       = self._pick(POSES, category, "standing pose")
+
+        # ✅ Expression
+        expression = self._pick(EXPRESSIONS, category, "happy")
+
+        # ✅ Props
+        props      = self._pick_list(PROPS, category, count=1)
+
+        # ✅ Accessories
+        accessories = self._pick_list(ACCESSORIES, category, count=1)
+
+        # ✅ Complexity
+        complexity = self._get_complexity(page_number, total_pages)
+
+        # ✅ Age style
+        age_styles = {
+            "toddler": "very simple, extra thick lines, minimal details",
+            "kids":    "simple design, thick outlines, large coloring spaces",
+            "teens":   "detailed design, medium lines, intricate patterns"
+        }
+        age_detail = age_styles.get(age_group, age_styles["kids"])
+
+        # ✅ Complexity detail
+        complexity_details = {
+            "simple":       "2-3 elements only, extra large spaces, very easy",
+            "intermediate": "4-5 elements, large spaces, easy to color",
+            "advanced":     "6-8 elements, medium spaces, some details",
+            "pro":          "9-12 elements, intricate details, complex scene"
+        }
+        complexity_detail = complexity_details.get(complexity, "simple")
+
+        # ✅ Props + Accessories string
+        props_str = f", {', '.join(props)}" if props else ""
+        acc_str   = f", {', '.join(accessories)}" if accessories else ""
+
+        # ✅ Build positive prompt
         positive = (
-            f"{subject}, cute cartoon animal, kids coloring book page, "
-            "bold clean outlines, black and white line art, "
-            "simple background, centered composition, "
-            "no shading, printable, white background"
+            f"Cute {expression} {subject} {action} {scene} {background}, "
+            f"{pose}{props_str}{acc_str}, "
+            f"kids coloring book page, "
+            f"bold clean outlines, black and white line art, "
+            f"no shading, white background, "
+            f"centered composition, printable, "
+            f"{age_detail}, "
+            f"{complexity_detail}"
         )
 
+        # ✅ Negative prompt
         negative = (
-            "color, grayscale, realistic, photo, text, watermark, "
-            "logo, blurry, low quality, extra limbs"
+            "color fills, shading, gradients, gray areas, "
+            "realistic, photo, watermark, text, signature, "
+            "blurry, low quality, extra limbs, deformed"
         )
 
         return {
-            "positive": positive,
-            "negative": negative,
-            "complexity": self.get_complexity(page_number, total_pages),
+            "positive":    positive,
+            "negative":    negative,
+            "complexity":  complexity,
+            "scene":       scene,
+            "background":  background,
+            "action":      action,
+            "pose":        pose,
+            "expression":  expression,
+            "props":       props,
+            "accessories": accessories,
+            "subject":     subject,
+            "age_group":   age_group
         }
-    def get_scene_category(self, subject, season=None):
-        """
-        Returns the scene category.
-        Temporary version.
-        """
 
-        return "nature"
+    def _get_category(self, subject, season=None):
+        """Subject ka category lo"""
+        if season:
+            season_map = {
+                "christmas": "winter",
+                "halloween": "spooky",
+                "easter":    "spring",
+                "diwali":    "festival",
+                "holi":      "festival",
+                "eid":       "festival"
+            }
+            if season.lower() in season_map:
+                return season_map[season.lower()]
 
-    def select_scene(self, subject, season=None):
-        """
-        Select one scene from the selected category.
-        """
+        return ANIMAL_SCENE_CATEGORY.get(subject.lower(), "nature")
 
-        category = self.get_scene_category(subject, season)
+    def _pick(self, data_dict, category, fallback=""):
+        """Category se random item lo"""
+        if category in data_dict:
+            return random.choice(data_dict[category])
+        if "nature" in data_dict:
+            return random.choice(data_dict["nature"])
+        if "default" in data_dict:
+            return random.choice(data_dict["default"])
+        return fallback
 
-        return SCENES[category][0]
-    
-    def select_background(self, subject):
-        return None
+    def _pick_list(self, data_dict, category, count=1):
+        """Category se random list lo"""
+        items = []
+        if category in data_dict:
+            pool = data_dict[category]
+        elif "default" in data_dict:
+            pool = data_dict["default"]
+        else:
+            return []
 
-    def select_action(self, subject):
-        return None
+        count = min(count, len(pool))
+        return random.sample(pool, count)
 
-    def select_pose(self, subject):
-        return None
-
-    def select_expression(self, subject):
-        return None
-
-    def select_props(self, subject):
-        return []
-
-    def select_accessories(self, subject):
-        return []
-
-    def get_complexity(self, page, total):
-
+    def _get_complexity(self, page, total):
+        """Page number se complexity decide karo"""
         ratio = page / total
-
         if ratio <= 0.25:
             return "simple"
-
         elif ratio <= 0.50:
             return "intermediate"
-
         elif ratio <= 0.75:
             return "advanced"
-
         return "pro"

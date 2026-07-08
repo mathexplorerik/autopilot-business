@@ -1,12 +1,12 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-07 13:42:19
-Niche   : jungle animals
+Time    : 2026-07-08 08:20:25
+Niche   : cat
 
 PASSED:
-  ✅ Title     : Jungle Animals Coloring Book for Kids
+  ✅ Title     : Cat Coloring Book for Kids
   ✅ Pages     : 40
-  ✅ Niche     : jungle animals
+  ✅ Niche     : cat
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found

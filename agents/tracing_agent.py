@@ -244,8 +244,8 @@ class TracingAgent:
         # Big dotted letter/number/shape
         if ptype in ("uppercase", "lowercase", "number"):
             # Big letter
-            c.setFillColor(HexColor("#EEEEEE"))
-            c.setFont("Helvetica-Bold", 200)
+            c.setFillColor(HexColor("#AAAAAA"))
+            c.setFont("Helvetica-Bold", 320)
             c.drawCentredString(self.PAGE_W/2, self.PAGE_H/2 - 1.5*inch, content)
 
             # Dotted overlay

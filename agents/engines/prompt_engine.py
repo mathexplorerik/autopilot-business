@@ -207,6 +207,7 @@ class PromptEngine:
             season=season,
 )
         print(animal_data)
+        # return animal_data
         niche_data  = self._get_niche_data(niche or subject)
         style       = niche_data["style"]
         line_weight = niche_data["line_weight"]
@@ -278,6 +279,7 @@ class PromptEngine:
                 page_number=i,
                 total_pages=count
             )
+            print(prompt)
             prompts.append(prompt)
             print(f"  ✅ Page {i:02}/{count} {prompt['label']} : {subject}")
 
