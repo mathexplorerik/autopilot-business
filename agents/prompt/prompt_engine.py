@@ -1,7 +1,7 @@
 """
 ==========================================================
 AI Publishing OS V6
-Prompt Engine — Fixed
+Prompt Engine — Complete
 ==========================================================
 """
 from agents.engines.animal_engine import AnimalEngine
@@ -10,6 +10,7 @@ from agents.prompt.prompt_formatter import PromptFormatter
 from agents.prompt.prompt_scorer import PromptScorer
 from agents.prompt.prompt_reporter import PromptReporter
 from agents.prompt.prompt_saver import PromptSaver
+from agents.prompt.prompt_templates import PromptTemplates
 from agents.checkers.duplicate_engine import DuplicateEngine
 from agents.data.subjects import get_subjects, SUBJECTS
 
@@ -25,6 +26,7 @@ class PromptEngine:
         self.scorer       = PromptScorer()
         self.reporter     = PromptReporter()
         self.saver        = PromptSaver()
+        self.templates = PromptTemplates()
         self.duplicate    = DuplicateEngine()
 
     def build_prompt(self, niche, page, total_pages, style, line_weight, age_style, marketplace="amazon", product="coloring"):
@@ -35,6 +37,7 @@ class PromptEngine:
 
         # ✅ Complexity
         complexity = self._get_complexity(page, total_pages)
+        label      = self._get_label(complexity)
 
         # ✅ Scene from AnimalEngine
         scene = self.scene_engine.build(
@@ -45,18 +48,13 @@ class PromptEngine:
         )
 
         # ✅ Template
-        template = (
-            "Cute {expression} {subject} {action} {background}, "
-            "{props}, {accessories}, "
-            "kids coloring book page, "
-            "{style}, {line_weight}, "
-            "{age_style}, {complexity}, "
-            "white background, centered composition, "
-            "no shading, printable"
+        template = self.templates.get(
+            marketplace=marketplace,
+            product=product
         )
 
         # ✅ Build prompt
-        result = self.builder.build(
+        built = self.builder.build(
             scene=scene,
             style=style,
             line_weight=line_weight,
@@ -65,23 +63,38 @@ class PromptEngine:
             template=template
         )
 
-        return {
-            "positive":   result["positive"],
-            "negative":   result["negative"],
-            "subject":    subject,
-            "niche":      niche,
-            "complexity": complexity,
-            "page":       page,
-            "scene":      scene
-        }
+        # ✅ Score prompt
+        scored = self.scorer.score({
+            "positive": built["positive"]
+        })
+
+        # ✅ Metadata
+        metadata = self.formatter.format_metadata(
+            prompt_score=scored["score"],
+            marketplace=marketplace,
+            product_type=product
+        )
+
+        # ✅ Format final prompt
+        return self.formatter.format(
+            page=page,
+            subject=subject,
+            niche=niche,
+            positive=built["positive"],
+            negative=built["negative"],
+            complexity=complexity,
+            label=label,
+            metadata=metadata
+        )
 
     def build_batch(self, niche, pages, style, line_weight, age_style, marketplace="amazon", product="coloring"):
-        """Complete prompt batch generate karo"""
         print(f"\n  🔧 PromptEngine {self.VERSION}")
         print(f"  📚 Niche  : {niche}")
         print(f"  📄 Pages  : {pages}\n")
 
-        prompts = []
+        prompts           = []
+        skipped_duplicate = 0
+        scores            = []
 
         for page in range(1, pages + 1):
             prompt = self.build_prompt(
@@ -101,6 +114,7 @@ class PromptEngine:
                 subject=prompt["subject"]
             )
             if not dup["valid"]:
+                skipped_duplicate += 1
                 continue
 
             self.duplicate.add(
@@ -109,7 +123,14 @@ class PromptEngine:
             )
 
             prompts.append(prompt)
-            print(f"  ✍️  Page {page:02}/{pages} [{prompt['complexity']:12}] : {prompt['subject']}")
+            score = prompt["metadata"].get("prompt_score", 100)
+            scores.append(score)
+
+            grade = self.scorer.grade(score)
+            print(f"  ✍️  Page {page:02}/{pages} [{prompt['complexity']:12}] {grade} : {prompt['subject']}")
+
+        if skipped_duplicate:
+            print(f"\n  🔁 Duplicates skipped: {skipped_duplicate}")
 
         # ✅ Report
         report = self.reporter.report(prompts)
@@ -146,3 +167,12 @@ class PromptEngine:
         elif ratio <= 0.50: return "intermediate"
         elif ratio <= 0.75: return "advanced"
         return "pro"
+
+    def _get_label(self, complexity):
+        labels = {
+            "simple":       "🟢 SIMPLE",
+            "intermediate": "🔵 INTERMEDIATE",
+            "advanced":     "🟠 ADVANCED",
+            "pro":          "🔴 PRO"
+        }
+        return labels.get(complexity, complexity)

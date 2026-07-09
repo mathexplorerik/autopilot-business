@@ -1,0 +1,23 @@
+AI KDP AUTOPILOT V4 — Run Log
+========================================
+Niche    : princess
+Title    : Princess Coloring Book for Kids
+Pages    : 30
+PDF      : output/pdfs/Princess_Coloring_Book_for_Kids.pdf
+Started  : 2026-07-09 10:38:09
+Finished : 2026-07-09 10:38:57
+
+Keywords : princess coloring book for kids, princess coloring pages children, kids coloring book ages 2-4years, princess activity book children, coloring book princess gift kids, princess coloring book boys girls, fun princess coloring pages toddlers
+
+STEPS:
+  Research: ok
+  Book: ok
+  Prompts: ok
+  Images: skipped
+  Quality: ok
+  SEO: ok
+  PDF: ok
+  Cover: ok
+  Marketing: ok
+  Publish: ok
+  Analytics: ok

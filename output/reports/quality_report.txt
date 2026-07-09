@@ -1,12 +1,12 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-09 09:51:12
-Niche   : jungle animals
+Time    : 2026-07-09 10:43:09
+Niche   : farm animals
 
 PASSED:
-  ✅ Title     : Jungle Animals Coloring Book for Kids
+  ✅ Title     : Farm Animals Coloring Book for Kids
   ✅ Pages     : 40
-  ✅ Niche     : jungle animals
+  ✅ Niche     : farm animals
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found

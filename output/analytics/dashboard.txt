@@ -2,29 +2,29 @@
    AI KDP AUTOPILOT — DASHBOARD
 ==================================================
 
-  Generated : 2026-07-09 09:51:47
+  Generated : 2026-07-09 10:43:46
 
   📚 BOOK INFO
   ──────────────────────────────
-  Niche      : jungle animals
-  Title      : Jungle Animals Coloring Book for Kids
+  Niche      : farm animals
+  Title      : Farm Animals Coloring Book for Kids
   Pages      : 40
   Age Group  : 4-8 Years
   Difficulty : easy
 
   🔑 KEYWORDS
   ──────────────────────────────
-  • jungle animals coloring book
-  • jungle animals coloring pages
-  • jungle animals activity book
-  • jungle animals printable
-  • jungle animals for kids
-  • cute jungle animals
-  • jungle animals pdf
+  • farm animals coloring book
+  • farm animals coloring pages
+  • farm animals activity book
+  • farm animals printable
+  • farm animals for kids
+  • cute farm animals
+  • farm animals pdf
 
   📈 MARKET
   ──────────────────────────────
-  Competition : Unknown
+  Competition : Low
   Status      : Ready for Publishing
 
   ✅ NEXT STEPS

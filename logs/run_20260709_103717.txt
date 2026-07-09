@@ -1,0 +1,23 @@
+AI KDP AUTOPILOT V4 — Run Log
+========================================
+Niche    : dinosaur
+Title    : Dinosaurs Coloring Book for Kids
+Pages    : 40
+PDF      : output/pdfs/Dinosaurs_Coloring_Book_for_Kids.pdf
+Started  : 2026-07-09 10:36:33
+Finished : 2026-07-09 10:37:17
+
+Keywords : dinosaurs coloring book for kids, dinosaurs coloring pages children, kids coloring book ages 4-8years, dinosaurs activity book children, coloring book dinosaurs gift kids, dinosaurs coloring book boys girls, fun dinosaurs coloring pages toddlers
+
+STEPS:
+  Research: ok
+  Book: ok
+  Prompts: ok
+  Images: skipped
+  Quality: ok
+  SEO: ok
+  PDF: ok
+  Cover: ok
+  Marketing: ok
+  Publish: ok
+  Analytics: ok
