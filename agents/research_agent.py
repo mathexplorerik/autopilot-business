@@ -1,30 +1,41 @@
-from data.resolver import NicheResolver
+"""
+==========================================================
+AI Publishing OS V5
+Research Agent
+==========================================================
+"""
+
+from agents.engines.research_engine import ResearchEngine
 
 
 class ResearchAgent:
 
     def __init__(self):
-        self.resolver = NicheResolver()
 
-    def research(self, niche):
+        self.engine = ResearchEngine()
+
+    def research(self, niche: str, season: str = ""):
+
         print("\n🔍 Research Agent Running...\n")
 
-        resolved = self.resolver.resolve(niche)
+        report = self.engine.analyze(
+            niche=niche,
+            season=season
+        )
 
-        report = {
-            "niche": resolved["niche"],
-            "subjects": resolved["subjects"],
+        print("────────────────────────────────────")
+        print("📚 Research Summary")
+        print("────────────────────────────────────")
+        print(f"Resolved Niche : {report.resolved_niche}")
+        print(f"Age Group      : {report.age_group}")
+        print(f"Target Age     : {report.target_age}")
+        print(f"Pages          : {report.pages}")
+        print(f"Difficulty     : {report.difficulty}")
+        print(f"Theme          : {report.theme}")
+        print(f"Style          : {report.style}")
+        print(f"Subjects       : {len(report.subjects)}")
+        print(f"Competition    : {report.competition}")
 
-            "pages": 40,
-            "age_group": "kids",
-            "target_age": "4-8 Years",
-            "difficulty": "Easy",
-
-            "title": "",
-            "keywords": [],
-            "kdp_category": ""
-        }
-
-        print("Research Complete ✅")
+        print("\nResearch Complete ✅")
 
         return report

@@ -1,8 +1,27 @@
 {
-    "niche": "animals",
+    "timestamp": "2026-07-09 09:41:18",
+    "niche": "jungle animals",
+    "title": "Jungle Animals Coloring Book for Kids",
+    "subtitle": "Fun, Easy and Printable Coloring Pages for Ages 4-8 Years",
     "pages": 40,
     "target_age": "4-8 Years",
-    "difficulty": "Easy",
-    "title": "Animals Coloring Book for Kids",
-    "status": "Ready for Publishing"
+    "age_group": "kids",
+    "difficulty": "easy",
+    "competition": "Unknown",
+    "keywords": [
+        "jungle animals coloring book",
+        "jungle animals coloring pages",
+        "jungle animals activity book",
+        "jungle animals printable",
+        "jungle animals for kids",
+        "cute jungle animals",
+        "jungle animals pdf"
+    ],
+    "status": "Ready for Publishing",
+    "next_steps": [
+        "Upload to Amazon KDP",
+        "Create Pinterest pins",
+        "Upload to Gumroad",
+        "Share on Instagram"
+    ]
 }

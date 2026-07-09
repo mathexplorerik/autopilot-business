@@ -2,76 +2,136 @@ import os
 import json
 from datetime import datetime
 
+
 class BookAgent:
+
+    VERSION = "v5"
+
     def create(self, report):
-        """main.py ke liye — research se basic book banao"""
+        """
+        Create book from ResearchReport
+        """
+
         print("\n📖 Book Agent Running...\n")
 
-        # Basic book report se
+        # -------- Support object OR dict --------
+
+        if hasattr(report, "resolved_niche"):
+
+            niche = report.resolved_niche
+            pages = report.pages
+            age_group = report.age_group
+            target_age = report.target_age
+            difficulty = report.difficulty
+            subjects = report.subjects
+            keywords = report.keywords
+
+            title = f"{niche.title()} Coloring Book for Kids"
+
+            subtitle = (
+                f"Fun, Easy and Printable Coloring Pages "
+                f"for Ages {target_age}"
+            )
+
+        else:
+
+            niche = report["niche"]
+            pages = report["pages"]
+            age_group = report.get("age_group", "kids")
+            target_age = report["target_age"]
+            difficulty = report["difficulty"]
+            subjects = report.get("subjects", [])
+            keywords = report.get("keywords", [])
+
+            title = f"{niche.title()} Coloring Book for Kids"
+
+            subtitle = (
+                f"Fun, Easy Coloring Pages "
+                f"for Ages {target_age}"
+            )
+
+        # -------- Build Book --------
+
         book = {
-            "niche":       report["niche"],
-            "pages":       report["pages"],
-            "target_age":  report["target_age"],
-            "difficulty":  report["difficulty"],
-            "age_group":   report.get("age_group", "kids"),
-            "subjects":    report.get("subjects", []),
-            "keywords":    report.get("keywords", []),
-            "kdp_category": report.get("kdp_category", ""),
-            "title":       f"{report['niche'].title()} Coloring Book for Kids",
-            "subtitle":    f"Fun, Easy and Relaxing Coloring Pages for Ages {report['target_age']}",
-            "created_at":  datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "version":     "v3"
+
+            "version": self.VERSION,
+
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+
+            "niche": niche,
+
+            "title": title,
+
+            "subtitle": subtitle,
+
+            "pages": pages,
+
+            "age_group": age_group,
+
+            "target_age": target_age,
+
+            "difficulty": difficulty,
+
+            "subjects": subjects,
+
+            "keywords": keywords,
+
+            "platforms": [
+                "Amazon KDP",
+                "Etsy",
+                "Gumroad",
+                "Payhip"
+            ],
+
+            "status": "draft"
+
         }
 
         self._save(book)
-        self._print_summary(book)
+
+        self._summary(book)
+
         return book
 
-    def build(self, report, seo):
-        """SEO data ke saath complete book banao"""
-        print("\n📖 Book Agent Running...\n")
-
-        book = {
-            "niche":        report["niche"],
-            "pages":        report["pages"],
-            "target_age":   report["target_age"],
-            "difficulty":   report["difficulty"],
-            "age_group":    report.get("age_group", "kids"),
-            "subjects":     report.get("subjects", []),
-            "kdp_category": report.get("kdp_category", ""),
-            "title":        seo["title"],
-            "subtitle":     seo["subtitle"],
-            "description":  seo["description"],
-            "keywords":     seo["keywords"],
-            "prompts_file": "output/prompts/prompts.txt",
-            "seo_file":     "output/seo/seo.txt",
-            "created_at":   datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "version":      "v3"
-        }
-
-        self._save(book)
-        self._print_summary(book)
-        return book
+    # -------------------------------------
 
     def _save(self, book):
-        """Book JSON save karo"""
+
         os.makedirs("output/books", exist_ok=True)
 
-        # Dynamic filename
-        safe_title = book["niche"].replace(" ", "_").lower()
-        path = f"output/books/{safe_title}_book.json"
+        filename = (
+            book["niche"]
+            .replace(" ", "_")
+            .lower()
+        )
+
+        path = f"output/books/{filename}_book.json"
 
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(book, f, indent=4, ensure_ascii=False)
 
-        print(f"  ✅ Saved : {path}")
+            json.dump(
+                book,
+                f,
+                indent=4,
+                ensure_ascii=False
+            )
+
         book["json_path"] = path
 
-    def _print_summary(self, book):
-        """Summary print karo"""
-        print(f"  📚 Title      : {book['title']}")
-        print(f"  📄 Pages      : {book['pages']}")
-        print(f"  👶 Age Group  : {book['target_age']}")
-        print(f"  🎯 Difficulty : {book['difficulty']}")
-        print(f"  🏷️  Category  : {book.get('kdp_category', 'N/A')}")
-        print(f"  ✅ Book Ready!")
+        print(f"  💾 Saved : {path}")
+
+    # -------------------------------------
+
+    def _summary(self, book):
+
+        print("────────────────────────────────")
+
+        print(f"📚 Title       : {book['title']}")
+        print(f"📄 Pages       : {book['pages']}")
+        print(f"👶 Target Age  : {book['target_age']}")
+        print(f"🎯 Difficulty  : {book['difficulty']}")
+        print(f"📦 Platforms   : {', '.join(book['platforms'])}")
+
+        print("────────────────────────────────")
+
+        print("✅ Book Ready")

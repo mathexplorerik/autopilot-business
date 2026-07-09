@@ -1,61 +1,76 @@
+"""
+==========================================================
+AI Publishing OS V5
+Prompt Agent — Pro Level
+==========================================================
+"""
 import os
 import json
 from datetime import datetime
 from agents.engines.prompt_engine import PromptEngine
-from agents.data.subjects import SUBJECTS, get_subjects, get_age_group
+from agents.data.subjects import SUBJECTS, get_subjects
 from agents.models.prompt import Prompt
 from agents.validators.prompt_validator import PromptValidator
 from agents.checkers.duplicate_engine import DuplicateEngine
+
 
 class PromptAgent:
 
     def generate(self, report, season=None):
         print("\n✍️  Prompt Agent Running...\n")
 
-        engine    = PromptEngine()
-        validator = PromptValidator()
+        engine           = PromptEngine()
+        validator        = PromptValidator()
         duplicate_engine = DuplicateEngine()
-        niche     = report["niche"].lower()
-        age_group = report.get("age_group", "kids")
-        pages     = report.get("pages", 30)
+
+        # ✅ ResearchReport object ya dict dono handle karo
+        if hasattr(report, 'resolved_niche'):
+            niche      = report.resolved_niche.lower()
+            age_group  = report.age_group
+            pages      = report.pages
+            subjects   = report.subjects or []
+            season     = season or report.season or None
+        else:
+            niche     = report.get("niche", "animals").lower()
+            age_group = report.get("age_group", "kids")
+            pages     = report.get("pages", 40)
+            subjects  = report.get("subjects", [])
+
         safe_niche = niche.replace(" ", "_")
 
         # ✅ Subjects dhundho
-        subjects = self._find_subjects(niche)
+        if not subjects:
+            subjects = self._find_subjects(niche)
 
         print(f"  📚 Niche      : {niche}")
         print(f"  👶 Age Group  : {age_group}")
         print(f"  📄 Pages      : {pages}")
         if season:
             print(f"  🎄 Season     : {season}")
-        print(f"  🐾 Subjects   : {len(subjects)} found\n")
+        print(f"  🐾 Subjects   : {len(subjects)} found")
 
         # ✅ Complexity distribution
-        simple_count       = pages // 4
-        intermediate_count = pages // 4
-        advanced_count     = pages // 4
-        pro_count          = pages - simple_count - intermediate_count - advanced_count
-
-        print(f"  📊 Distribution:")
-        print(f"     🟢 Simple       : {simple_count} pages")
-        print(f"     🔵 Intermediate : {intermediate_count} pages")
-        print(f"     🟠 Advanced     : {advanced_count} pages")
-        print(f"     🔴 Pro          : {pro_count} pages\n")
+        q = pages // 4
+        print(f"\n  📊 Distribution:")
+        print(f"     🟢 Simple       : {q} pages")
+        print(f"     🔵 Intermediate : {q} pages")
+        print(f"     🟠 Advanced     : {q} pages")
+        print(f"     🔴 Pro          : {pages - q*3} pages\n")
 
         # ✅ Prompts generate karo
-        prompts      = []
-        prompt_data  = []
-        used_combos  = set()
+        prompt_data       = []
+        used_combos       = set()
+        skipped_invalid   = 0
+        skipped_duplicate = 0
         complexity_counts = {
-            "simple": 0,
-            "intermediate": 0,
-            "advanced": 0,
-            "pro": 0
+            "simple": 0, "intermediate": 0,
+            "advanced": 0, "pro": 0
         }
 
         for i in range(pages):
             subject = subjects[i % len(subjects)]
 
+            # Build prompt
             result = engine.build_prompt(
                 subject=subject,
                 age_group=age_group,
@@ -69,16 +84,14 @@ class PromptAgent:
             negative   = result["negative"]
             complexity = result["complexity"]
             label      = result.get("label", complexity)
-            validation = validator.validate(
-                positive,
-                negative
-            )
 
+            # ✅ Validate
+            validation = validator.validate(positive, negative)
             if not validation["valid"]:
-                print(f"⚠️ Invalid Prompt: {validation['errors']}")
+                skipped_invalid += 1
                 continue
 
-            # ✅ Duplicate avoid karo
+            # ✅ Duplicate avoid — regenerate
             attempts = 0
             while positive in used_combos and attempts < 5:
                 result     = engine.build_prompt(
@@ -94,21 +107,17 @@ class PromptAgent:
                 complexity = result["complexity"]
                 attempts  += 1
 
-            # Duplicate prompt check
-            duplicate = duplicate_engine.validate(
+            # ✅ Duplicate engine check
+            dup_check = duplicate_engine.validate(
                 prompt=positive,
                 subject=subject
             )
-
-            if not duplicate["valid"]:
-                print(f"  🔁 Duplicate skipped: {duplicate['errors']}")
+            if not dup_check["valid"]:
+                skipped_duplicate += 1
                 continue
 
-                duplicate_engine.add(
-                prompt=positive,
-                subject=subject
-            )
-            
+            # ✅ Add to tracker
+            duplicate_engine.add(prompt=positive, subject=subject)
             used_combos.add(positive)
             complexity_counts[complexity] += 1
 
@@ -126,92 +135,102 @@ class PromptAgent:
 
             print(f"  ✍️  Page {i+1:02}/{pages} {label:20} : {subject}")
 
-        # ✅ Save files
-        self._save(prompt_data, prompts, niche, safe_niche, age_group, season, pages, complexity_counts)
+        # ✅ Summary
+        print(f"\n  {'─'*40}")
+        print(f"  ✅ Generated      : {len(prompt_data)}/{pages}")
+        if skipped_invalid:
+            print(f"  ⚠️  Invalid        : {skipped_invalid}")
+        if skipped_duplicate:
+            print(f"  🔁 Duplicates     : {skipped_duplicate}")
+
+        # ✅ Save
+        prompts = self._save(
+            prompt_data, niche, safe_niche,
+            age_group, season, pages, complexity_counts
+        )
 
         return prompts
 
     def _find_subjects(self, niche):
         """Niche ke subjects dhundho"""
-        # Direct match
+        from agents.data.subjects import get_subjects, SUBJECTS
+
         subjects = get_subjects(niche)
         if subjects:
             return subjects
 
-        # Partial match
         for key in SUBJECTS:
             if key in niche or niche in key:
                 subjects = get_subjects(key)
                 if subjects:
-                    print(f"  🔍 Matched niche: '{key}'")
+                    print(f"  🔍 Matched: '{key}'")
                     return subjects
 
-        # Fallback
-        print(f"  ⚠️  Unknown niche — using '{niche}' as subject")
+        print(f"  ⚠️  Fallback: '{niche}'")
         return [niche]
 
-    def _save(self, prompt_data, prompts, niche, safe_niche, age_group, season, pages, complexity_counts):
-        """Sab files save karo — niche specific naming"""
+    def _save(self, prompt_data, niche, safe_niche, age_group, season, pages, complexity_counts):
+        """Sab files save karo"""
         os.makedirs("output/prompts", exist_ok=True)
-        prompt_data = [
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # Convert Prompt objects to dict
+        data = [
             p.to_dict() if isinstance(p, Prompt) else p
             for p in prompt_data
         ]
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        # ✅ 1. Niche specific TXT — ChatGPT/Redpanda ke liye
+        # ✅ Niche specific TXT
         txt_path = f"output/prompts/{safe_niche}_prompts.txt"
         with open(txt_path, "w", encoding="utf-8") as f:
             f.write(f"PROMPTS FOR: {niche.upper()}\n")
-            f.write(f"Generated: {timestamp}\n")
-            f.write(f"Total: {pages} prompts\n")
+            f.write(f"Generated : {timestamp}\n")
+            f.write(f"Total     : {len(data)} prompts\n")
             f.write("="*60 + "\n\n")
-            for p in prompt_data:  
+            for p in data:
                 f.write(f"--- Page {p['page']:02}/{pages} | {p['subject'].upper()} | {p['label']} ---\n")
                 f.write(f"POSITIVE: {p['positive']}\n")
                 f.write(f"NEGATIVE: {p['negative']}\n\n")
 
-        # ✅ 2. Niche specific JSON — system ke liye
+        # ✅ Niche specific JSON
         json_path = f"output/prompts/{safe_niche}_prompts.json"
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump({
                 "niche":      niche,
                 "age_group":  age_group,
                 "season":     season,
-                "total":      pages,
+                "total":      len(data),
                 "generated":  timestamp,
                 "complexity": complexity_counts,
-                "prompts":    prompt_data
+                "prompts":    data
             }, f, indent=2, ensure_ascii=False)
 
-        # ✅ 3. Simple TXT — prompt viewer ke liye
+        # ✅ Simple TXT — ChatGPT ke liye
         simple_path = f"output/prompts/{safe_niche}_simple.txt"
         with open(simple_path, "w", encoding="utf-8") as f:
-            for p in prompt_data:
+            for p in data:
                 f.write(p['positive'] + "\n")
 
-        # ✅ 4. Latest prompts — backward compatibility
+        # ✅ Backward compatibility
         with open("output/prompts/prompts.txt", "w", encoding="utf-8") as f:
-            for p in prompt_data:
+            for p in data:
                 f.write(p['positive'] + "\n")
 
         with open("output/prompts/prompts.json", "w", encoding="utf-8") as f:
             json.dump({
-                "niche":      niche,
-                "age_group":  age_group,
-                "season":     season,
-                "total":      pages,
-                "prompts":    prompt_data
+                "niche": niche, "age_group": age_group,
+                "season": season, "total": len(data),
+                "prompts": data
             }, f, indent=2, ensure_ascii=False)
 
-        # ✅ Summary print
-        print(f"\n  {'─'*40}")
-        print(f"  ✅ Total Prompts  : {len(prompts)}")
         print(f"  🟢 Simple         : {complexity_counts['simple']}")
         print(f"  🔵 Intermediate   : {complexity_counts['intermediate']}")
         print(f"  🟠 Advanced       : {complexity_counts['advanced']}")
         print(f"  🔴 Pro            : {complexity_counts['pro']}")
         print(f"  📄 TXT            : {txt_path}")
         print(f"  📄 JSON           : {json_path}")
-        print(f"  📄 Simple TXT     : {simple_path}")
+        print(f"  📄 Simple         : {simple_path}")
         print(f"  {'─'*40}")
+
+        # Return positive prompts list
+        return [p['positive'] for p in data]
