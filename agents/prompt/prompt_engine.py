@@ -4,6 +4,7 @@ AI Publishing OS V6
 Prompt Engine — Complete
 ==========================================================
 """
+from knowledge.loader import KnowledgeLoader
 from agents.engines.animal_engine import AnimalEngine
 from agents.prompt.prompt_builder import PromptBuilder
 from agents.prompt.prompt_formatter import PromptFormatter
@@ -20,6 +21,8 @@ class PromptEngine:
     VERSION = "V6"
 
     def __init__(self):
+
+        self.knowledge = KnowledgeLoader()
         self.scene_engine = AnimalEngine()
         self.builder      = PromptBuilder()
         self.formatter    = PromptFormatter()
@@ -48,7 +51,7 @@ class PromptEngine:
         )
 
         # ✅ Template
-        template = self.templates.get(
+        template = self._get_template(
             marketplace=marketplace,
             product=product
         )
@@ -176,3 +179,26 @@ class PromptEngine:
             "pro":          "🔴 PRO"
         }
         return labels.get(complexity, complexity)
+    
+    def _get_template(
+        self,
+        marketplace="amazon",
+        product="coloring"
+    ):
+        """
+        Resolve prompt template.
+
+        Priority:
+        1. Knowledge database
+        2. Built-in templates
+        """
+
+        prompt = self.knowledge.load_prompt("coloring_book")
+
+        if prompt:
+            return prompt["positive_template"]
+
+        return self.templates.get(
+            marketplace=marketplace,
+            product=product
+        )

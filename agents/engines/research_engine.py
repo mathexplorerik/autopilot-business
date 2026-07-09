@@ -1,11 +1,12 @@
 """
 ==========================================================
-AI Publishing OS V5
+AI Publishing OS V7
 Research Engine
 ==========================================================
 """
 
 from agents.models.research_report import ResearchReport
+from agents.knowledge_agent import KnowledgeAgent
 
 from agents.engines.research.niche_analyzer import NicheAnalyzer
 from agents.engines.research.audience_analyzer import AudienceAnalyzer
@@ -17,7 +18,11 @@ from agents.engines.research.seo_analyzer import SEOAnalyzer
 
 class ResearchEngine:
 
+    VERSION = "7.0.0"
+
     def __init__(self):
+
+        self.knowledge = KnowledgeAgent()
 
         self.niche = NicheAnalyzer()
         self.audience = AudienceAnalyzer()
@@ -26,11 +31,23 @@ class ResearchEngine:
         self.market = MarketAnalyzer()
         self.seo = SEOAnalyzer()
 
-    def analyze(self, niche: str, season: str = ""):
+    # --------------------------------------------------
 
-        # -----------------------------
-        # Run All AI Analyzers
-        # -----------------------------
+    def analyze(
+        self,
+        niche: str,
+        season: str = ""
+    ):
+
+        # ----------------------------------------
+        # Knowledge Lookup (V7)
+        # ----------------------------------------
+
+        knowledge = self.knowledge.get_niche(niche)
+
+        # ----------------------------------------
+        # Existing AI Pipeline
+        # ----------------------------------------
 
         niche_data = self.niche.analyze(niche)
 
@@ -54,11 +71,11 @@ class ResearchEngine:
             niche_data["resolved_niche"]
         )
 
-        # -----------------------------
-        # Build Research Report
-        # -----------------------------
+        # ----------------------------------------
+        # Build Report
+        # ----------------------------------------
 
-        report = ResearchReport(
+        return ResearchReport(
 
             niche=niche,
 
@@ -90,6 +107,8 @@ class ResearchEngine:
 
             metadata={
 
+                "knowledge": knowledge,
+
                 "market": market_data,
 
                 "seo": seo_data,
@@ -100,10 +119,22 @@ class ResearchEngine:
 
                 "confidence": niche_data["confidence"],
 
-                "match_type": niche_data["match_type"]
+                "match_type": niche_data["match_type"],
+
+                "engine_version": self.VERSION
 
             }
 
         )
 
-        return report
+    # --------------------------------------------------
+
+    def statistics(self):
+
+        return self.knowledge.statistics()
+
+    # --------------------------------------------------
+
+    def search(self, keyword: str):
+
+        return self.knowledge.search(keyword)
