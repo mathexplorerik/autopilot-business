@@ -26,18 +26,24 @@ class PromptTemplates:
     DEFAULT = (
         "Cute {expression} {subject} "
         "{action} "
+        "{scene}, "
+        "{pose}, "
         "{background}, "
-        "{props}, "
-        "{accessories}, "
+        "with {props}, "
+        "wearing {accessories}, "
         "kids coloring book page, "
         "{style}, "
         "{line_weight}, "
         "{complexity}, "
         "{age_style}, "
+        "clean black outlines only, "
         "black and white line art, "
+        "no shading, "
+        "no grayscale, "
         "white background, "
-        "printable, "
-        "centered composition"
+        "centered composition, "
+        "large open spaces for easy coloring, "
+        "high quality printable"
     )
 
     AMAZON_KDP = DEFAULT

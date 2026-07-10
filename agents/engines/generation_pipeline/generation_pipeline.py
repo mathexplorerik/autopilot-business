@@ -11,6 +11,10 @@ from typing import Dict, List, Optional
 
 from knowledge.engine import KnowledgeEngine
 from agents.prompt.prompt_engine_v8 import PromptEngineV8
+from agents.image_engine import (
+    ImageEngine,
+    ImageMetadata,
+)
 
 from agents.engines.animal_engine import AnimalEngine
 from agents.checkers.duplicate_checker import DuplicateChecker
@@ -39,6 +43,8 @@ class GenerationPipeline:
         self.animal_engine = AnimalEngine()
 
         self.prompt_engine = PromptEngineV8()
+
+        self.image_engine = ImageEngine()
 
         self.duplicate_checker = DuplicateChecker()
 
@@ -72,6 +78,7 @@ class GenerationPipeline:
         book_type: str,
         age_group: str,
         total_pages: int,
+        provider: str = "manual",
     ):
 
         self.reset()
@@ -83,6 +90,8 @@ class GenerationPipeline:
         self.age_group = age_group
 
         self.total_pages = total_pages
+
+        self.provider = provider.lower().strip()
 
     # --------------------------------------------------
 
@@ -251,12 +260,22 @@ class GenerationPipeline:
         """
         Convert scene into export-ready page.
         """
-        prompt = self.prompt_engine.build_final(
+        prompt_data = self.prompt_engine.build_final(
             page=page,
             keyword=self.keyword,
             subject=scene["subject"],
             scene=scene,
         )
+
+        prompt = prompt_data["positive"]
+
+        metadata = ImageMetadata(
+            provider=self.provider,
+            prompt=prompt,
+            output_path=f"output/{self.keyword}/page_{page:03d}",
+        )
+
+        result = self.image_engine.generate(metadata)
 
         return {
 
@@ -291,6 +310,8 @@ class GenerationPipeline:
             "age_group": scene["age_group"],
 		            
 		    "prompt": prompt,
+
+            "image": result,
         }
     
         # --------------------------------------------------
@@ -317,6 +338,8 @@ class GenerationPipeline:
                 page=page,
                 scene=scene,
             )
+
+            self.generate_image(page_data)
 
             self.pages.append(page_data)
 
@@ -622,6 +645,23 @@ class GenerationPipeline:
 
             "unique_prompts": self.duplicate_checker.total(),
         }
+    
+    def generate_image(
+        self,
+        page: Dict,
+    ) -> Dict:
+        """
+        Generate image for one page.
+        """
+
+        metadata = ImageMetadata(
+            provider="manual",
+            prompt=page["prompt"],
+            negative_prompt=page["negative"],
+            output_path=f"output/{self.keyword}/page_{page['page']:03d}",
+        )
+
+        return self.image_engine.generate(metadata)
 
     # --------------------------------------------------
 

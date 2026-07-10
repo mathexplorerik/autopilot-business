@@ -1,4 +1,15 @@
 SUBJECTS = {
+    "animals": {
+        "subjects": [
+            "lion", "tiger", "elephant", "giraffe", "zebra",
+            "monkey", "hippo", "rhino", "bear", "rabbit",
+            "dog", "cat", "fox", "owl", "deer"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Animals",
+        "keywords": ["animals coloring book", "kids coloring book", "animal coloring pages"],
+        "difficulty": "easy"
+    },
     # ✅ Metadata add kiya har niche ke liye
     "farm animals": {
         "subjects": [
@@ -89,6 +100,17 @@ SUBJECTS = {
 }
     # ✅ Indian Festivals + Special Days
 FESTIVAL_SUBJECTS = {
+    "animals": {
+        "subjects": [
+            "lion", "tiger", "elephant", "giraffe", "zebra",
+            "monkey", "hippo", "rhino", "bear", "rabbit",
+            "dog", "cat", "fox", "owl", "deer"
+        ],
+        "age_group": "kids",
+        "kdp_category": "Children's Books > Animals",
+        "keywords": ["animals coloring book", "kids coloring book", "animal coloring pages"],
+        "difficulty": "easy"
+    },
     "diwali": {
         "subjects": [
             "diya lamp", "rangoli pattern", "fireworks",

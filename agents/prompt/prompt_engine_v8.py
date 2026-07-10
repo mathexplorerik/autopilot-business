@@ -91,38 +91,6 @@ class PromptEngineV8:
 
         return prompt
     
-    # --------------------------------------------------
-
-    def metadata(
-        self,
-        prompt: Dict,
-        marketplace: str = "amazon",
-        product: str = "coloring_book",
-    ) -> Dict:
-
-        prompt["metadata"] = self.formatter.format_metadata(
-            prompt_score=prompt["score"],
-            marketplace=marketplace,
-            product_type=product,
-        )
-
-        return prompt
-    # --------------------------------------------------
-
-    def metadata(
-        self,
-        prompt: Dict,
-        marketplace: str = "amazon",
-        product: str = "coloring_book",
-    ) -> Dict:
-
-        prompt["metadata"] = self.formatter.format_metadata(
-            prompt_score=prompt["score"],
-            marketplace=marketplace,
-            product_type=product,
-        )
-
-        return prompt
     
     # --------------------------------------------------
 

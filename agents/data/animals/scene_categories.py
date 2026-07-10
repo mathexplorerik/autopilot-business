@@ -4,27 +4,27 @@ ANIMAL_SCENE_CATEGORY = {
     "elephant": "nature",
     "monkey": "adventure",
 
-    "dog": "friendship",
-    "cat": "friendship",
+    "dog": "park",
+    "cat": "garden",
 
-    "rabbit": "nature",
-    "deer": "nature",
-    "bear": "nature",
-    "fox": "nature",
+    "rabbit": "meadow",
+    "deer": "forest",
+    "bear": "forest",
+    "fox": "forest",
 
-    "duck": "nature",
-    "frog": "nature",
+    "duck": "lake",
+    "frog": "river",
 
-    "horse": "sports",
-    "cow": "nature",
-    "goat": "nature",
-    "sheep": "nature",
+    "horse": "farm",
+    "cow": "farm",
+    "goat": "farm",
+    "sheep": "farm",
 
-    "penguin": "seasonal",
+    "penguin": "snow",
 
     "giraffe": "adventure",
     "zebra": "adventure",
 
-    "panda": "learning",
-    "koala": "nature",
+    "panda": "forest",
+    "koala": "forest",
 }
