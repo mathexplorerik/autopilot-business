@@ -10,6 +10,7 @@ from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
 from agents.engines.relationship_engine.matrix import RELATIONSHIP_MATRIX
 from agents.data.animals.action_index import ACTION_INDEX
 from agents.engines.action_matcher import ActionMatcher
+from agents.engines.grammar_engine import with_article
 from agents.engines.relationship_engine.relationship_engine import RelationshipEngine
 from agents.prompt.validator import PromptValidator
 from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
@@ -144,7 +145,7 @@ class AnimalEngine:
             parts.append(f"in a {pose} pose")
 
         if expression:
-            parts.append(f"with a {expression} facial expression")
+            parts.append(f"with {with_article(expression)} facial expression")
         
 
         if props:
