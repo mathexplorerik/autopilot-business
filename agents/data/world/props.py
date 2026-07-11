@@ -9,12 +9,12 @@ PROPS = {
     "nature": [
         "watering can",
         "flower pot",
-        "leaf",
-        "acorns",
-        "pinecones",
+        "leaf basket",
         "mushrooms",
-        "small basket",
+        "pinecones",
+        "acorns",
         "wooden log",
+        "small shovel",
     ],
 
     "movement": [
@@ -28,30 +28,30 @@ PROPS = {
     "play": [
         "ball",
         "kite",
-        "toy",
         "jump rope",
+        "toy blocks",
         "bubbles",
     ],
 
     "creative": [
         "paint brush",
-        "crayons",
-        "drawing book",
         "paint palette",
+        "drawing book",
+        "crayons",
     ],
 
     "learning": [
         "book",
-        "pencil",
-        "school bag",
         "notebook",
+        "school bag",
+        "pencil",
     ],
 
     "daily_life": [
+        "basket",
         "cup",
         "chair",
-        "basket",
-        "table",
+        "small table",
     ],
 
     "celebration": [
@@ -63,15 +63,15 @@ PROPS = {
 
     "sports": [
         "football",
-        "tennis racket",
         "basketball",
+        "tennis racket",
         "whistle",
     ],
 
     "fantasy": [
         "magic wand",
+        "crystal",
         "treasure chest",
         "magic key",
-        "crystal",
     ],
 }

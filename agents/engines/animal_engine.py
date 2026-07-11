@@ -11,6 +11,7 @@ from agents.engines.relationship_engine.matrix import RELATIONSHIP_MATRIX
 from agents.data.animals.action_index import ACTION_INDEX
 from agents.engines.action_matcher import ActionMatcher
 from agents.engines.relationship_engine.relationship_engine import RelationshipEngine
+from agents.prompt.validator import PromptValidator
 
 class AnimalEngine:
 
@@ -18,6 +19,7 @@ class AnimalEngine:
     def __init__(self):
         self._used_combos = set()
         self.relationship = RelationshipEngine()
+        self.validator = PromptValidator()
 
     def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None):
         complexity = "moderate"
@@ -110,34 +112,29 @@ class AnimalEngine:
 
         parts = [
 
-            # Character
-            f"Cute baby {subject}",
-
-            # Expression
-            f"{expression} facial expression",
-
-            # Action
+            subject,
             action,
+        ]    
 
-            # Scene
-            scene,
+        if scene:
+            parts.append(f"at a {scene}")
 
-            # Background
-            background,
 
-            # Pose
-            f"{pose} pose",
-        ]
+        if background:
+            parts.append(f"surrounded by {background}")
+
+        if pose:
+            parts.append(f"in a {pose} pose")
+
+        if expression:
+            parts.append(f"with a {expression} facial expression")
+        
 
         if props:
-            parts.append(
-                "with " + ", ".join(props)
-            )
+            parts.append("holding " + ", ".join(props))
 
         if accessories:
-            parts.append(
-                "wearing " + ", ".join(accessories)
-            )
+            parts.append("wearing " + ", ".join(accessories))
 
         parts.extend([
 
@@ -174,7 +171,8 @@ class AnimalEngine:
             age_styles.get(age_group, age_styles["kids"]),
             complexity_styles.get(complexity, complexity_styles["simple"]),
         ])
-
+        
+        parts = self.validator.validate(parts)
         return self._clean_prompt(parts)
     
     def _clean_prompt(self, parts):
