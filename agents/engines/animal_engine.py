@@ -70,9 +70,16 @@ class AnimalEngine:
             prop = random.choice(SUBJECT_PROPS[subject.lower()])
 
         # ✅ Habitat — agar subject ka known habitat hai, to usse background override karo
+        # (scene se clash avoid karte hue — koi redundant repeat na ho)
         habitat_key = SUBJECT_HABITATS.get(subject.lower())
         if habitat_key and habitat_key in HABITATS:
-            background = random.choice(HABITATS[habitat_key])
+            habitat_options = [
+                h for h in HABITATS[habitat_key]
+                if h.lower() not in scene.lower() and scene.lower() not in h.lower()
+            ]
+            if not habitat_options:
+                habitat_options = HABITATS[habitat_key]
+            background = random.choice(habitat_options)
 
         positive = self._build_positive_prompt(
             subject=subject,
