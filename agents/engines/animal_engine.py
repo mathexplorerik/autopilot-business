@@ -12,6 +12,9 @@ from agents.data.animals.action_index import ACTION_INDEX
 from agents.engines.action_matcher import ActionMatcher
 from agents.engines.relationship_engine.relationship_engine import RelationshipEngine
 from agents.prompt.validator import PromptValidator
+from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
+from agents.data.world.habitats import HABITATS
+from agents.data.animals.subject_habitats import SUBJECT_HABITATS
 
 class AnimalEngine:
 
@@ -50,6 +53,11 @@ class AnimalEngine:
         prop       = decision.get("prop", "")
         pose       = decision.get("pose", "standing pose")
         expression = decision.get("expression", "happy")
+
+        # ✅ Habitat — agar subject ka known habitat hai, to usse background override karo
+        habitat_key = SUBJECT_HABITATS.get(subject.lower())
+        if habitat_key and habitat_key in HABITATS:
+            background = random.choice(HABITATS[habitat_key])
 
         positive = self._build_positive_prompt(
             subject=subject,
