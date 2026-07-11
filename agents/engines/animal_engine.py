@@ -29,7 +29,7 @@ class AnimalEngine:
         self.validator = PromptValidator()
 
     def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None):
-        complexity = "moderate"
+        complexity = self._get_complexity(page_number, total_pages)
         accessories = []
 
         # ✅ Category

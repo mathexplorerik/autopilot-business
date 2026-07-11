@@ -84,7 +84,9 @@ class RelationshipEngine:
         if match and match.get("backgrounds"):
             background = self.best_match(match["backgrounds"], match["keywords"])
         else:
-            background = random.choice(self.get_backgrounds(category))
+            candidates = self.get_backgrounds(category)
+            valid = [bg for bg in candidates if self.compatibility.is_valid(action or "", bg)]
+            background = random.choice(valid) if valid else random.choice(candidates)
 
         prop_keywords = match.get("keywords") if match else None
         prop = self.best_match(self.get_props(category), prop_keywords)
