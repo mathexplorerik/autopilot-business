@@ -9,7 +9,7 @@ from agents.data.animals.accessories import ACCESSORIES
 from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
 from agents.engines.relationship_engine.matrix import RELATIONSHIP_MATRIX
 from agents.data.animals.action_index import ACTION_INDEX
-
+from agents.engines.action_matcher import ActionMatcher
 
 class AnimalEngine:
 
@@ -27,6 +27,14 @@ class AnimalEngine:
 
         # ✅ Action
         action = self._pick(ACTIONS, category, "playing happily")
+        match = ActionMatcher.detect(action)
+        if match:
+            print("Using Smart Rule")
+        else:
+            print("Using Default Rule")
+        print("=" * 40)
+        print("Action :", action)
+        print("Match  :", match)
         
         # ✅ Action category
         action_cat = ACTION_INDEX.get(action, "daily_life")
