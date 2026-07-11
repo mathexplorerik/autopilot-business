@@ -8,31 +8,16 @@ Relationship Scorer
 
 class Scorer:
 
-    def score(self, item):
+    class Scorer:
 
-        if not item:
-            return 0
+        def score(self, text, keywords):
 
-        score = 100
+            text = text.lower()
 
-        text = item.lower()
+            score = 0
 
-        # Very long text gets a small penalty
-        if len(text.split()) > 6:
-            score -= 10
+            for word in keywords:
+                if word in text:
+                    score += 10
 
-        # Prefer simple, kid-friendly words
-        preferred = [
-            "forest",
-            "garden",
-            "river",
-            "flower",
-            "tree",
-            "meadow",
-            "park",
-        ]
-
-        if any(word in text for word in preferred):
-            score += 10
-
-        return score
+            return score

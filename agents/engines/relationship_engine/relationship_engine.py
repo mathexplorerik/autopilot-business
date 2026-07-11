@@ -11,6 +11,9 @@ from agents.engines.relationship_engine.matcher import Matcher
 from agents.engines.relationship_engine.compatibility import Compatibility
 from agents.data.world.locations import LOCATIONS
 from agents.data.world.backgrounds import BACKGROUNDS
+from agents.data.world.props import PROPS
+from agents.engines.action_matcher import ActionMatcher
+from agents.engines.relationship_engine.scorer import Scorer
 
 
 class RelationshipEngine:
@@ -55,21 +58,52 @@ class RelationshipEngine:
     def get_backgrounds(self, category):
         return BACKGROUNDS.get(category, [])
     
+    def get_props(self, category):
+        return PROPS.get(category, [])
+    
+    def best_match(self, candidates, keywords):
+
+        if not candidates:
+            return None
+
+        best = None
+        best_score = -1
+
+        for item in candidates:
+
+            score = self.scorer.score(item, keywords)
+
+        if score > best_score:
+            best_score = score
+            best = item
+
+        return best
+    
 
     def build(self, category, action=None):
 
         import random
         
         relationship = self.get_relationship(category)
+        match = ActionMatcher.detect(action) if action else None
 
         locations= random.choice(self.get_locations(category))
-        background = random.choice(self.get_backgrounds(category))
+
+        if match and match.get("backgrounds"):
+            print("Using ActionMatcher backgrounds")
+            background = random.choice(match["backgrounds"],match["keywords"])
+        else:
+            background = random.choice(self.get_backgrounds(category))
+
+        prop = random.choice(self.get_props(category))
         pose = random.choice(relationship.get("poses", []))
         expression = random.choice(relationship.get("expressions", []))
+        
 
         return {
         "locations": locations,
         "background": background,
+        "prop": prop,
         "pose": pose,
         "expression": expression,
     }

@@ -10,14 +10,18 @@ from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
 from agents.engines.relationship_engine.matrix import RELATIONSHIP_MATRIX
 from agents.data.animals.action_index import ACTION_INDEX
 from agents.engines.action_matcher import ActionMatcher
+from agents.engines.relationship_engine.relationship_engine import RelationshipEngine
 
 class AnimalEngine:
 
 
     def __init__(self):
         self._used_combos = set()
+        self.relationship = RelationshipEngine()
 
     def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None):
+        complexity = "moderate"
+        accessories = []
 
         # ✅ Category
         category = self._get_category(subject, season)
@@ -40,36 +44,19 @@ class AnimalEngine:
         action_cat = ACTION_INDEX.get(action, "daily_life")
         relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
 
-        # ✅ Scene
-        scene_options = relationship.get("scenes")
-        if scene_options:
-            scene = random.choice(scene_options)
-        else:
-            scene = self._pick(SCENES, category, "in a beautiful garden")
+        # ✅ Relationship Engine decides everything
 
-        # ✅ Background
+        decision = self.relationship.build(
+        category=action_cat,
+        action=action,
+    )
+        
+        scene      = decision.get("locations", "in a garden")
+        background = decision.get("background", "white background")
+        prop       = decision.get("prop", "")
+        pose       = decision.get("pose", "standing pose")
+        expression = decision.get("expression", "happy")
 
-        # ✅ Pose — action se match karo
-        pose = random.choice(
-        relationship.get("poses", ["standing"])
-        )
-
-
-        # ✅ Expression — action se match karo
-        expression = random.choice(
-        relationship.get("expressions", ["happy"])
-        )
-
-        # ✅ Props
-        props = self._pick_list(PROPS, category, count=1)
-
-        # ✅ Accessories
-        accessories = self._pick_list(ACCESSORIES, category, count=1)
-
-        # ✅ Complexity
-        complexity = self._get_complexity(page_number, total_pages)
-
-        # ✅ Build positive prompt
         positive = self._build_positive_prompt(
             subject=subject,
             scene=scene,
@@ -77,13 +64,14 @@ class AnimalEngine:
             action=action,
             pose=pose,
             expression=expression,
-            props=props,
-            accessories=accessories,
+            props=[prop] if prop else [],
+            accessories=[],
             age_group=age_group,
             complexity=complexity
         )
 
         # ✅ Negative prompt
+
         negative = (
             "color fills, shading, gradients, gray areas, "
             "realistic, photo, watermark, text, signature, "
@@ -99,7 +87,7 @@ class AnimalEngine:
             "action":      action,
             "pose":        pose,
             "expression":  expression,
-            "props":       props,
+            "props": [prop] if prop else [],
             "accessories": accessories,
             "subject":     subject,
             "age_group":   age_group
