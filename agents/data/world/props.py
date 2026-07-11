@@ -6,6 +6,13 @@ V10 World Props
 
 PROPS = {
 
+    "adventure": [
+        "map",
+        "compass",
+        "backpack",
+        "rope",
+    ],
+
     "nature": [
         "watering can",
         "flower pot",

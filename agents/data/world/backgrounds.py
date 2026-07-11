@@ -6,6 +6,13 @@ V10 World Backgrounds
 
 BACKGROUNDS = {
 
+    "adventure": [
+        "cave entrance",
+        "rocky path",
+        "old bridge",
+        "hidden trail",
+    ],
+
     "nature": [
         "flower beds",
         "garden bushes",
