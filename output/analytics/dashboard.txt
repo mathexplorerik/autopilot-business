@@ -2,12 +2,12 @@
    AI KDP AUTOPILOT — DASHBOARD
 ==================================================
 
-  Generated : 2026-07-09 14:48:36
+  Generated : 2026-07-11 10:11:32
 
   📚 BOOK INFO
   ──────────────────────────────
   Niche      : jungle animals
-  Title      : Jungle Animals Coloring Book for Kids
+  Title      : Jungle Animals Coloring Books
   Pages      : 40
   Age Group  : 4-8 Years
   Difficulty : easy

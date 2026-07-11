@@ -15,7 +15,7 @@ class PublishAgent:
             "subtitle": seo["subtitle"],
             "description": seo["description"],
             "keywords": seo["keywords"],
-            "pages": book["pages"],
+            "pages": book.get("pages") or book.get("total_pages", 40),
             "language": "English",
             "trim_size": "8.5 x 11"
         }

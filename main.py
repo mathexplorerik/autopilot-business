@@ -85,8 +85,8 @@ def print_summary(niche, book, seo, pdf_path, start_time, results):
     print(f"{BOLD}{'═'*60}{RESET}")
     print(f"   Niche     : {niche}")
     print(f"   Title     : {book.get('title', 'N/A')}")
-    print(f"   Pages     : {book.get('pages', 'N/A')}")
-    print(f"   Age Group : {book.get('target_age', 'N/A')}")
+    print(f"   Pages     : {book.get('pages') or book.get('total_pages', 'N/A')}")
+    print(f"   Age Group : {book.get('target_age') or book.get('age_group', 'N/A')}")
     print(f"   PDF       : {pdf_path or 'N/A'}")
 
     keywords = seo.get("keywords", []) if seo else []
@@ -116,7 +116,7 @@ def save_run_log(niche, book, seo, pdf_path, start_str, results):
         f.write("="*40 + "\n")
         f.write(f"Niche    : {niche}\n")
         f.write(f"Title    : {book.get('title', 'N/A')}\n")
-        f.write(f"Pages    : {book.get('pages', 'N/A')}\n")
+        f.write(f"Pages    : {book.get('pages') or book.get('total_pages', 'N/A')}\n")
         f.write(f"PDF      : {pdf_path}\n")
         f.write(f"Started  : {start_str}\n")
         f.write(f"Finished : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
@@ -189,7 +189,11 @@ def main():
     # ─────────────────────────────
     step(2, "Book Agent")
     book_agent = BookAgent()
-    book = run_step(lambda: book_agent.create(report), "Book Created")
+    book = run_step(lambda: book_agent.create_book(
+        keyword=report.resolved_niche if hasattr(report, 'resolved_niche') else report.get("niche", "animals"),
+        book_type="coloring_books",
+        age_group=report.age_group if hasattr(report, 'age_group') else report.get("age_group", "kids")
+    ), "Book Created")
     results["Book"] = "ok"
 
     # ─────────────────────────────

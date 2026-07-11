@@ -46,7 +46,7 @@ class PDFAgent:
         c.showPage()
 
         # ✅ Interior Pages — full bleed
-        total   = book["pages"]
+        total = book.get("pages") or book.get("total_pages", 40)
         found   = 0
         missing = 0
 

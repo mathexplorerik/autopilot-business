@@ -1,5 +1,5 @@
 ANIMAL_SCENE_CATEGORY = {
-    "lion": "adventure",
+    "lion": "nature",
     "tiger": "adventure",
     "elephant": "nature",
     "monkey": "adventure",

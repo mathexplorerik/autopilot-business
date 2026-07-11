@@ -7,12 +7,35 @@ from agents.data.animals.expressions import EXPRESSIONS
 from agents.data.animals.props import PROPS
 from agents.data.animals.accessories import ACCESSORIES
 from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
-from agents.engines.relationship_engine.matrix import RELATIONSHIP_MATRIX
-from agents.data.animals.action_index import ACTION_INDEX
 
 
 class AnimalEngine:
 
+    ACTION_TO_POSE = {
+        "movement":    ["walking", "running", "jumping", "standing"],
+        "play":        ["running", "jumping", "dancing"],
+        "adventure":   ["walking", "climbing", "standing"],
+        "nature":      ["walking", "sitting", "resting"],
+        "creative":    ["sitting", "standing"],
+        "daily_life":  ["standing", "walking", "sitting"],
+        "learning":    ["sitting", "standing"],
+        "celebration": ["jumping", "dancing", "standing"],
+        "sports":      ["running", "jumping"],
+        "fantasy":     ["walking", "flying", "standing"],
+    }
+
+    ACTION_TO_EXPRESSION = {
+        "movement":    ["happy", "excited"],
+        "play":        ["playful", "silly", "excited"],
+        "adventure":   ["curious", "brave", "excited"],
+        "nature":      ["calm", "curious", "thoughtful"],
+        "creative":    ["happy", "thoughtful", "proud"],
+        "daily_life":  ["happy", "calm"],
+        "learning":    ["curious", "thoughtful", "proud"],
+        "celebration": ["excited", "happy", "proud"],
+        "sports":      ["excited", "proud"],
+        "fantasy":     ["surprised", "curious", "excited"],
+    }
 
     def __init__(self):
         self._used_combos = set()
@@ -30,21 +53,17 @@ class AnimalEngine:
 
         # ✅ Action
         action = self._pick(ACTIONS, category, "playing happily")
-        
+
         # ✅ Action category
-        action_cat = ACTION_INDEX.get(action, "daily_life")
-        relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
+        action_cat = self._get_action_category(action)
 
         # ✅ Pose — action se match karo
-        pose = random.choice(
-        relationship.get("poses", ["standing"])
-        )
-
+        pose_options = self.ACTION_TO_POSE.get(action_cat, ["standing pose"])
+        pose = random.choice(pose_options)
 
         # ✅ Expression — action se match karo
-        expression = random.choice(
-        relationship.get("expressions", ["happy"])
-        )
+        expr_options = self.ACTION_TO_EXPRESSION.get(action_cat, ["happy"])
+        expression = random.choice(expr_options)
 
         # ✅ Props
         props = self._pick_list(PROPS, category, count=1)
