@@ -5,10 +5,21 @@ Relationship Matcher
 
 class Matcher:
 
-    def match(self, source, candidates):
-        """
-        Returns compatible candidates.
+    def match(self, keywords, candidates):
 
-        Implementation will be added in V9.
-        """
+        if not keywords:
+            return candidates
+
+        matched = []
+
+        for item in candidates:
+
+            text = item.lower()
+
+            if any(word.lower() in text for word in keywords):
+                matched.append(item)
+
+        if matched:
+            return matched
+
         return candidates
