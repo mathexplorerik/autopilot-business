@@ -20,6 +20,10 @@ from agents.data.animals.subject_actions import SUBJECT_ACTIONS
 from agents.data.animals.subject_props import SUBJECT_PROPS
 from agents.data.animals.subject_locations import SUBJECT_LOCATIONS
 
+from agents.engines.story_engine.story_planner import StoryPlanner
+from agents.data.animals.story_beat_actions import STORY_BEAT_ACTIONS
+from agents.engines.relationship_engine.scorer import Scorer
+
 class AnimalEngine:
 
 
@@ -27,8 +31,10 @@ class AnimalEngine:
         self._used_combos = set()
         self.relationship = RelationshipEngine()
         self.validator = PromptValidator()
+        self.story_planner = StoryPlanner()
+        self.scorer = Scorer()
 
-    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None):
+    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False):
         complexity = self._get_complexity(page_number, total_pages)
         accessories = []
 
@@ -38,12 +44,43 @@ class AnimalEngine:
         # ✅ Background
         background = self._pick(BACKGROUNDS, category, "white background")
 
-        # ✅ Subject-specific actions
-        if subject.lower() in SUBJECT_ACTIONS:
-            action = random.choice(SUBJECT_ACTIONS[subject.lower()])
+        # ✅ Story planning (optional)
+        story_step = None
+        forced_category = None
+        story_keywords = None
+        if story_mode:
+            story_step = self.story_planner.plan(page_number, total_pages)
+            forced_category = story_step["action_category"]
+            story_keywords = story_step["keywords"]
+
+        # ✅ Story-beat actions take top priority in story_mode
+        story_beat_name = story_step["story_beat"] if story_step else None
+
+        if story_beat_name and story_beat_name in STORY_BEAT_ACTIONS:
+            template = random.choice(STORY_BEAT_ACTIONS[story_beat_name])
+            action = template
         else:
-            action = self._pick(ACTIONS, category, "playing happily")
-        
+            # ✅ Subject-specific actions (story-aware if story_mode is on)
+            subject_pool = SUBJECT_ACTIONS.get(subject.lower(), [])
+
+            if forced_category:
+                same_cat_subject = [a for a in subject_pool if ACTION_INDEX.get(a, "daily_life") == forced_category]
+
+                if same_cat_subject:
+                    if story_keywords:
+                        scored = [(a, self.scorer.score(a, story_keywords)) for a in same_cat_subject]
+                        best_score = max(s for _, s in scored)
+                        tied = [a for a, s in scored if s == best_score]
+                        action = random.choice(tied)
+                    else:
+                        action = random.choice(same_cat_subject)
+                else:
+                    action = self._pick(ACTIONS, forced_category, subject_pool[0] if subject_pool else "playing happily")
+            elif subject_pool:
+                action = random.choice(subject_pool)
+            else:
+                action = self._pick(ACTIONS, category, "playing happily")
+
         # ✅ Action category
         action_cat = ACTION_INDEX.get(action, "daily_life")
         relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
@@ -114,7 +151,10 @@ class AnimalEngine:
             "props": [prop] if prop else [],
             "accessories": accessories,
             "subject":     subject,
-            "age_group":   age_group
+            "age_group":   age_group,
+            "chapter":      story_step["chapter"] if story_step else None,
+            "story_beat":   story_step["story_beat"] if story_step else None,
+            "mood_hint":    story_step["mood_hint"] if story_step else None,
         }
     
 
