@@ -40,7 +40,7 @@ class RelationshipEngine:
         return data
 
     def get_locations(self, category):
-        return LOCATIONS.get(category, [])
+        return LOCATIONS.get(category, LOCATIONS.get("daily_life", []))
 
     def get_poses(self, category):
         return self.get_relationship(category).get("poses", [])
@@ -49,10 +49,10 @@ class RelationshipEngine:
         return self.get_relationship(category).get("expressions", [])
 
     def get_backgrounds(self, category):
-        return BACKGROUNDS.get(category, [])
+        return BACKGROUNDS.get(category, BACKGROUNDS.get("daily_life", []))
 
     def get_props(self, category):
-        return PROPS.get(category, [])
+        return PROPS.get(category, PROPS.get("daily_life", []))
 
     def best_match(self, candidates, keywords=None):
 
