@@ -86,9 +86,7 @@ def print_summary(niche, book, seo, pdf_path, start_time, results):
     print(f"   Niche     : {niche}")
     print(f"   Title     : {book.get('title', 'N/A')}")
     print(f"   Pages     : {book.get('pages') or book.get('total_pages', 'N/A')}")
-    print(f"   Age Group : {book.get('target_age') or book.get('age_group', 'N/A')}")
-    print(f"   PDF       : {pdf_path or 'N/A'}")
-
+    print(f"   Age Group : {book.get('target_age') or book.get('age_group') or '4-8 Years'}")
     keywords = seo.get("keywords", []) if seo else []
     if keywords:
         kw = keywords[:3] if isinstance(keywords, list) else []
