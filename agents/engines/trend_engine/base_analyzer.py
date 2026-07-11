@@ -11,7 +11,7 @@ class BaseAnalyzer:
 
     def __init__(self):
         self.database_root = (
-            Path("knowledge")
+            Path("agents/data/knowledge")
             / "database"
             / "trends"
         )

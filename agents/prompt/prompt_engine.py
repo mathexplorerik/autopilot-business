@@ -4,7 +4,7 @@ AI Publishing OS V6
 Prompt Engine — Complete
 ==========================================================
 """
-from knowledge.loader import KnowledgeLoader
+from agents.data.knowledge.loader import KnowledgeLoader
 from agents.engines.animal_engine import AnimalEngine
 from agents.prompt.prompt_builder import PromptBuilder
 from agents.prompt.prompt_formatter import PromptFormatter

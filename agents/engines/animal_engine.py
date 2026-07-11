@@ -16,6 +16,9 @@ from agents.prompt.validator import PromptValidator
 from agents.data.animals.scene_categories import ANIMAL_SCENE_CATEGORY
 from agents.data.world.habitats import HABITATS
 from agents.data.animals.subject_habitats import SUBJECT_HABITATS
+from agents.data.animals.subject_actions import SUBJECT_ACTIONS
+from agents.data.animals.subject_props import SUBJECT_PROPS
+from agents.data.animals.subject_locations import SUBJECT_LOCATIONS
 
 class AnimalEngine:
 
@@ -35,9 +38,12 @@ class AnimalEngine:
         # ✅ Background
         background = self._pick(BACKGROUNDS, category, "white background")
 
-        # ✅ Action
-        action = self._pick(ACTIONS, category, "playing happily")
-        match = ActionMatcher.detect(action)
+        # ✅ Subject-specific actions
+        if subject.lower() in SUBJECT_ACTIONS:
+            action = random.choice(SUBJECT_ACTIONS[subject.lower()])
+        else:
+            action = self._pick(ACTIONS, category, "playing happily")
+        
         # ✅ Action category
         action_cat = ACTION_INDEX.get(action, "daily_life")
         relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
@@ -54,6 +60,14 @@ class AnimalEngine:
         prop       = decision.get("prop", "")
         pose       = decision.get("pose", "standing pose")
         expression = decision.get("expression", "happy")
+
+        # ✅ Subject-specific locations
+        if subject.lower() in SUBJECT_LOCATIONS:
+            scene = random.choice(SUBJECT_LOCATIONS[subject.lower()])
+
+        # ✅ Subject-specific props
+        if subject.lower() in SUBJECT_PROPS:
+            prop = random.choice(SUBJECT_PROPS[subject.lower()])
 
         # ✅ Habitat — agar subject ka known habitat hai, to usse background override karo
         habitat_key = SUBJECT_HABITATS.get(subject.lower())
@@ -135,7 +149,7 @@ class AnimalEngine:
 
 
         if scene:
-            parts.append(f"at a {scene}")
+            parts.append(f"at {with_article(scene)}")
 
 
         if background:

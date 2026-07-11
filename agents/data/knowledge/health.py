@@ -5,7 +5,7 @@ Knowledge Health Check
 ==========================================================
 """
 
-from knowledge import KnowledgeEngine
+from agents.data.knowledge import KnowledgeEngine
 
 
 class KnowledgeHealth:

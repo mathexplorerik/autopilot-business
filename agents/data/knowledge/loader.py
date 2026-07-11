@@ -22,7 +22,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from knowledge.schema.niche_schema import NicheSchema
+from agents.data.knowledge.schema.niche_schema import NicheSchema
 
 
 class KnowledgeLoader:

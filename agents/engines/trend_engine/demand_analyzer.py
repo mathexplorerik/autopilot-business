@@ -9,7 +9,7 @@ class DemandAnalyzer:
     def __init__(self):
 
         data_file = (
-            Path("knowledge")
+            Path("agents/data/knowledge")
             / "database"
             / "trends"
             / "evergreen.json"

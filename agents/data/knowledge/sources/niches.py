@@ -6,7 +6,7 @@ Publishing Niches
 ==========================================================
 """
 
-from knowledge.models import NicheRecord
+from agents.data.knowledge.models import NicheRecord
 
 
 NICHES = [

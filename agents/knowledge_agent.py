@@ -5,7 +5,7 @@ Knowledge Agent
 ==========================================================
 """
 
-from knowledge import KnowledgeEngine
+from agents.data.knowledge import KnowledgeEngine
 
 
 class KnowledgeAgent:

@@ -9,7 +9,7 @@ Version : 1.0.0
 from __future__ import annotations
 from typing import Dict, List, Optional
 
-from knowledge.engine import KnowledgeEngine
+from agents.data.knowledge.engine import KnowledgeEngine
 from agents.prompt.prompt_engine_v8 import PromptEngineV8
 from agents.image_engine import (
     ImageEngine,
