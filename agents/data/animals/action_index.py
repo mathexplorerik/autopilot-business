@@ -72,7 +72,7 @@ ACTION_INDEX = {
     "playing catch": "play",
     "rolling a big ball": "play",
     "playing with leaves": "play",
-    "collecting colorful leaves": "play",
+    "collecting colorful leaves": "nature",
     "playing in flower fields": "play",
     "playing under a rainbow": "play",
     "playing in fresh snow": "play",

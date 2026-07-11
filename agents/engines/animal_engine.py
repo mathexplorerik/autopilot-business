@@ -34,14 +34,6 @@ class AnimalEngine:
         # ✅ Action
         action = self._pick(ACTIONS, category, "playing happily")
         match = ActionMatcher.detect(action)
-        if match:
-            print("Using Smart Rule")
-        else:
-            print("Using Default Rule")
-        print("=" * 40)
-        print("Action :", action)
-        print("Match  :", match)
-        
         # ✅ Action category
         action_cat = ACTION_INDEX.get(action, "daily_life")
         relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
@@ -94,8 +86,24 @@ class AnimalEngine:
             "subject":     subject,
             "age_group":   age_group
         }
+    
+
+    def _format_subject(self, subject, age_group):
+
+            if age_group == "toddler":
+                return f"Adorable baby {subject}"
+
+            elif age_group == "kids":
+                return f"Cute baby {subject}"
+
+            elif age_group == "teens":
+                return f"Young {subject}"
+
+            return subject
+    
 
     def _build_positive_prompt(self, subject, scene, background, action, pose, expression, props, accessories, age_group, complexity):
+        subject = self._format_subject(subject, age_group)
 
         age_styles = {
             "toddler": "very simple design, minimal details",
@@ -115,6 +123,7 @@ class AnimalEngine:
             subject,
             action,
         ]    
+
 
         if scene:
             parts.append(f"at a {scene}")
