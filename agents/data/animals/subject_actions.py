@@ -24,7 +24,7 @@ SUBJECT_ACTIONS = {
     "turtle": ["swimming near the shore", "resting on a rock", "walking along the sand", "basking in the sun"],
     "dolphin": ["jumping through the waves", "swimming near the surface", "playing in the ocean", "diving under the water"],
     "frog": ["hopping on a lily pad", "resting near the water", "catching a bug", "swimming in the pond"],
-    "koala": ["climbing a eucalyptus tree", "resting on a branch", "eating eucalyptus leaves", "sleeping in a tree"],
+    "koala": ["climbing an eucalyptus tree", "resting on a branch", "eating eucalyptus leaves", "sleeping in a tree"],
     "kangaroo": ["hopping across the outback", "resting in the shade", "carrying a joey", "grazing in the grassland"],
     "penguin": ["sliding across the ice", "walking on snowy ground", "catching a fish", "watching snowflakes", "playing in the snow"],
     "panda": ["eating bamboo", "walking through bamboo trees", "resting in a bamboo grove", "playing with bamboo leaves"],
