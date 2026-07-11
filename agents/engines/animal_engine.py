@@ -22,9 +22,6 @@ class AnimalEngine:
         # ✅ Category
         category = self._get_category(subject, season)
 
-        # ✅ Scene
-        scene = self._pick(SCENES, category, "in a beautiful garden")
-
         # ✅ Background
         background = self._pick(BACKGROUNDS, category, "white background")
 
@@ -34,6 +31,15 @@ class AnimalEngine:
         # ✅ Action category
         action_cat = ACTION_INDEX.get(action, "daily_life")
         relationship = RELATIONSHIP_MATRIX.get(action_cat, {})
+
+        # ✅ Scene
+        scene_options = relationship.get("scenes")
+        if scene_options:
+            scene = random.choice(scene_options)
+        else:
+            scene = self._pick(SCENES, category, "in a beautiful garden")
+
+        # ✅ Background
 
         # ✅ Pose — action se match karo
         pose = random.choice(
@@ -94,46 +100,112 @@ class AnimalEngine:
     def _build_positive_prompt(self, subject, scene, background, action, pose, expression, props, accessories, age_group, complexity):
 
         age_styles = {
-            "toddler": "very simple, extra thick outlines, minimal details",
-            "kids":    "simple design, thick outlines, large coloring spaces",
-            "teens":   "detailed design, clean outlines, intricate details",
+            "toddler": "very simple design, minimal details",
+            "kids":    "simple design, moderate detail",
+            "teens":   "detailed design, intricate details",
         }
 
         complexity_styles = {
-            "simple":       "2-3 large elements, huge coloring spaces",
+            "simple":       "2-3 large elements",
             "intermediate": "4-5 elements, balanced composition",
             "advanced":     "6-8 detailed elements",
             "pro":          "highly detailed coloring page with many interesting objects",
         }
 
         parts = [
-            f"Cute {expression} {subject}",
+
+            # Character
+            f"Cute baby {subject}",
+
+            # Expression
+            f"{expression} facial expression",
+
+            # Action
             action,
+
+            # Scene
             scene,
+
+            # Background
             background,
-            pose,
+
+            # Pose
+            f"{pose} pose",
         ]
 
         if props:
-            parts.append(", ".join(props))
+            parts.append(
+                "with " + ", ".join(props)
+            )
 
         if accessories:
-            parts.append(", ".join(accessories))
+            parts.append(
+                "wearing " + ", ".join(accessories)
+            )
 
         parts.extend([
-            "kids coloring book page",
-            "black and white line art",
-            "bold clean outlines",
-            "no shading",
-            "no gray",
-            "white background",
+
+            "professional children's coloring book illustration",
+
+            "clean vector-style black and white line art",
+
+            "bold thick black outlines",
+
+            "high contrast clean linework",
+
+            "single character",
+
+            "full body visible",
+
             "centered composition",
-            "print ready",
+
+            "large open coloring spaces",
+
+            "simple uncluttered composition",
+
+            "easy to color",
+
+            "print-ready",
+
+            "no shading",
+
+            "no gray",
+
+            "no gradients",
+
+            "no color",
+                
             age_styles.get(age_group, age_styles["kids"]),
             complexity_styles.get(complexity, complexity_styles["simple"]),
         ])
 
-        return ", ".join(parts)
+        return self._clean_prompt(parts)
+    
+    def _clean_prompt(self, parts):
+
+        cleaned = []
+        seen = set()
+
+        for part in parts:
+
+            if not part:
+                continue
+
+            part = part.strip()
+
+            if not part:
+                continue
+
+            key = part.lower()
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+            cleaned.append(part)
+
+        return ", ".join(cleaned)
+
 
     def _get_category(self, subject, season=None):
         if season:
@@ -149,47 +221,61 @@ class AnimalEngine:
                 return season_map[season.lower()]
         return ANIMAL_SCENE_CATEGORY.get(subject.lower(), "nature")
 
-    def _get_action_category(self, action):
-        action_lower = action.lower()
-        if any(w in action_lower for w in ["walk", "run", "jump", "climb"]):
-            return "movement"
-        if any(w in action_lower for w in ["play", "dance", "swing"]):
-            return "play"
-        if any(w in action_lower for w in ["explore", "discover", "adventure"]):
-            return "adventure"
-        if any(w in action_lower for w in ["garden", "flower", "plant", "nature"]):
-            return "nature"
-        if any(w in action_lower for w in ["paint", "draw", "craft", "create"]):
-            return "creative"
-        if any(w in action_lower for w in ["eat", "cook", "sleep", "read"]):
-            return "daily_life"
-        if any(w in action_lower for w in ["learn", "study", "school"]):
-            return "learning"
-        if any(w in action_lower for w in ["celebrat", "birthday", "party"]):
-            return "celebration"
-        if any(w in action_lower for w in ["sport", "football", "swim"]):
-            return "sports"
-        return "daily_life"
-
+    
     def _pick(self, data_dict, category, fallback=""):
-        if category in data_dict:
-            return random.choice(data_dict[category])
-        if "nature" in data_dict:
-            return random.choice(data_dict["nature"])
-        if "default" in data_dict:
-            return random.choice(data_dict["default"])
-        return fallback
 
+        if category in data_dict:
+            pool = data_dict[category]
+        elif "nature" in data_dict:
+            pool = data_dict["nature"]
+        elif "default" in data_dict:
+            pool = data_dict["default"]
+        else:
+            return fallback
+
+        available = [
+            item for item in pool
+            if item not in self._used_combos
+        ]
+
+        if not available:
+            self._used_combos.clear()
+            available = pool
+
+        choice = random.choice(available)
+
+        self._used_combos.add(choice)
+
+        return choice
+    
+    
     def _pick_list(self, data_dict, category, count=1):
+
+        
         if category in data_dict:
             pool = data_dict[category]
         elif "default" in data_dict:
             pool = data_dict["default"]
         else:
             return []
-        count = min(count, len(pool))
-        return random.sample(pool, count)
 
+        available = [
+            item for item in pool
+            if item not in self._used_combos
+        ]
+
+        if len(available) < count:
+            self._used_combos.clear()
+            available = pool
+
+        count = min(count, len(available))
+
+        selected = random.sample(available, count)
+
+        self._used_combos.update(selected)
+
+        return selected
+    
     def _get_complexity(self, page, total):
         ratio = page / total
         if ratio <= 0.25:   return "simple"
