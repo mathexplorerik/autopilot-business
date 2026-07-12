@@ -59,6 +59,7 @@ class BookEngine:
         keyword=keyword,
         total_pages=pages["pages"],
         age_group=age_group,
+        book_type=book_type,
     )
 
     # Step 5: Generate Title

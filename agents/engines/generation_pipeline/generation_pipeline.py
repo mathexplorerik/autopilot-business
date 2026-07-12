@@ -136,6 +136,10 @@ class GenerationPipeline:
 
             self.subjects = [self.keyword]
 
+        # ✅ Story mode uses a single fixed subject for continuity
+        if self.book_type == "story" and self.subjects:
+            self.subjects = [self.subjects[0]]
+
         return self.subjects
     
         # --------------------------------------------------
@@ -173,6 +177,7 @@ class GenerationPipeline:
             age_group=self.age_group,
             page_number=page,
             total_pages=self.total_pages,
+            story_mode=(self.book_type == "story"),
         )
 
     # --------------------------------------------------
@@ -308,6 +313,12 @@ class GenerationPipeline:
             "complexity": scene["complexity"],
 
             "age_group": scene["age_group"],
+
+            "chapter": scene.get("chapter"),
+
+            "story_beat": scene.get("story_beat"),
+
+            "mood_hint": scene.get("mood_hint"),
 		            
 		    "prompt": prompt,
 

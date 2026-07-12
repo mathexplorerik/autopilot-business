@@ -100,6 +100,7 @@ class ScenePlanner:
         age_group: str,
         page: int,
         total_pages: int,
+        story_mode: bool = False,
     ) -> Dict:
 
         return self.engine.build(
@@ -107,6 +108,7 @@ class ScenePlanner:
             age_group=age_group,
             page_number=page,
             total_pages=total_pages,
+            story_mode=story_mode,
         )
 
     # --------------------------------------------------
@@ -117,6 +119,7 @@ class ScenePlanner:
         age_group: str,
         page: int,
         total_pages: int,
+        story_mode: bool = False,
     ) -> Dict:
 
         retries = 0
@@ -128,6 +131,7 @@ class ScenePlanner:
                 age_group,
                 page,
                 total_pages,
+                story_mode,
             )
 
             prompt = scene["positive"]
@@ -172,6 +176,10 @@ class ScenePlanner:
 
             "complexity": scene["complexity"],
             "age_group": scene["age_group"],
+
+            "chapter": scene.get("chapter"),
+            "story_beat": scene.get("story_beat"),
+            "mood_hint": scene.get("mood_hint"),
         }
 
     # --------------------------------------------------
@@ -181,9 +189,15 @@ class ScenePlanner:
         keyword: str,
         total_pages: int,
         age_group: str = "kids",
+        book_type: str = "niche",
     ) -> List[Dict]:
         """
         Generate a complete book plan.
+
+        book_type="niche": rotates through multiple subjects per page,
+                          no story continuity (original behavior).
+        book_type="story": single fixed subject for the whole book,
+                          story_mode=True drives narrative continuity.
         """
 
         self.reset()
@@ -192,17 +206,23 @@ class ScenePlanner:
 
         self.load_subjects(keyword)
 
+        story_mode = book_type == "story"
+
+        if story_mode:
+            fixed_subject = self.subjects[0] if self.subjects else keyword
+
         pages = []
 
         for page in range(1, total_pages + 1):
 
-            subject = self.next_subject()
+            subject = fixed_subject if story_mode else self.next_subject()
 
             scene = self.unique_scene(
                 subject=subject,
                 age_group=age_group,
                 page=page,
                 total_pages=total_pages,
+                story_mode=story_mode,
             )
 
             page_data = self.build_page(
