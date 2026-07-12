@@ -22,6 +22,9 @@ from agents.data.animals.subject_locations import SUBJECT_LOCATIONS
 
 from agents.engines.story_engine.story_planner import StoryPlanner
 from agents.data.animals.story_beat_actions import STORY_BEAT_ACTIONS
+
+from agents.data.animals.story_beat_poses import STORY_BEAT_POSES
+from agents.data.animals.story_beat_expressions import STORY_BEAT_EXPRESSIONS
 from agents.engines.relationship_engine.scorer import Scorer
 
 class AnimalEngine:
@@ -97,6 +100,12 @@ class AnimalEngine:
         prop       = decision.get("prop", "")
         pose       = decision.get("pose", "standing pose")
         expression = decision.get("expression", "happy")
+
+        # ✅ Story-beat pose/expression override (top priority in story_mode)
+        if story_beat_name and story_beat_name in STORY_BEAT_POSES:
+            pose = random.choice(STORY_BEAT_POSES[story_beat_name])
+        if story_beat_name and story_beat_name in STORY_BEAT_EXPRESSIONS:
+            expression = random.choice(STORY_BEAT_EXPRESSIONS[story_beat_name])
 
         # ✅ Subject-specific locations
         if subject.lower() in SUBJECT_LOCATIONS:
