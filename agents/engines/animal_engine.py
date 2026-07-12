@@ -139,7 +139,8 @@ class AnimalEngine:
                 habitat_options = HABITATS[habitat_key]
             background = random.choice(habitat_options)
 
-        # ✅ Season override — takes priority over relationship-engine background
+        # ✅ Season override — takes priority over relationship-engine background AND scene
+        # (both must be season-consistent, or the frame contradicts itself)
         if season:
             season_map = {
                 "christmas": "snow",
@@ -152,6 +153,24 @@ class AnimalEngine:
             season_bg_category = season_map.get(season.lower())
             if season_bg_category and season_bg_category in BACKGROUNDS:
                 background = random.choice(BACKGROUNDS[season_bg_category])
+
+            season_scene_keywords = {
+                "christmas": ["snow"],
+                "halloween": ["night", "dark"],
+                "easter":    ["spring", "flower", "egg"],
+                "diwali":    ["diya", "lantern", "rangoli", "festival", "lights"],
+                "holi":      ["colorful", "festival", "petals"],
+                "eid":       ["festive", "family", "gift"],
+            }
+            keywords = season_scene_keywords.get(season.lower(), [])
+            if keywords:
+                combined_pool = SCENES.get("seasonal", []) + SCENES.get("festival", [])
+                matches = [
+                    s for s in combined_pool
+                    if any(kw in s.lower() for kw in keywords)
+                ]
+                if matches:
+                    scene = random.choice(matches)
 
         # ✅ Character Memory — inject consistent signature accessory
         accessories = []

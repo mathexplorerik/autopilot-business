@@ -69,16 +69,43 @@ def check_scene_background(scene, background, issues, subject, page):
         )
 
 
-def check_season_scene(background, season, issues, subject, page):
-    if not season or season.lower() not in ("christmas",):
+SEASON_REQUIRED_KEYWORDS = {
+    "christmas": ["snow", "winter", "frost", "ice", "frozen"],
+}
+
+def check_season_scene(scene, background, season, issues, subject, page):
+    if not season:
         return
-    bg_lower = background.lower()
+
+    season_key = season.lower()
+
+    bg_lower = (background or "").lower()
     for word in SNOW_CONTRADICTING_WORDS:
         if word in bg_lower:
             issues.append(
                 f"[{subject}] page {page}: season/background contradiction - "
                 f"season='{season}' background='{background}' contains '{word}'"
             )
+
+    required = SEASON_REQUIRED_KEYWORDS.get(season_key)
+    if not required:
+        return
+
+    scene_lower = (scene or "").lower()
+    scene_has_theme = any(kw in scene_lower for kw in required)
+    bg_has_theme = any(kw in bg_lower for kw in required)
+
+    if not scene_has_theme:
+        issues.append(
+            f"[{subject}] page {page}: scene not season-themed - "
+            f"season='{season}' scene='{scene}'"
+        )
+
+    if not bg_has_theme:
+        issues.append(
+            f"[{subject}] page {page}: background not season-themed - "
+            f"season='{season}' background='{background}'"
+        )
 
 
 def check_companion_species(subject, companion, issues):
@@ -142,7 +169,7 @@ def run_semantic_test(subject, season=None):
 
         check_pose_action(page_data["action"], page_data["pose"], issues, subject, page)
         check_scene_background(page_data["scene"], page_data["background"], issues, subject, page)
-        check_season_scene(page_data["background"], season, issues, subject, page)
+        check_season_scene(page_data["scene"], page_data["background"], season, issues, subject, page)
         check_complexity_content(page_data["complexity"], page_data, issues, subject, page)
 
     return issues
