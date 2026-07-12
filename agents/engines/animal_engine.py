@@ -117,8 +117,6 @@ class AnimalEngine:
 
         # ✅ Habitat — agar subject ka known habitat hai, to usse background override karo
         # (scene se clash avoid karte hue — koi redundant repeat na ho)
-        # Skipped when a season is set, so seasonal backgrounds (e.g. snow, festival)
-        # take priority over the animal'''s natural habitat.
         def _head_noun(text):
             preps = (" under ", " through ", " with ", " near ", " beside ")
             t = text.lower()
@@ -129,7 +127,7 @@ class AnimalEngine:
             return words[-1] if words else ""
 
         habitat_key = SUBJECT_HABITATS.get(subject.lower())
-        if not season and habitat_key and habitat_key in HABITATS:
+        if habitat_key and habitat_key in HABITATS:
             scene_head = _head_noun(scene)
             habitat_options = [
                 h for h in HABITATS[habitat_key]
@@ -139,38 +137,19 @@ class AnimalEngine:
                 habitat_options = HABITATS[habitat_key]
             background = random.choice(habitat_options)
 
-        # ✅ Season override — takes priority over relationship-engine background AND scene
-        # (both must be season-consistent, or the frame contradicts itself)
+        # ✅ Season — additive flourish only.
         if season:
-            season_map = {
-                "christmas": "snow",
-                "halloween": "night",
-                "easter":    "garden",
-                "diwali":    "village",
-                "holi":      "park",
-                "eid":       "village"
+            SEASON_FLOURISH = {
+                "christmas": "with a light dusting of snow and twinkling festive lights",
+                "halloween": "with a few carved pumpkins and autumn leaves nearby",
+                "easter":    "with pastel spring flowers blooming nearby",
+                "diwali":    "with glowing diyas and colorful rangoli patterns nearby",
+                "holi":      "with playful splashes of colorful powder in the air",
+                "eid":       "with festive lanterns and bunting nearby",
             }
-            season_bg_category = season_map.get(season.lower())
-            if season_bg_category and season_bg_category in BACKGROUNDS:
-                background = random.choice(BACKGROUNDS[season_bg_category])
-
-            season_scene_keywords = {
-                "christmas": ["snow"],
-                "halloween": ["night", "dark"],
-                "easter":    ["spring", "flower", "egg"],
-                "diwali":    ["diya", "lantern", "rangoli", "festival", "lights"],
-                "holi":      ["colorful", "festival", "petals"],
-                "eid":       ["festive", "family", "gift"],
-            }
-            keywords = season_scene_keywords.get(season.lower(), [])
-            if keywords:
-                combined_pool = SCENES.get("seasonal", []) + SCENES.get("festival", [])
-                matches = [
-                    s for s in combined_pool
-                    if any(kw in s.lower() for kw in keywords)
-                ]
-                if matches:
-                    scene = random.choice(matches)
+            flourish = SEASON_FLOURISH.get(season.lower())
+            if flourish and flourish.lower() not in background.lower():
+                background = f"{background}, {flourish}"
 
         # ✅ Character Memory — inject consistent signature accessory
         accessories = []
@@ -347,17 +326,6 @@ class AnimalEngine:
 
 
     def _get_category(self, subject, season=None):
-        if season:
-            season_map = {
-                "christmas": "snow",
-                "halloween": "night",
-                "easter":    "garden",
-                "diwali":    "village",
-                "holi":      "park",
-                "eid":       "village"
-            }
-            if season.lower() in season_map:
-                return season_map[season.lower()]
         return ANIMAL_SCENE_CATEGORY.get(subject.lower(), "nature")
 
     
