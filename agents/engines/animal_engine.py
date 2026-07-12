@@ -37,7 +37,7 @@ class AnimalEngine:
         self.story_planner = StoryPlanner()
         self.scorer = Scorer()
 
-    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False):
+    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None):
         complexity = self._get_complexity(page_number, total_pages)
         accessories = []
 
@@ -127,6 +127,11 @@ class AnimalEngine:
                 habitat_options = HABITATS[habitat_key]
             background = random.choice(habitat_options)
 
+        # ✅ Character Memory — inject consistent signature accessory
+        accessories = []
+        if character_profile and character_profile.get("signature_item"):
+            accessories = [character_profile["signature_item"]]
+
         positive = self._build_positive_prompt(
             subject=subject,
             scene=scene,
@@ -135,7 +140,7 @@ class AnimalEngine:
             pose=pose,
             expression=expression,
             props=[prop] if prop else [],
-            accessories=[],
+            accessories=accessories,
             age_group=age_group,
             complexity=complexity
         )

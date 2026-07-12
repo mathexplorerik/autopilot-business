@@ -70,6 +70,8 @@ class GenerationPipeline:
 
         self.duplicate_checker.reset()
 
+        self.character_profile = {}
+
     # --------------------------------------------------
 
     def configure(
@@ -79,6 +81,7 @@ class GenerationPipeline:
         age_group: str,
         total_pages: int,
         provider: str = "manual",
+        character_profile: dict = None,
     ):
 
         self.reset()
@@ -92,6 +95,8 @@ class GenerationPipeline:
         self.total_pages = total_pages
 
         self.provider = provider.lower().strip()
+
+        self.character_profile = character_profile or {}
 
     # --------------------------------------------------
 
@@ -178,6 +183,7 @@ class GenerationPipeline:
             page_number=page,
             total_pages=self.total_pages,
             story_mode=(self.book_type == "story"),
+            character_profile=self.character_profile,
         )
 
     # --------------------------------------------------

@@ -6,6 +6,7 @@ from .title_generator import TitleGenerator
 from .subtitle_generator import SubtitleGenerator
 from .blueprint_generator import BlueprintGenerator
 from .quality_checker import QualityChecker
+from .character_profile_generator import CharacterProfileGenerator
 from agents.engines.generation_pipeline.generation_pipeline import GenerationPipeline
 
 class BookEngine:
@@ -29,6 +30,8 @@ class BookEngine:
         self.blueprint_generator = BlueprintGenerator()
 
         self.quality_checker = QualityChecker()
+
+        self.character_profile_generator = CharacterProfileGenerator()
 
     def build(
     self,
@@ -54,12 +57,21 @@ class BookEngine:
         age_group,
     )
 
+    # Step 3.5: Character Profile (story books only)
+        character_profile = {}
+        if book_type == "story":
+            character_profile = self.character_profile_generator.generate(
+                subject=keyword,
+                age_group=age_group,
+            )
+
     # Step 4: Plan Scenes
         scenes = self.scene_planner.plan(
         keyword=keyword,
         total_pages=pages["pages"],
         age_group=age_group,
         book_type=book_type,
+        character_profile=character_profile,
     )
 
     # Step 5: Generate Title
@@ -84,6 +96,7 @@ class BookEngine:
         scenes=scenes,
         book_type=book_type,
         target_age=age_group,
+        character_profile=character_profile,
     )
 
     # Step 8: Quality Check
@@ -101,6 +114,7 @@ class BookEngine:
         age_group=age_group,
         total_pages=pages["pages"],
         provider=provider,
+        character_profile=character_profile,
     )
 
         generated_pages = self.pipeline.generate()

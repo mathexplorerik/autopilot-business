@@ -15,11 +15,11 @@ STORY_BEAT_POSES = {
     "get_ready": ["standing"],
     "leave_home": ["walking", "standing"],
     "morning_walk": ["walking"],
-    "say_hello": ["standing", "waving pose"],
+    "say_hello": ["standing", "waving"],
 
     "walk_to_park": ["walking"],
     "discover_nature": ["crouching", "sitting"],
-    "meet_friend": ["standing", "waving pose"],
+    "meet_friend": ["standing", "waving"],
     "learn_something": ["sitting", "standing"],
     "watch_animals": ["sitting", "standing"],
     "cross_path": ["walking", "standing"],
