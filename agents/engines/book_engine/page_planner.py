@@ -12,7 +12,9 @@ class PagePlanner:
             "trace_books": 45,
             "dot_to_dot": 40,
             "word_search": 80,
-            "cut_and_paste": 35
+            "cut_and_paste": 35,
+            "story": 40,
+            "niche": 50,
         }
 
     def plan(

@@ -82,6 +82,8 @@ class BookEngine:
         theme=theme["theme"],
         pages=pages["pages"],
         scenes=scenes,
+        book_type=book_type,
+        target_age=age_group,
     )
 
     # Step 8: Quality Check

@@ -161,6 +161,7 @@ class AnimalEngine:
             "accessories": accessories,
             "subject":     subject,
             "age_group":   age_group,
+            "book_mode":    "story" if story_mode else "niche",
             "chapter":      story_step["chapter"] if story_step else None,
             "story_beat":   story_step["story_beat"] if story_step else None,
             "mood_hint":    story_step["mood_hint"] if story_step else None,

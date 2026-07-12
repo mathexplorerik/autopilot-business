@@ -180,6 +180,7 @@ class ScenePlanner:
             "chapter": scene.get("chapter"),
             "story_beat": scene.get("story_beat"),
             "mood_hint": scene.get("mood_hint"),
+            "book_mode": scene.get("book_mode"),
         }
 
     # --------------------------------------------------
