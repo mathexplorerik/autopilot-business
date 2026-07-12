@@ -72,6 +72,10 @@ class GenerationPipeline:
 
         self.character_profile = {}
 
+        self.recurring_motifs = []
+
+        self.season = None
+
     # --------------------------------------------------
 
     def configure(
@@ -82,6 +86,8 @@ class GenerationPipeline:
         total_pages: int,
         provider: str = "manual",
         character_profile: dict = None,
+        recurring_motifs: list = None,
+        season: str = None,
     ):
 
         self.reset()
@@ -97,6 +103,10 @@ class GenerationPipeline:
         self.provider = provider.lower().strip()
 
         self.character_profile = character_profile or {}
+
+        self.recurring_motifs = recurring_motifs or []
+
+        self.season = season
 
     # --------------------------------------------------
 
@@ -184,6 +194,8 @@ class GenerationPipeline:
             total_pages=self.total_pages,
             story_mode=(self.book_type == "story"),
             character_profile=self.character_profile,
+            recurring_motifs=self.recurring_motifs,
+            season=self.season,
         )
 
     # --------------------------------------------------

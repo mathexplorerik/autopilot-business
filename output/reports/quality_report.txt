@@ -1,10 +1,10 @@
 QUALITY REPORT
 ========================================
-Time    : 2026-07-11 22:35:04
+Time    : 2026-07-12 12:53:43
 Niche   : N/A
 
 PASSED:
-  ✅ Title     : Animals Coloring Books
+  ✅ Title     : Jungle Animals Coloring Books
   ✅ Books folder exists
   ✅ Prompts folder exists
   ✅ Images    : 32 found

@@ -442,7 +442,7 @@ BACKGROUNDS = {
     "snowy sunset landscape",
     "snowy path with footprints",
     "snow-covered tree stumps",
-    "snowy field with wildflowers peeking through",
+    "snowy field under a clear winter sky",
     "snowy sky with gentle snowflakes",
     "snow-covered bushes",
     "snowy woodland clearing",

@@ -37,7 +37,7 @@ class AnimalEngine:
         self.story_planner = StoryPlanner()
         self.scorer = Scorer()
 
-    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None):
+    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None, recurring_motifs=None):
         complexity = self._get_complexity(page_number, total_pages)
         accessories = []
 
@@ -117,20 +117,52 @@ class AnimalEngine:
 
         # ✅ Habitat — agar subject ka known habitat hai, to usse background override karo
         # (scene se clash avoid karte hue — koi redundant repeat na ho)
+        # Skipped when a season is set, so seasonal backgrounds (e.g. snow, festival)
+        # take priority over the animal'''s natural habitat.
+        def _head_noun(text):
+            preps = (" under ", " through ", " with ", " near ", " beside ")
+            t = text.lower()
+            for p in preps:
+                if p in t:
+                    t = t.split(p)[0]
+            words = t.split()
+            return words[-1] if words else ""
+
         habitat_key = SUBJECT_HABITATS.get(subject.lower())
-        if habitat_key and habitat_key in HABITATS:
+        if not season and habitat_key and habitat_key in HABITATS:
+            scene_head = _head_noun(scene)
             habitat_options = [
                 h for h in HABITATS[habitat_key]
-                if h.lower() not in scene.lower() and scene.lower() not in h.lower()
+                if _head_noun(h) != scene_head
             ]
             if not habitat_options:
                 habitat_options = HABITATS[habitat_key]
             background = random.choice(habitat_options)
 
+        # ✅ Season override — takes priority over relationship-engine background
+        if season:
+            season_map = {
+                "christmas": "snow",
+                "halloween": "night",
+                "easter":    "garden",
+                "diwali":    "village",
+                "holi":      "park",
+                "eid":       "village"
+            }
+            season_bg_category = season_map.get(season.lower())
+            if season_bg_category and season_bg_category in BACKGROUNDS:
+                background = random.choice(BACKGROUNDS[season_bg_category])
+
         # ✅ Character Memory — inject consistent signature accessory
         accessories = []
         if character_profile and character_profile.get("signature_item"):
             accessories = [character_profile["signature_item"]]
+
+        # ✅ Recurring Motifs — occasionally add a themed visual element (rotates evenly)
+        if recurring_motifs and page_number % 4 == 0:
+            motif_index = (page_number // 4 - 1) % len(recurring_motifs)
+            motif = recurring_motifs[motif_index]
+            accessories = accessories + [motif] if accessories else [motif]
 
         positive = self._build_positive_prompt(
             subject=subject,
@@ -298,12 +330,12 @@ class AnimalEngine:
     def _get_category(self, subject, season=None):
         if season:
             season_map = {
-                "christmas": "winter",
-                "halloween": "spooky",
-                "easter":    "spring",
-                "diwali":    "festival",
-                "holi":      "festival",
-                "eid":       "festival"
+                "christmas": "snow",
+                "halloween": "night",
+                "easter":    "garden",
+                "diwali":    "village",
+                "holi":      "park",
+                "eid":       "village"
             }
             if season.lower() in season_map:
                 return season_map[season.lower()]

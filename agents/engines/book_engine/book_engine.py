@@ -7,6 +7,7 @@ from .subtitle_generator import SubtitleGenerator
 from .blueprint_generator import BlueprintGenerator
 from .quality_checker import QualityChecker
 from .character_profile_generator import CharacterProfileGenerator
+from .recurring_motifs_generator import RecurringMotifsGenerator
 from agents.engines.generation_pipeline.generation_pipeline import GenerationPipeline
 
 class BookEngine:
@@ -33,12 +34,15 @@ class BookEngine:
 
         self.character_profile_generator = CharacterProfileGenerator()
 
+        self.recurring_motifs_generator = RecurringMotifsGenerator()
+
     def build(
     self,
     keyword: str,
     book_type: str,
     age_group: str,
     provider: str = "manual",
+    season: str = None,
 ):
 
     # Step 1: Select Niche
@@ -59,11 +63,13 @@ class BookEngine:
 
     # Step 3.5: Character Profile (story books only)
         character_profile = {}
+        recurring_motifs = []
         if book_type == "story":
             character_profile = self.character_profile_generator.generate(
                 subject=keyword,
                 age_group=age_group,
             )
+            recurring_motifs = self.recurring_motifs_generator.generate()
 
     # Step 4: Plan Scenes
         scenes = self.scene_planner.plan(
@@ -72,6 +78,8 @@ class BookEngine:
         age_group=age_group,
         book_type=book_type,
         character_profile=character_profile,
+        recurring_motifs=recurring_motifs,
+        season=season,
     )
 
     # Step 5: Generate Title
@@ -97,6 +105,7 @@ class BookEngine:
         book_type=book_type,
         target_age=age_group,
         character_profile=character_profile,
+        recurring_motifs=recurring_motifs,
     )
 
     # Step 8: Quality Check
@@ -115,6 +124,8 @@ class BookEngine:
         total_pages=pages["pages"],
         provider=provider,
         character_profile=character_profile,
+        recurring_motifs=recurring_motifs,
+        season=season,
     )
 
         generated_pages = self.pipeline.generate()

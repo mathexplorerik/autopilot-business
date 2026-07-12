@@ -198,11 +198,18 @@ def main():
     # Step 3: Prompts
     # ─────────────────────────────
     step(3, "Prompt Agent")
-    prompt_agent = PromptAgent()
-    prompts = run_step(
-        lambda: prompt_agent.generate(report, season=season),
-        "Prompts Generated"
-    )
+    # ✅ BookEngine se generated pages use karo
+    if book.get("generated_pages"):
+        prompts = [p.get("positive", "") for p in book["generated_pages"]]
+        success(f"Prompts from BookEngine — {len(prompts)} pages — 0.0s")
+        results["Prompts"] = "ok"
+    else:
+        prompt_agent = PromptAgent()
+        prompts = run_step(
+            lambda: prompt_agent.generate(report, season=season),
+            "Prompts Generated"
+        )
+        results["Prompts"] = "ok"
     results["Prompts"] = "ok"
 
     # ─────────────────────────────

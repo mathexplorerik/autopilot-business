@@ -51,6 +51,7 @@ class BlueprintGenerator:
         book_type: str = "niche",
         target_age: str = "kids",
         character_profile: dict = None,
+        recurring_motifs: list = None,
     ) -> dict:
 
         chapters = self._build_chapter_allocation(book_type, pages)
@@ -74,7 +75,7 @@ class BlueprintGenerator:
 
             # Reserved for future milestones (V12.2+)
             "character_profile": character_profile or {},
-            "recurring_elements": [],
+            "recurring_elements": recurring_motifs or [],
             "learning_objective": None,
 
             "scenes": scenes,

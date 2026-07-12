@@ -62,9 +62,23 @@ def run_story_test(subject, total_pages=40):
 
         scene = (r.get("scene") or "")
         background = (r.get("background") or "")
-        if scene and background and (scene.lower() in background.lower() or background.lower() in scene.lower()):
+
+        PREPOSITIONS = (" under ", " through ", " with ", " near ", " beside ", " peeking")
+
+        def head_noun(text):
+            text_lower = text.lower()
+            for prep in PREPOSITIONS:
+                if prep in text_lower:
+                    text_lower = text_lower.split(prep)[0]
+            words = text_lower.split()
+            return words[-1] if words else ""
+
+        scene_head = head_noun(scene)
+        bg_head = head_noun(background)
+
+        if scene and background and scene_head and scene_head == bg_head:
             redundant_scene_bg += 1
-            issues.append(f"[{subject}] page {page}: scene/background redundant ('{scene}' / '{background}')")
+            issues.append(f"[{subject}] page {page}: scene/background same head noun '{scene_head}' ('{scene}' / '{background}')")
 
     # --- Beat order check ---
     if seen_beats != EXPECTED_BEAT_ORDER[:len(seen_beats)]:

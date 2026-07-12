@@ -102,6 +102,8 @@ class ScenePlanner:
         total_pages: int,
         story_mode: bool = False,
         character_profile: Dict = None,
+        recurring_motifs: List = None,
+        season: str = None,
     ) -> Dict:
 
         return self.engine.build(
@@ -123,6 +125,8 @@ class ScenePlanner:
         total_pages: int,
         story_mode: bool = False,
         character_profile: Dict = None,
+        recurring_motifs: List = None,
+        season: str = None,
     ) -> Dict:
 
         retries = 0
@@ -136,6 +140,8 @@ class ScenePlanner:
                 total_pages,
                 story_mode,
                 character_profile,
+                recurring_motifs,
+                season,
             )
 
             prompt = scene["positive"]
@@ -196,6 +202,8 @@ class ScenePlanner:
         age_group: str = "kids",
         book_type: str = "niche",
         character_profile: Dict = None,
+        recurring_motifs: List = None,
+        season: str = None,
     ) -> List[Dict]:
         """
         Generate a complete book plan.
@@ -230,6 +238,8 @@ class ScenePlanner:
                 total_pages=total_pages,
                 story_mode=story_mode,
                 character_profile=character_profile,
+                recurring_motifs=recurring_motifs,
+                season=season,
             )
 
             page_data = self.build_page(
