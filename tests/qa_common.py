@@ -154,3 +154,12 @@ def average_emotional_flow_score(expressions):
     if not scores:
         return 100.0
     return sum(scores) / len(scores)
+
+def significant_overlap(text1: str, text2: str, threshold: float = 0.8) -> bool:
+    """Check if two strings have significant overlap."""
+    words1 = set(text1.lower().split())
+    words2 = set(text2.lower().split())
+    if not words1 or not words2:
+        return False
+    overlap = len(words1 & words2) / min(len(words1), len(words2))
+    return overlap >= threshold
