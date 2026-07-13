@@ -9,6 +9,7 @@ from .quality_checker import QualityChecker
 from .character_profile_generator import CharacterProfileGenerator
 from .recurring_motifs_generator import RecurringMotifsGenerator
 from agents.engines.generation_pipeline.generation_pipeline import GenerationPipeline
+from agents.engines.education_engine.education_engine import EducationEngine
 
 class BookEngine:
 
@@ -36,6 +37,8 @@ class BookEngine:
 
         self.recurring_motifs_generator = RecurringMotifsGenerator()
 
+        self.education_engine = EducationEngine()
+
     def build(
     self,
     keyword: str,
@@ -43,7 +46,15 @@ class BookEngine:
     age_group: str,
     provider: str = "manual",
     season: str = None,
+    education_mode: str = None,
 ):
+
+    # Educational books bypass the animal-engine pipeline entirely
+        if book_type == "educational":
+            return self._build_educational_book(
+                education_mode=education_mode,
+                age_group=age_group,
+            )
 
     # Step 1: Select Niche
         niche = self.niche_selector.select(
@@ -133,3 +144,46 @@ class BookEngine:
         blueprint["generated_pages"] = generated_pages
 
         return blueprint
+
+    def _build_educational_book(self, education_mode, age_group):
+        """
+        Builds an educational coloring book (alphabet, numbers,
+        colors, or shapes) — a simpler, self-contained flow that
+        doesn'''t need niche/scene/animal-engine machinery.
+        """
+        if not education_mode:
+            raise ValueError("education_mode is required when book_type='educational'")
+
+        total_pages = self.education_engine.get_page_count(education_mode)
+
+        generated_pages = []
+        for page_number in range(1, total_pages + 1):
+            page = self.education_engine.build(
+                education_mode=education_mode,
+                page_number=page_number,
+                age_group=age_group,
+            )
+            page["page"] = page_number
+            page["book_mode"] = "educational"
+            generated_pages.append(page)
+
+        title = education_mode.capitalize() + " Learning Coloring Book"
+        subtitle = "A fun " + education_mode + " coloring book for kids"
+
+        return {
+            "title": title,
+            "subtitle": subtitle,
+            "keyword": education_mode,
+            "book_type": "educational",
+            "education_mode": education_mode,
+            "theme": education_mode.capitalize() + " Learning",
+            "target_age": age_group,
+            "total_pages": total_pages,
+            "difficulty_curve": "consistent (educational content)",
+            "chapters": [],
+            "character_profile": {},
+            "recurring_elements": [],
+            "learning_objective": education_mode,
+            "scenes": [],
+            "generated_pages": generated_pages,
+        }
