@@ -18,6 +18,7 @@ from qa_common import (
     environment_conflicts,
     complexity_content_mismatch,
     emotional_jump,
+    average_emotional_flow_score,
 )
 
 SUBJECTS = ["lion", "rabbit", "panda", "penguin", "elephant", "tiger", "giraffe", "zebra", "fox", "owl"]
@@ -36,6 +37,7 @@ def run_story_test(subject, total_pages=40):
     seen_complexity = []
     redundant_scene_bg = 0
     prev_expression = None
+    seen_expressions = []
 
     for page in range(1, total_pages + 1):
         try:
@@ -83,6 +85,7 @@ def run_story_test(subject, total_pages=40):
             issues.append(f"[{subject}] page {page}: {mismatch}")
 
         current_expression = r.get("expression")
+        seen_expressions.append(current_expression)
         if emotional_jump(prev_expression, current_expression):
             issues.append(
                 f"[{subject}] page {page}: jarring emotional jump '{prev_expression}' -> '{current_expression}'"
@@ -114,6 +117,7 @@ def run_story_test(subject, total_pages=40):
         "unique_prompts": len(prompts),
         "redundant_scene_bg": redundant_scene_bg,
         "issues": issues,
+        "emotional_flow_score": average_emotional_flow_score(seen_expressions),
     }
 
 
@@ -146,14 +150,22 @@ def main():
     print("STORY MODE QUALITY TEST (V11 QA)")
     print("=" * 70)
 
+    flow_scores = []
     for subject in SUBJECTS:
         result = run_story_test(subject)
         status = "PASS" if not result["issues"] else "FAIL"
+        flow_scores.append(result["emotional_flow_score"])
         print(
             f"[{status}] {subject:10} | unique={result['unique_prompts']}/{result['total_pages']} "
-            f"| redundant_scene_bg={result['redundant_scene_bg']} | issues={len(result['issues'])}"
+            f"| redundant_scene_bg={result['redundant_scene_bg']} | issues={len(result['issues'])} "
+            f"| emotional_flow={result['emotional_flow_score']:.1f}%"
         )
         all_issues.extend(result["issues"])
+
+    if flow_scores:
+        avg_flow = sum(flow_scores) / len(flow_scores)
+        print()
+        print(f"Average Emotional Flow Score: {avg_flow:.1f}%")
 
     print()
     print("--- Season/habitat conflict check (christmas, first 3 subjects) ---")
