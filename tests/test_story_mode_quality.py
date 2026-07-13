@@ -17,6 +17,7 @@ from qa_common import (
     shared_word_overlap,
     environment_conflicts,
     complexity_content_mismatch,
+    emotional_jump,
 )
 
 SUBJECTS = ["lion", "rabbit", "panda", "penguin", "elephant", "tiger", "giraffe", "zebra", "fox", "owl"]
@@ -34,6 +35,7 @@ def run_story_test(subject, total_pages=40):
     seen_chapters = []
     seen_complexity = []
     redundant_scene_bg = 0
+    prev_expression = None
 
     for page in range(1, total_pages + 1):
         try:
@@ -79,6 +81,13 @@ def run_story_test(subject, total_pages=40):
         mismatch = complexity_content_mismatch(r.get("complexity", ""), prompt)
         if mismatch:
             issues.append(f"[{subject}] page {page}: {mismatch}")
+
+        current_expression = r.get("expression")
+        if emotional_jump(prev_expression, current_expression):
+            issues.append(
+                f"[{subject}] page {page}: jarring emotional jump '{prev_expression}' -> '{current_expression}'"
+            )
+        prev_expression = current_expression
 
     if seen_beats != EXPECTED_BEAT_ORDER[:len(seen_beats)]:
         for i, (expected, actual) in enumerate(zip(EXPECTED_BEAT_ORDER, seen_beats), start=1):

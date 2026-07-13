@@ -92,3 +92,15 @@ def prop_accessory_duplicate(props, accessories):
     props_set = {p.lower() for p in (props or [])}
     accessories_set = {a.lower() for a in (accessories or [])}
     return props_set & accessories_set
+
+
+JARRING_TRANSITIONS = {
+    ("sleepy", "excited"), ("sleepy", "brave"), ("sleepy", "surprised"),
+    ("excited", "sleepy"), ("brave", "sleepy"), ("surprised", "sleepy"),
+}
+
+def emotional_jump(prev_expression, current_expression):
+    if not prev_expression or not current_expression:
+        return False
+    pair = (prev_expression.lower(), current_expression.lower())
+    return pair in JARRING_TRANSITIONS
