@@ -2,27 +2,26 @@
 =========================================
 Semantic Consistency Test (V12 QA)
 =========================================
-Validates that generated fields make sense
-TOGETHER, not just individually:
-
-- Pose <-> Action
-- Expression <-> Action
-- Scene <-> Background
-- Prop <-> Accessory
-- Companion <-> Species
-- Home <-> Species
-- Season <-> Scene
-- Theme <-> Props
-- Complexity metadata <-> Prompt complexity
+Season is expressed via accessories (a wearable/
+held festive item), never via scene/background
+weather text - see animal_engine.py. This file's
+season checks reflect that design.
 """
 
 import sys
 import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.dirname(__file__))
 
 from agents.engines.book_engine.book_engine import BookEngine
 from agents.engines.book_engine.character_profile_generator import COMPANIONS, HOME_ENVIRONMENTS
+from qa_common import (
+    head_noun,
+    shared_word_overlap,
+    environment_conflicts,
+    complexity_content_mismatch,
+)
 
 SUBJECTS = ["lion", "rabbit", "panda", "penguin", "elephant", "tiger", "giraffe", "zebra", "fox", "owl"]
 
@@ -32,17 +31,16 @@ INCOMPATIBLE_POSE_ACTION = {
     "sleeping": ["running", "jumping", "dancing", "playing"],
 }
 
-SNOW_CONTRADICTING_WORDS = ["flower", "wildflower", "bloom", "sunny", "warm", "tropical"]
-
-
-def head_noun(text):
-    preps = (" under ", " through ", " with ", " near ", " beside ")
-    t = text.lower()
-    for p in preps:
-        if p in t:
-            t = t.split(p)[0]
-    words = t.split()
-    return words[-1] if words else ""
+# Keywords expected in ACCESSORIES (not scene/background) when a season
+# is active - matches SEASON_ACCESSORIES in animal_engine.py.
+SEASON_ACCESSORY_KEYWORDS = {
+    "christmas": ["santa", "scarf", "ornament"],
+    "halloween": ["pumpkin", "witch", "bat"],
+    "easter": ["flower crown", "bow", "egg"],
+    "diwali": ["diya", "fairy lights", "rangoli"],
+    "holi": ["powder", "water gun", "bandana"],
+    "eid": ["lantern", "bunting", "crescent"],
+}
 
 
 def check_pose_action(action, pose, issues, subject, page):
@@ -67,44 +65,44 @@ def check_scene_background(scene, background, issues, subject, page):
             f"[{subject}] page {page}: scene/background same head noun - "
             f"'{scene}' / '{background}'"
         )
-
-
-SEASON_REQUIRED_KEYWORDS = {
-    "christmas": ["snow", "winter", "frost", "ice", "frozen"],
-}
-
-def check_season_scene(scene, background, season, issues, subject, page):
-    if not season:
         return
-
-    season_key = season.lower()
-
-    bg_lower = (background or "").lower()
-    for word in SNOW_CONTRADICTING_WORDS:
-        if word in bg_lower:
-            issues.append(
-                f"[{subject}] page {page}: season/background contradiction - "
-                f"season='{season}' background='{background}' contains '{word}'"
-            )
-
-    required = SEASON_REQUIRED_KEYWORDS.get(season_key)
-    if not required:
-        return
-
-    scene_lower = (scene or "").lower()
-    scene_has_theme = any(kw in scene_lower for kw in required)
-    bg_has_theme = any(kw in bg_lower for kw in required)
-
-    if not scene_has_theme:
+    overlap = shared_word_overlap(scene, background)
+    if overlap:
         issues.append(
-            f"[{subject}] page {page}: scene not season-themed - "
-            f"season='{season}' scene='{scene}'"
+            f"[{subject}] page {page}: scene/background share word(s) {sorted(overlap)} - "
+            f"'{scene}' / '{background}'"
         )
 
-    if not bg_has_theme:
+
+def check_season_scene(scene, background, season, issues, subject, page):
+    """
+    By design, season is expressed as an ACCESSORY (see
+    check_season_accessory below) and must NEVER leak into scene/
+    background weather text. This is a regression guard: if the
+    environment-conflict detector ever finds season-climate words
+    mixed with habitat words again, that means season logic drifted
+    back toward directly modifying scene/background.
+    """
+    if not season:
+        return
+    for group_a, group_b in environment_conflicts(scene, background):
         issues.append(
-            f"[{subject}] page {page}: background not season-themed - "
-            f"season='{season}' background='{background}'"
+            f"[{subject}] page {page}: season/habitat environment conflict - "
+            f"found {sorted(group_a)} AND {sorted(group_b)} in scene='{scene}' background='{background}'"
+        )
+
+
+def check_season_accessory(accessories, season, issues, subject, page):
+    if not season:
+        return
+    keywords = SEASON_ACCESSORY_KEYWORDS.get(season.lower())
+    if not keywords:
+        return
+    text = " ".join(accessories or []).lower()
+    if not any(kw in text for kw in keywords):
+        issues.append(
+            f"[{subject}] page {page}: season='{season}' set but no season-themed "
+            f"accessory found in {accessories}"
         )
 
 
@@ -129,23 +127,18 @@ def check_home_species(subject, home, issues):
 
 
 def check_complexity_content(complexity, page_data, issues, subject, page):
-    """
-    Checks whether complexity metadata is reflected anywhere
-    in actual prop/accessory count. This is a KNOWN GAP as of
-    V12.3 - reported here so it stays visible, not silently lost.
-    """
     props = page_data.get("props") or []
     accessories = page_data.get("accessories") or []
     total_items = len(props) + len(accessories)
 
-    # Loose heuristic: "advanced"/"pro" pages should tend to have
-    # more items than "simple" pages. We only flag the most extreme
-    # case: a "pro" page with fewer items than a "simple" page,
-    # which would be a clear regression if it ever happens.
     if complexity == "pro" and total_items == 0:
         issues.append(
             f"[{subject}] page {page}: complexity='pro' but zero props/accessories present"
         )
+
+    mismatch = complexity_content_mismatch(complexity, page_data.get("positive", ""))
+    if mismatch:
+        issues.append(f"[{subject}] page {page}: {mismatch}")
 
 
 def run_semantic_test(subject, season=None):
@@ -170,6 +163,7 @@ def run_semantic_test(subject, season=None):
         check_pose_action(page_data["action"], page_data["pose"], issues, subject, page)
         check_scene_background(page_data["scene"], page_data["background"], issues, subject, page)
         check_season_scene(page_data["scene"], page_data["background"], season, issues, subject, page)
+        check_season_accessory(page_data.get("accessories"), season, issues, subject, page)
         check_complexity_content(page_data["complexity"], page_data, issues, subject, page)
 
     return issues

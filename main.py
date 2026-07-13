@@ -203,6 +203,14 @@ def main():
         prompts = [p.get("positive", "") for p in book["generated_pages"]]
         success(f"Prompts from BookEngine — {len(prompts)} pages — 0.0s")
         results["Prompts"] = "ok"
+        # ✅ Save BookEngine prompts
+        import os, json
+        safe_niche = niche.replace(" ", "_").lower()
+        os.makedirs("output/prompts", exist_ok=True)
+        with open(f"output/prompts/{safe_niche}_simple.txt", "w") as f:
+            f.write("\n".join(prompts))
+        with open(f"output/prompts/prompts.txt", "w") as f:
+            f.write("\n".join(prompts))
     else:
         prompt_agent = PromptAgent()
         prompts = run_step(

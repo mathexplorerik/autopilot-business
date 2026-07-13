@@ -39,7 +39,6 @@ class AnimalEngine:
 
     def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None, recurring_motifs=None):
         complexity = self._get_complexity(page_number, total_pages)
-        accessories = []
 
         # ✅ Category
         category = self._get_category(subject, season)
@@ -126,35 +125,53 @@ class AnimalEngine:
             words = t.split()
             return words[-1] if words else ""
 
+        def _significant_words(text):
+            stopwords = {
+                "a", "an", "the", "at", "in", "on", "of", "to", "and", "with",
+                "under", "through", "near", "beside", "surrounded", "by",
+                "its", "from", "this", "that", "some", "into", "onto",
+            }
+            words = text.lower().replace(",", " ").split()
+            return {w for w in words if w not in stopwords and len(w) > 3}
+
         habitat_key = SUBJECT_HABITATS.get(subject.lower())
         if habitat_key and habitat_key in HABITATS:
             scene_head = _head_noun(scene)
+            scene_words = _significant_words(scene)
             habitat_options = [
                 h for h in HABITATS[habitat_key]
-                if _head_noun(h) != scene_head
+                if _head_noun(h) != scene_head and not (_significant_words(h) & scene_words)
             ]
             if not habitat_options:
                 habitat_options = HABITATS[habitat_key]
             background = random.choice(habitat_options)
 
-        # ✅ Season — additive flourish only.
+        # ✅ Season — expressed as a wearable/held festive item, never as
+        # a weather/environment word, so the animal'''s real habitat (scene
+        # and background) is never contradicted (e.g. no "snow" text next
+        # to "savanna").
+        season_accessory = None
         if season:
-            SEASON_FLOURISH = {
-                "christmas": "with a light dusting of snow and twinkling festive lights",
-                "halloween": "with a few carved pumpkins and autumn leaves nearby",
-                "easter":    "with pastel spring flowers blooming nearby",
-                "diwali":    "with glowing diyas and colorful rangoli patterns nearby",
-                "holi":      "with playful splashes of colorful powder in the air",
-                "eid":       "with festive lanterns and bunting nearby",
+            SEASON_ACCESSORIES = {
+                "christmas": ["a small santa hat", "a red and white scarf", "a tiny ornament"],
+                "halloween": ["a small pumpkin basket", "a tiny witch hat", "a spooky bat charm"],
+                "easter":    ["a small flower crown", "a pastel bow", "a tiny egg basket"],
+                "diwali":    ["a small diya lamp", "a string of fairy lights", "a colorful rangoli patch"],
+                "holi":      ["a splash of colorful powder", "a small water gun", "a colorful bandana"],
+                "eid":       ["a small lantern", "festive bunting", "a decorative crescent charm"],
             }
-            flourish = SEASON_FLOURISH.get(season.lower())
-            if flourish and flourish.lower() not in background.lower():
-                background = f"{background}, {flourish}"
+            options = SEASON_ACCESSORIES.get(season.lower())
+            if options:
+                season_accessory = random.choice(options)
 
         # ✅ Character Memory — inject consistent signature accessory
         accessories = []
         if character_profile and character_profile.get("signature_item"):
             accessories = [character_profile["signature_item"]]
+
+        # ✅ Season accessory (festive item, habitat stays untouched)
+        if season_accessory:
+            accessories = accessories + [season_accessory]
 
         # ✅ Recurring Motifs — occasionally add a themed visual element (rotates evenly)
         if recurring_motifs and page_number % 4 == 0:

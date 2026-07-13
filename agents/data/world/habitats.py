@@ -32,6 +32,11 @@ HABITATS = {
         "garden path",
         "blooming garden bed",
         "quiet garden corner",
+        "rows of blooming tulips",
+        "sunny flower bed",
+        "butterfly-filled greenery",
+        "colorful flower patch",
+        "vegetable patch corner",
     ],
     "grassland": [
         "green meadow",
@@ -53,6 +58,10 @@ HABITATS = {
         "quiet bamboo grove",
         "tall bamboo stalks",
         "peaceful bamboo thicket",
+        "tall green stalks swaying gently",
+        "sunlit clearing with morning mist",
+        "dense green thicket with dappled light",
+        "cluster of tall green stalks",
     ],
     "desert": [
         "sandy dunes",
