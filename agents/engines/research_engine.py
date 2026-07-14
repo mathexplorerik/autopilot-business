@@ -14,6 +14,7 @@ from agents.engines.research.theme_analyzer import ThemeAnalyzer
 from agents.engines.research.style_analyzer import StyleAnalyzer
 from agents.engines.research.market_analyzer import MarketAnalyzer
 from agents.engines.research.seo_analyzer import SEOAnalyzer
+from agents.engines.trend_engine.trend_engine import TrendEngine
 
 
 class ResearchEngine:
@@ -30,6 +31,7 @@ class ResearchEngine:
         self.style = StyleAnalyzer()
         self.market = MarketAnalyzer()
         self.seo = SEOAnalyzer()
+        self.trend = TrendEngine()
 
     # --------------------------------------------------
 
@@ -70,6 +72,11 @@ class ResearchEngine:
         seo_data = self.seo.analyze(
             niche_data["resolved_niche"]
         )
+        trend_data = self.trend.analyze(
+            niche_data["resolved_niche"],
+            book_type="coloring_books",
+            age_group=audience_data["age_group"],
+        )
 
         # ----------------------------------------
         # Build Report
@@ -104,6 +111,14 @@ class ResearchEngine:
             category="",
 
             competition=market_data["competition"],
+            demand_score=trend_data["demand"],
+            competition_score=trend_data["competition"],
+            profit_score=trend_data["profit"],
+            evergreen_score=trend_data["evergreen"],
+            seasonal_score=trend_data["seasonal"],
+            marketplace_score=trend_data["marketplace"],
+            opportunity_score=trend_data["opportunity"],
+            recommendation=trend_data["recommendation"],
 
             metadata={
 

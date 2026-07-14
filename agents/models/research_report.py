@@ -40,5 +40,15 @@ class ResearchReport:
     competition: str = ""
     marketplace: str = "Amazon KDP"
 
+    # Trend / Opportunity Intelligence
+    demand_score: int = 0
+    competition_score: int = 0
+    profit_score: int = 0
+    evergreen_score: int = 0
+    seasonal_score: int = 0
+    marketplace_score: int = 0
+    opportunity_score: int = 0
+    recommendation: str = ""
+
     # Extra
     metadata: Dict[str, Any] = field(default_factory=dict)

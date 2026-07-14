@@ -95,6 +95,11 @@ class ResearchAgent:
         print(f"Theme          : {report.theme}")
         print(f"Style          : {report.style}")
         print(f"Subjects       : {len(report.subjects)}")
-        print(f"Competition    : {report.competition}")
+        print(f"Demand Score   : {report.demand_score}/100")
+        print(f"Competition    : {report.competition_score}/100")
+        print(f"Profit Score   : {report.profit_score}/100")
+        print(f"Evergreen      : {report.evergreen_score}/100")
+        print(f"Opportunity    : {report.opportunity_score}/100")
+        print(f"Recommendation : {report.recommendation}")
 
         print("\nResearch Complete ✅")
