@@ -25,3 +25,13 @@ Before any merge to `main` or tagging a new release:
   age groups, including unknown/fallback subjects
 
 
+
+
+## Known Limitation — Manual Provider
+
+The default `--provider manual` (used when no provider is specified)
+does NOT generate actual images. It only writes prompt.txt and
+metadata.json per page. PDF generation will show pages as
+"image missing, using placeholder" unless a real image provider
+(flux, gemini, stability, openai) is configured with valid API
+keys and explicitly selected via master.py.
