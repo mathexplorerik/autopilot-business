@@ -82,10 +82,13 @@ class BookAgent:
         keyword: str,
         book_type: str = "coloring_books",
         age_group: str = "kids",
+        season: str = None,
     ) -> Dict:
         """
         Generate a complete book blueprint.
         """
+
+        self.season = season
 
         self.configure(
             keyword,
@@ -99,6 +102,7 @@ class BookAgent:
             keyword=self.keyword,
             book_type=self.book_type,
             age_group=self.age_group,
+            season=self.season,
         )
 
         return self.book

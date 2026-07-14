@@ -10,6 +10,9 @@ from .character_profile_generator import CharacterProfileGenerator
 from .recurring_motifs_generator import RecurringMotifsGenerator
 from agents.engines.generation_pipeline.generation_pipeline import GenerationPipeline
 from agents.engines.education_engine.education_engine import EducationEngine
+from agents.data.subjects import get_subjects
+import random
+from agents.data.animals.season_accessories import SEASON_ACCESSORIES
 
 class BookEngine:
 
@@ -75,12 +78,21 @@ class BookEngine:
     # Step 3.5: Character Profile (story books only)
         character_profile = {}
         recurring_motifs = []
+        resolved_subject = keyword
         if book_type == "story":
+            candidate_subjects = get_subjects(keyword.lower().strip())
+            resolved_subject = candidate_subjects[0] if candidate_subjects else keyword
             character_profile = self.character_profile_generator.generate(
-                subject=keyword,
+                subject=resolved_subject,
                 age_group=age_group,
             )
             recurring_motifs = self.recurring_motifs_generator.generate()
+
+        season_accessory = None
+        if season:
+            options = SEASON_ACCESSORIES.get(season.lower())
+            if options:
+                season_accessory = random.choice(options)
 
     # Step 4: Plan Scenes
         scenes = self.scene_planner.plan(
@@ -91,6 +103,7 @@ class BookEngine:
         character_profile=character_profile,
         recurring_motifs=recurring_motifs,
         season=season,
+        season_accessory=season_accessory,
     )
 
     # Step 5: Generate Title
@@ -137,6 +150,7 @@ class BookEngine:
         character_profile=character_profile,
         recurring_motifs=recurring_motifs,
         season=season,
+        season_accessory=season_accessory,
     )
 
         generated_pages = self.pipeline.generate()

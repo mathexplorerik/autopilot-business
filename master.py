@@ -48,8 +48,9 @@ class MasterCommand:
         niche   = args[0].strip()
         season  = None
         pages   = None
-        age     = "kids"
-        command = "book"
+        age       = "kids"
+        command   = "book"
+        book_type = "coloring_books"
 
         # ✅ Parse flags
         i = 1
@@ -69,15 +70,19 @@ class MasterCommand:
             elif args[i] == "--tracing":
                 command = "tracing"
                 i += 1
+            elif args[i] == "--story":
+                book_type = "story"
+                i += 1
             else:
                 i += 1
 
         return {
-            "niche":   niche,
-            "season":  season,
-            "pages":   pages,
-            "age":     age,
-            "command": command
+            "niche":     niche,
+            "season":    season,
+            "pages":     pages,
+            "age":       age,
+            "command":   command,
+            "book_type": book_type,
         }
 
     def run(self, args=None):
@@ -137,8 +142,9 @@ class MasterCommand:
         book_agent = BookAgent()
         book = book_agent.create_book(
             keyword=report.resolved_niche,
-            book_type="coloring_books",
-            age_group=report.age_group
+            book_type=config.get("book_type", "coloring_books"),
+            age_group=report.age_group,
+            season=config.get("season"),
         )
         results['book'] = '✅'
 

@@ -104,6 +104,7 @@ class ScenePlanner:
         character_profile: Dict = None,
         recurring_motifs: List = None,
         season: str = None,
+        season_accessory: str = None,
     ) -> Dict:
 
         return self.engine.build(
@@ -127,6 +128,7 @@ class ScenePlanner:
         character_profile: Dict = None,
         recurring_motifs: List = None,
         season: str = None,
+        season_accessory: str = None,
     ) -> Dict:
 
         retries = 0
@@ -142,6 +144,7 @@ class ScenePlanner:
                 character_profile,
                 recurring_motifs,
                 season,
+                season_accessory,
             )
 
             prompt = scene["positive"]
@@ -204,6 +207,7 @@ class ScenePlanner:
         character_profile: Dict = None,
         recurring_motifs: List = None,
         season: str = None,
+        season_accessory: str = None,
     ) -> List[Dict]:
         """
         Generate a complete book plan.
@@ -240,6 +244,7 @@ class ScenePlanner:
                 character_profile=character_profile,
                 recurring_motifs=recurring_motifs,
                 season=season,
+                season_accessory=season_accessory,
             )
 
             page_data = self.build_page(

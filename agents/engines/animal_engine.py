@@ -25,6 +25,7 @@ from agents.data.animals.story_beat_actions import STORY_BEAT_ACTIONS
 
 from agents.data.animals.story_beat_poses import STORY_BEAT_POSES
 from agents.data.animals.story_beat_expressions import STORY_BEAT_EXPRESSIONS
+from agents.data.animals.season_accessories import SEASON_ACCESSORIES
 from agents.engines.relationship_engine.scorer import Scorer
 
 class AnimalEngine:
@@ -37,7 +38,7 @@ class AnimalEngine:
         self.story_planner = StoryPlanner()
         self.scorer = Scorer()
 
-    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None, recurring_motifs=None):
+    def build(self, subject, age_group="kids", page_number=1, total_pages=40, season=None, story_mode=False, character_profile=None, recurring_motifs=None, season_accessory=None):
         complexity = self._get_complexity(page_number, total_pages)
 
         # ✅ Category
@@ -150,16 +151,7 @@ class AnimalEngine:
         # a weather/environment word, so the animal'''s real habitat (scene
         # and background) is never contradicted (e.g. no "snow" text next
         # to "savanna").
-        season_accessory = None
-        if season:
-            SEASON_ACCESSORIES = {
-                "christmas": ["a small santa hat", "a red and white scarf", "a tiny ornament"],
-                "halloween": ["a small pumpkin basket", "a tiny witch hat", "a spooky bat charm"],
-                "easter":    ["a small flower crown", "a pastel bow", "a tiny egg basket"],
-                "diwali":    ["a small diya lamp", "a string of fairy lights", "a colorful rangoli patch"],
-                "holi":      ["a splash of colorful powder", "a small water gun", "a colorful bandana"],
-                "eid":       ["a small lantern", "festive bunting", "a decorative crescent charm"],
-            }
+        if season and season_accessory is None:
             options = SEASON_ACCESSORIES.get(season.lower())
             if options:
                 season_accessory = random.choice(options)

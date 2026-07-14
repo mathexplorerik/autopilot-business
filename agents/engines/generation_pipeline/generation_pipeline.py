@@ -76,6 +76,8 @@ class GenerationPipeline:
 
         self.season = None
 
+        self.season_accessory = None
+
     # --------------------------------------------------
 
     def configure(
@@ -88,6 +90,7 @@ class GenerationPipeline:
         character_profile: dict = None,
         recurring_motifs: list = None,
         season: str = None,
+        season_accessory: str = None,
     ):
 
         self.reset()
@@ -107,6 +110,8 @@ class GenerationPipeline:
         self.recurring_motifs = recurring_motifs or []
 
         self.season = season
+
+        self.season_accessory = season_accessory
 
     # --------------------------------------------------
 
@@ -196,6 +201,7 @@ class GenerationPipeline:
             character_profile=self.character_profile,
             recurring_motifs=self.recurring_motifs,
             season=self.season,
+            season_accessory=self.season_accessory,
         )
 
     # --------------------------------------------------

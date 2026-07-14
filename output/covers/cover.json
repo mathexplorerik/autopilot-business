@@ -1,16 +1,16 @@
 {
-    "title": "Jungle Animals Coloring Books",
-    "subtitle": "A Fun Jungle Animals Activity Book for Kids Ages kids",
+    "title": "Animals Story",
+    "subtitle": "A Fun Animals Activity Book for Kids Ages kids",
     "niche": "animals",
     "size": "8.5 x 11 inches",
     "full_wrap_size": "17.5 x 11.25 inches",
     "dpi": 300,
     "color_mode": "RGB",
-    "created_at": "2026-07-13 16:29:16",
+    "created_at": "2026-07-14 10:07:48",
     "prompts": {
-        "front": "Professional kids coloring book cover, title 'Jungle Animals Coloring Books', cute cartoon animals characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age kids, high quality illustration, no text overlap, centered composition",
+        "front": "Professional kids coloring book cover, title 'Animals Story', cute cartoon animals characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age kids, high quality illustration, no text overlap, centered composition",
         "back": "Back cover of kids coloring book, simple design, white background, small cute animals illustration, space for book description, barcode placeholder at bottom right, Amazon KDP back cover style",
-        "spine": "Book spine design, title 'Jungle Animals Coloring Books', vertical text, colorful background, Amazon KDP spine style",
+        "spine": "Book spine design, title 'Animals Story', vertical text, colorful background, Amazon KDP spine style",
         "negative": "no blurry images, no watermark, no adult content, no dark themes, no violence, no scary elements, no copyright characters, no text errors"
     },
     "kdp_specs": {
