@@ -2,12 +2,12 @@
    AI KDP AUTOPILOT — DASHBOARD
 ==================================================
 
-  Generated : 2026-07-14 10:17:55
+  Generated : 2026-07-14 14:48:31
 
   📚 BOOK INFO
   ──────────────────────────────
   Niche      : animals
-  Title      : Animals Story
+  Title      : Lion Story
   Pages      : 40
   Age Group  : 4-8 Years
   Difficulty : easy

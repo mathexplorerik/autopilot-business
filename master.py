@@ -141,7 +141,7 @@ class MasterCommand:
         self._step("Book")
         book_agent = BookAgent()
         book = book_agent.create_book(
-            keyword=report.resolved_niche,
+            keyword=report.niche,
             book_type=config.get("book_type", "coloring_books"),
             age_group=report.age_group,
             season=config.get("season"),
@@ -153,7 +153,7 @@ class MasterCommand:
         prompts = []
         if book.get("generated_pages"):
             prompts = [p.get("positive", "") for p in book["generated_pages"]]
-            self._save_prompts(prompts, report.resolved_niche)
+            self._save_prompts(prompts, report.niche)
         results['prompts'] = '✅'
 
         # SEO

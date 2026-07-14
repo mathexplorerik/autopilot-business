@@ -74,6 +74,7 @@ class BlueprintGenerator:
             "title": title,
             "subtitle": subtitle,
             "keyword": keyword,
+            "niche": keyword,
             "book_type": book_type,
             "theme": theme,
             "target_age": self._resolve_target_age(target_age),
