@@ -73,6 +73,7 @@ class PDFAgent:
                     self._placeholder(c, page, self.PAGE_WIDTH, self.PAGE_HEIGHT)
                     missing += 1
             else:
+                print(f"  ⚠️  Page {page:03}/{total} — image missing, using placeholder")
                 self._placeholder(c, page, self.PAGE_WIDTH, self.PAGE_HEIGHT)
                 missing += 1
 

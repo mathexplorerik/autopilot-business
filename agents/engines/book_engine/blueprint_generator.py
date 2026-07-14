@@ -1,3 +1,6 @@
+from agents.engines.research.audience_analyzer import AudienceAnalyzer
+
+
 class BlueprintGenerator:
     """
     Builds the final book blueprint.
@@ -9,7 +12,12 @@ class BlueprintGenerator:
     """
 
     def __init__(self):
-        pass
+        self.audience_analyzer = AudienceAnalyzer()
+
+    def _resolve_target_age(self, age_group):
+        rules = self.audience_analyzer.AGE_RULES
+        profile = rules.get(age_group, rules["kids"])
+        return profile["target_age"]
 
     def _build_chapter_allocation(self, book_type, total_pages):
         """
@@ -68,7 +76,7 @@ class BlueprintGenerator:
             "keyword": keyword,
             "book_type": book_type,
             "theme": theme,
-            "target_age": target_age,
+            "target_age": self._resolve_target_age(target_age),
             "total_pages": pages,
             "difficulty_curve": difficulty_curve,
             "chapters": chapters,
