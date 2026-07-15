@@ -15,6 +15,7 @@ from agents.engines.research.style_analyzer import StyleAnalyzer
 from agents.engines.research.market_analyzer import MarketAnalyzer
 from agents.engines.research.seo_analyzer import SEOAnalyzer
 from agents.engines.trend_engine.trend_engine import TrendEngine
+from agents.engines.intelligence.keyword_intelligence import KeywordIntelligence
 
 
 class ResearchEngine:
@@ -32,6 +33,7 @@ class ResearchEngine:
         self.market = MarketAnalyzer()
         self.seo = SEOAnalyzer()
         self.trend = TrendEngine()
+        self.keyword_intelligence = KeywordIntelligence()
 
     # --------------------------------------------------
 

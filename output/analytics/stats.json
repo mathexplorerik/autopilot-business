@@ -1,23 +1,15 @@
 {
-    "timestamp": "2026-07-14 15:30:21",
-    "niche": "animals",
+    "timestamp": "2026-07-15 15:15:12",
+    "niche": "lion",
     "title": "Lion Story",
     "subtitle": "A Fun Lion Activity Book for Kids Ages 4-8 Years",
     "pages": 40,
     "target_age": "4-8 Years",
     "age_group": "kids",
-    "difficulty": "easy",
+    "difficulty": "Easy",
     "competition": "Unknown",
-    "keywords": [
-        "animals coloring book",
-        "animals coloring pages",
-        "animals activity book",
-        "animals printable",
-        "animals for kids",
-        "cute animals",
-        "animals pdf"
-    ],
-    "status": "Ready for Publishing",
+    "keywords": [],
+    "status": "Needs Review",
     "next_steps": [
         "Upload to Amazon KDP",
         "Create Pinterest pins",

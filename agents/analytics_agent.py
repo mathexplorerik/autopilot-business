@@ -36,9 +36,11 @@ class AnalyticsAgent:
         if hasattr(book, 'get'):
             title    = book.get("title", "Unknown")
             subtitle = book.get("subtitle", "")
+            status   = book.get("status", "Unknown")
         else:
             title    = getattr(book, 'title', "Unknown")
             subtitle = getattr(book, 'subtitle', "")
+            status   = getattr(book, 'status', "Unknown")
 
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -54,7 +56,7 @@ class AnalyticsAgent:
             "difficulty":  difficulty,
             "competition": competition,
             "keywords":    keywords[:7] if keywords else [],
-            "status":      "Ready for Publishing",
+            "status":      status,
             "next_steps": [
                 "Upload to Amazon KDP",
                 "Create Pinterest pins",
@@ -92,7 +94,7 @@ class AnalyticsAgent:
             f.write(f"\n  📈 MARKET\n")
             f.write(f"  {'─'*30}\n")
             f.write(f"  Competition : {competition}\n")
-            f.write(f"  Status      : Ready for Publishing\n\n")
+            f.write(f"  Status      : {status}\n\n")
             f.write(f"  ✅ NEXT STEPS\n")
             f.write(f"  {'─'*30}\n")
             for step in stats["next_steps"]:
@@ -102,7 +104,7 @@ class AnalyticsAgent:
         print(f"  📚 Niche     : {niche}")
         print(f"  📖 Title     : {title}")
         print(f"  📄 Pages     : {pages}")
-        print(f"  🎯 Status    : Ready for Publishing")
+        print(f"  🎯 Status    : {status}")
         print(f"  📄 JSON      : {json_path}")
         print(f"  📄 Dashboard : {dash_path}")
         print(f"  ✅ Analytics Complete!")

@@ -14,68 +14,37 @@ from agents.data.subjects import get_subjects
 import random
 from agents.data.animals.season_accessories import SEASON_ACCESSORIES
 
+
 class BookEngine:
 
     def __init__(self):
-
         self.pipeline = GenerationPipeline()
-
         self.niche_selector = NicheSelector()
-
         self.theme_planner = ThemePlanner()
-
         self.page_planner = PagePlanner()
-
         self.scene_planner = ScenePlanner()
-
         self.title_generator = TitleGenerator()
-
         self.subtitle_generator = SubtitleGenerator()
-
         self.blueprint_generator = BlueprintGenerator()
-
         self.quality_checker = QualityChecker()
-
         self.character_profile_generator = CharacterProfileGenerator()
-
         self.recurring_motifs_generator = RecurringMotifsGenerator()
-
         self.education_engine = EducationEngine()
 
-    def build(
-    self,
-    keyword: str,
-    book_type: str,
-    age_group: str,
-    provider: str = "manual",
-    season: str = None,
-    education_mode: str = None,
-):
+    def build(self, keyword, book_type, age_group, provider="manual", season=None, education_mode=None):
 
-    # Educational books bypass the animal-engine pipeline entirely
         if book_type == "educational":
             return self._build_educational_book(
                 education_mode=education_mode,
                 age_group=age_group,
             )
 
-    # Step 1: Select Niche
-        niche = self.niche_selector.select(
-        keyword,
-        book_type,
-        age_group,
-    )
+        niche = self.niche_selector.select(keyword, book_type, age_group)
 
-    # Step 2: Plan Theme
         theme = self.theme_planner.plan(keyword)
 
-    # Step 3: Plan Pages
-        pages = self.page_planner.plan(
-        book_type,
-        age_group,
-    )
+        pages = self.page_planner.plan(book_type, age_group)
 
-    # Step 3.5: Character Profile (story books only)
         character_profile = {}
         recurring_motifs = []
         resolved_subject = keyword
@@ -94,79 +63,61 @@ class BookEngine:
             if options:
                 season_accessory = random.choice(options)
 
-    # Step 4: Plan Scenes
-        scenes = self.scene_planner.plan(
-        keyword=keyword,
-        total_pages=pages["pages"],
-        age_group=age_group,
-        book_type=book_type,
-        character_profile=character_profile,
-        recurring_motifs=recurring_motifs,
-        season=season,
-        season_accessory=season_accessory,
-    )
+        preview_page_count = min(3, pages["pages"])
+        scenes_preview = self.scene_planner.plan(
+            keyword=keyword,
+            total_pages=preview_page_count,
+            age_group=age_group,
+            book_type=book_type,
+            character_profile=character_profile,
+            recurring_motifs=recurring_motifs,
+            season=season,
+            season_accessory=season_accessory,
+        )
 
-    # Step 5: Generate Title
-        title = self.title_generator.generate(
-        keyword,
-        book_type,
-    )
+        title = self.title_generator.generate(keyword, book_type)
 
-    # Step 6: Generate Subtitle
-        subtitle = self.subtitle_generator.generate(
-        keyword,
-        age_group,
-    )
+        subtitle = self.subtitle_generator.generate(keyword, age_group)
 
-    # Step 7: Build Blueprint
         blueprint = self.blueprint_generator.generate(
-        title=title,
-        subtitle=subtitle,
-        keyword=keyword,
-        theme=theme["theme"],
-        pages=pages["pages"],
-        scenes=scenes,
-        book_type=book_type,
-        target_age=age_group,
-        character_profile=character_profile,
-        recurring_motifs=recurring_motifs,
-    )
+            title=title,
+            subtitle=subtitle,
+            keyword=keyword,
+            theme=theme["theme"],
+            pages=pages["pages"],
+            scenes=scenes_preview,
+            book_type=book_type,
+            target_age=age_group,
+            character_profile=character_profile,
+            recurring_motifs=recurring_motifs,
+        )
 
-    # Step 8: Quality Check
-        quality = self.quality_checker.validate(
-        blueprint
-    )
-
-        blueprint["quality"] = quality
         blueprint["trend"] = niche["trend_report"]
 
-    # Step 9: Generate pages
         self.pipeline.configure(
-        keyword=keyword,
-        book_type=book_type,
-        age_group=age_group,
-        total_pages=pages["pages"],
-        provider=provider,
-        character_profile=character_profile,
-        recurring_motifs=recurring_motifs,
-        season=season,
-        season_accessory=season_accessory,
-    )
+            keyword=keyword,
+            book_type=book_type,
+            age_group=age_group,
+            total_pages=pages["pages"],
+            provider=provider,
+            character_profile=character_profile,
+            recurring_motifs=recurring_motifs,
+            season=season,
+            season_accessory=season_accessory,
+        )
 
         generated_pages = self.pipeline.generate()
-
         blueprint["generated_pages"] = generated_pages
+
+        quality = self.quality_checker.validate(blueprint)
+        blueprint["quality"] = quality
+        blueprint["status"] = "Ready for Publishing" if quality["valid"] else "Needs Review"
 
         return blueprint
 
     def _build_educational_book(self, education_mode, age_group):
-        """
-        Builds an educational coloring book (alphabet, numbers,
-        colors, or shapes) — a simpler, self-contained flow that
-        doesn'''t need niche/scene/animal-engine machinery.
-        """
         if not education_mode:
-            raise ValueError("education_mode is required when book_type='educational'")
+            raise ValueError("education_mode is required when book_type is educational")
 
         total_pages = self.education_engine.get_page_count(education_mode)
 
@@ -188,6 +139,7 @@ class BookEngine:
             "title": title,
             "subtitle": subtitle,
             "keyword": education_mode,
+            "niche": education_mode,
             "book_type": "educational",
             "education_mode": education_mode,
             "theme": education_mode.capitalize() + " Learning",
@@ -200,4 +152,6 @@ class BookEngine:
             "learning_objective": education_mode,
             "scenes": [],
             "generated_pages": generated_pages,
+            "quality": {"valid": True, "issues": []},
+            "status": "Ready for Publishing",
         }
