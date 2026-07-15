@@ -393,7 +393,7 @@ class AnimalEngine:
         return selected
     
     def _get_complexity(self, page, total):
-        ratio = page / total
+        ratio = page / total if total else 1.0
         if ratio <= 0.25:   return "simple"
         elif ratio <= 0.50: return "intermediate"
         elif ratio <= 0.75: return "advanced"

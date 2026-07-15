@@ -95,7 +95,10 @@ class GenerationPipeline:
 
         self.reset()
 
-        self.keyword = keyword.lower().strip()
+        cleaned_keyword = keyword.lower().strip()
+        if not cleaned_keyword:
+            raise ValueError("keyword cannot be empty")
+        self.keyword = cleaned_keyword
 
         self.book_type = book_type
 
@@ -154,7 +157,7 @@ class GenerationPipeline:
         # Final fallback
         if not self.subjects:
 
-            self.subjects = [self.keyword]
+            self.subjects = [self.keyword] if self.keyword else ["animal"]
 
         # ✅ Story mode uses a single fixed subject for continuity
         if self.book_type == "story" and self.subjects:

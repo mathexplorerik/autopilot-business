@@ -88,6 +88,12 @@ class BookAgent:
         Generate a complete book blueprint.
         """
 
+        if not keyword or not keyword.strip():
+            raise ValueError(
+                "Book keyword cannot be empty or whitespace-only. "
+                "Please provide a real niche or subject (e.g. 'lion', 'jungle animals')."
+            )
+
         self.season = season
 
         self.configure(
