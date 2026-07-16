@@ -79,6 +79,7 @@ SUITES = [
     ("Story",      "test_story_mode_quality", "main", None),
     ("Regression", "test_100_prompt_quality", "run_test", {"total": 100}),
     ("Negative",   "test_negative_cases", "run_all", None),
+    ("Pipeline",   "test_pipeline", "run_all", None),
     ("Stress",     "test_stress_500_books", "main", {"total_books": 500}),
 ]
 
