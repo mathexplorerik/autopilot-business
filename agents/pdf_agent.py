@@ -2,6 +2,7 @@ import os
 from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
+from agents.utils.filename_sanitizer import sanitize_filename
 
 class PDFAgent:
 
@@ -15,7 +16,7 @@ class PDFAgent:
         print("\n📄 PDF Agent Running...\n")
         os.makedirs("output/pdfs", exist_ok=True)
 
-        safe_title = book["title"].replace(" ", "_")
+        safe_title = sanitize_filename(book["title"])
         pdf_path   = f"output/pdfs/{safe_title}.pdf"
 
         # ✅ Exact KDP size — 8.5 x 11 inch

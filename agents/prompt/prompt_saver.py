@@ -9,6 +9,7 @@ import csv
 import json
 from pathlib import Path
 from datetime import datetime
+from agents.utils.filename_sanitizer import sanitize_filename
 
 
 class PromptSaver:
@@ -43,7 +44,7 @@ class PromptSaver:
         season=""
     ):
 
-        safe = niche.lower().replace(" ", "_")
+        safe = sanitize_filename(niche)
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 

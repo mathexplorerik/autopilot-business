@@ -13,6 +13,7 @@ from datetime import datetime
 from typing import Dict, Optional
 
 from agents.engines.book_engine import BookEngine
+from agents.utils.filename_sanitizer import sanitize_filename
 
 
 class BookAgent:
@@ -180,11 +181,7 @@ class BookAgent:
 
         if filename is None:
 
-            filename = (
-                self.keyword
-                .replace(" ", "_")
-                .lower()
-            )
+            filename = sanitize_filename(self.keyword)
 
         path = self.output_dir / f"{filename}.json"
 
@@ -370,11 +367,7 @@ class BookAgent:
 
             return None
 
-        filename = (
-            self.keyword
-            .replace(" ", "_")
-            .lower()
-        ) + ".json"
+        filename = sanitize_filename(self.keyword) + ".json"
 
         return self.load(filename)
 

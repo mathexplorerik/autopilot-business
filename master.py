@@ -7,6 +7,7 @@ Master Command System
 import sys
 import time
 from datetime import datetime
+from agents.utils.filename_sanitizer import sanitize_filename
 
 # ✅ Colors
 GREEN  = "\033[92m"
@@ -239,7 +240,7 @@ class MasterCommand:
     def _save_prompts(self, prompts, niche):
         """Prompts save karo"""
         import os
-        safe  = niche.replace(" ", "_").lower()
+        safe  = sanitize_filename(niche)
         os.makedirs("output/prompts", exist_ok=True)
         with open(f"output/prompts/{safe}_simple.txt", "w") as f:
             f.write("\n".join(prompts))
