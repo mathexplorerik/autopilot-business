@@ -31,6 +31,8 @@ _CONFLICTING_ENVIRONMENT_GROUPS = [
     {"snow", "snowy", "frost", "frosty", "frozen", "icy", "blizzard", "sleet"},
     {"savanna", "desert", "grassland", "acacia", "jungle", "sahara", "cactus", "dune"},
 ]
+from agents.safety.content_safety import check_book
+
 _COMPLEXITY_PHRASE_HINTS = {
     "simple": ["2-3 large elements", "2-3 elements"],
     "pro": ["highly detailed", "many interesting objects"],
@@ -159,6 +161,12 @@ class QualityChecker:
 
         pages = blueprint.get("generated_pages") or blueprint.get("scenes") or []
         self._validate_pages(pages, issues)
+
+        safety = check_book(blueprint)
+        if not safety["safe"]:
+            for issue in safety["issues"]:
+                matched = ", ".join(f"{phrase} ({cat})" for phrase, cat in issue["matches"])
+                issues.append(f"CONTENT SAFETY: {issue['field']} flagged - {matched}")
 
         return {
             "valid": len(issues) == 0,

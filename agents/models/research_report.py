@@ -49,6 +49,7 @@ class ResearchReport:
     marketplace_score: int = 0
     opportunity_score: int = 0
     recommendation: str = ""
+    suggested_price: float = 0.0
 
     # Extra
     metadata: Dict[str, Any] = field(default_factory=dict)

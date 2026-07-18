@@ -16,6 +16,7 @@ from agents.engines.research.market_analyzer import MarketAnalyzer
 from agents.engines.research.seo_analyzer import SEOAnalyzer
 from agents.engines.trend_engine.trend_engine import TrendEngine
 from agents.engines.intelligence.keyword_intelligence import KeywordIntelligence
+from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
 
 
 class ResearchEngine:
@@ -34,6 +35,7 @@ class ResearchEngine:
         self.seo = SEOAnalyzer()
         self.trend = TrendEngine()
         self.keyword_intelligence = KeywordIntelligence()
+        self.pricing_intelligence = PricingIntelligence()
 
     # --------------------------------------------------
 
@@ -80,6 +82,13 @@ class ResearchEngine:
             age_group=audience_data["age_group"],
         )
 
+        pricing_data = self.pricing_intelligence.suggest_price(
+            pages=audience_data["recommended_pages"],
+            demand_score=trend_data["demand"],
+            competition_score=trend_data["competition"],
+            marketplace="amazon",
+        )
+
         # ----------------------------------------
         # Build Report
         # ----------------------------------------
@@ -121,6 +130,7 @@ class ResearchEngine:
             marketplace_score=trend_data["marketplace"],
             opportunity_score=trend_data["opportunity"],
             recommendation=trend_data["recommendation"],
+            suggested_price=pricing_data["suggested_price"],
 
             metadata={
 

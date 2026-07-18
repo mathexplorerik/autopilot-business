@@ -162,11 +162,6 @@ def run_all():
         test_analytics_reflects_failed_quality,
         test_content_safety_blocks_unsafe_prompt,
         test_pricing_intelligence_edge_cases,
-        test_pricing_intelligence_edge_cases,
-        test_competitor_intelligence_edge_cases,
-        test_portfolio_planner_edge_cases,
-        test_multi_market_optimizer_edge_cases,
-        test_business_dashboard_edge_cases,
     ]
     failed = 0
     for test in tests:
@@ -240,7 +235,7 @@ if __name__ == "__main__":
     sys.exit(0 if ok else 1)
 
 
-def test_pricing_intelligence_edge_cases():
+def test_bestseller_intelligence_edge_cases():
     from agents.engines.intelligence.bestseller_intelligence import BestsellerIntelligence
     bi = BestsellerIntelligence()
     assert bi.analyze(None, None, None)["bestseller_pattern_match"] is False
@@ -289,21 +284,3 @@ def test_business_dashboard_edge_cases():
         r2 = bd_corrupt.generate()
         assert r2["corrupted_files_skipped"] == 1, "Corrupted JSON file was not detected/skipped correctly"
     print("[PASS] business dashboard handles missing directory and corrupted JSON files without crash")
-def test_pricing_intelligence_edge_cases():
-    ...
-
-def test_competitor_intelligence_edge_cases():
-    ...
-
-def test_portfolio_planner_edge_cases():
-    ...
-
-def test_multi_market_optimizer_edge_cases():
-    ...
-
-def test_business_dashboard_edge_cases():
-    ...
-
-if __name__ == "__main__":
-    ok = run_all()
-    sys.exit(0 if ok else 1)
