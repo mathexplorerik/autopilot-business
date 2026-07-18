@@ -2,84 +2,80 @@
 =========================================
 Portfolio Planner (V13)
 =========================================
-Given a list of candidate niches (each with demand/
-competition scores), suggests a balanced portfolio
-allocation - mixing safe, proven bets with a smaller number
-of higher-risk/higher-reward niches.
+Analyzes multiple niches at once and ranks them
+by combined opportunity + revenue potential, so
+a publisher can decide WHICH books to make next,
+not just how to make one book well.
 """
 
 
 class PortfolioPlanner:
 
-    SAFE_BET_SHARE = 0.5
-    GROWTH_SHARE = 0.35
-    SPECULATIVE_SHARE = 0.15
+    def __init__(self, research_engine):
+        self.research_engine = research_engine
 
-    def _opportunity(self, niche: dict) -> float:
-        if "opportunity_score" in niche and niche["opportunity_score"] is not None:
-            return niche["opportunity_score"]
-        demand = niche.get("demand_score", 50) or 50
-        competition = niche.get("competition_score", 50) or 50
-        return demand - competition
+    def _score_niche(self, report):
+        """
+        Combined ranking score: opportunity is the primary
+        driver (how easy to succeed), revenue potential is
+        the secondary driver (how much it is worth succeeding).
+        """
+        opportunity = report.opportunity_score or 0
+        revenue = report.metadata.get("revenue", {})
+        monthly_revenue = revenue.get("estimated_monthly_revenue", 0)
 
-    def _classify(self, niche: dict) -> str:
-        demand = max(0, min(100, niche.get("demand_score", 50) or 50))
-        competition = max(0, min(100, niche.get("competition_score", 50) or 50))
+        # Normalize monthly_revenue into a 0-100-ish scale for blending
+        # (very rough: $1000/month treated as a strong ceiling for this heuristic)
+        revenue_scaled = min(100, (monthly_revenue / 1000) * 100)
 
-        if demand >= 70 and competition <= 50:
-            return "safe_bet"
-        if demand >= 50 and competition <= 75:
-            return "growth"
-        return "speculative"
+        return round((opportunity * 0.6) + (revenue_scaled * 0.4), 1)
 
-    def plan(self, niches: list, target_book_count: int = 10) -> dict:
-        if not niches:
-            return {
-                "allocation": [],
-                "summary": {"safe_bet": 0, "growth": 0, "speculative": 0},
-                "note": "No niches supplied - nothing to allocate.",
-            }
+    def analyze_portfolio(self, niches: list, season: str = "") -> dict:
+        """
+        Runs full research on every niche, ranks them, and
+        returns a portfolio recommendation.
+        """
+        results = []
 
-        target_book_count = max(1, target_book_count or 1)
-
-        classified = []
         for niche in niches:
-            tier = self._classify(niche)
-            classified.append({
-                "niche": niche.get("niche", "unknown"),
-                "tier": tier,
-                "opportunity_score": round(self._opportunity(niche), 1),
-                "demand_score": niche.get("demand_score"),
-                "competition_score": niche.get("competition_score"),
+            try:
+                report = self.research_engine.analyze(niche, season=season)
+            except Exception as e:
+                results.append({
+                    "niche": niche,
+                    "error": f"{type(e).__name__}: {e}",
+                    "portfolio_score": 0,
+                })
+                continue
+
+            revenue = report.metadata.get("revenue", {})
+
+            results.append({
+                "niche": niche,
+                "resolved_niche": report.resolved_niche,
+                "opportunity_score": report.opportunity_score,
+                "demand_score": report.demand_score,
+                "competition_score": report.competition_score,
+                "suggested_price": report.suggested_price,
+                "estimated_monthly_revenue": revenue.get("estimated_monthly_revenue", 0),
+                "recommendation": report.recommendation,
+                "portfolio_score": self._score_niche(report),
             })
 
-        by_tier = {"safe_bet": [], "growth": [], "speculative": []}
-        for entry in classified:
-            by_tier[entry["tier"]].append(entry)
-        for tier in by_tier:
-            by_tier[tier].sort(key=lambda e: e["opportunity_score"], reverse=True)
+        results.sort(key=lambda r: r["portfolio_score"], reverse=True)
 
-        target_counts = {
-            "safe_bet": round(target_book_count * self.SAFE_BET_SHARE),
-            "growth": round(target_book_count * self.GROWTH_SHARE),
-            "speculative": round(target_book_count * self.SPECULATIVE_SHARE),
-        }
-
-        allocation = []
-        summary = {"safe_bet": 0, "growth": 0, "speculative": 0}
-        for tier, target in target_counts.items():
-            picks = by_tier[tier][:target]
-            allocation.extend(picks)
-            summary[tier] = len(picks)
+        total_estimated_monthly_revenue = sum(
+            r.get("estimated_monthly_revenue", 0) for r in results if "error" not in r
+        )
 
         return {
-            "allocation": allocation,
-            "summary": summary,
-            "target_book_count": target_book_count,
-            "note": (
-                "Allocation favors safe_bet niches by default "
-                f"({int(self.SAFE_BET_SHARE*100)}% target share). "
-                "Tiers with too few qualifying niches are simply "
-                "under-filled rather than padded with weak picks."
-            ),
+            "ranked_niches": results,
+            "top_pick": results[0] if results else None,
+            "total_estimated_monthly_revenue_if_all_built": round(total_estimated_monthly_revenue, 2),
+            "niches_analyzed": len(niches),
+            "niches_with_errors": sum(1 for r in results if "error" in r),
         }
+
+    def top_n(self, niches: list, n: int = 5, season: str = "") -> list:
+        portfolio = self.analyze_portfolio(niches, season=season)
+        return portfolio["ranked_niches"][:n]

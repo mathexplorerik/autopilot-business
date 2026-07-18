@@ -162,7 +162,7 @@ def run_all():
         test_analytics_reflects_failed_quality,
         test_content_safety_blocks_unsafe_prompt,
         test_pricing_intelligence_edge_cases,
-        test_pricing_intelligence_edge_cases,
+        test_bestseller_intelligence_edge_cases,
         test_competitor_intelligence_edge_cases,
         test_portfolio_planner_edge_cases,
         test_multi_market_optimizer_edge_cases,
@@ -237,7 +237,7 @@ def test_pricing_intelligence_edge_cases():
 
 
 
-def test_pricing_intelligence_edge_cases():
+def test_bestseller_intelligence_edge_cases():
     from agents.engines.intelligence.bestseller_intelligence import BestsellerIntelligence
     bi = BestsellerIntelligence()
     assert bi.analyze(None, None, None)["bestseller_pattern_match"] is False
@@ -248,20 +248,32 @@ def test_pricing_intelligence_edge_cases():
 def test_competitor_intelligence_edge_cases():
     from agents.engines.intelligence.competitor_intelligence import CompetitorIntelligence
     ci = CompetitorIntelligence()
-    assert ci.analyze(None)["competition_tier"] in ("low", "moderate", "high")
-    assert ci.analyze(500)["competition_tier"] == "high"
-    assert ci.analyze(-50)["competition_tier"] == "low"
-    print("[PASS] competitor intelligence handles None/out-of-range scores without crash")
+    assert ci.analyze("lion", None)["competition_tier"] in ("low", "moderate", "high")
+    assert ci.analyze("lion", 500)["competition_tier"] == "high"
+    assert ci.analyze("lion", -50)["competition_tier"] == "low"
+    assert ci.analyze("", 50)["competition_tier"] in ("low", "moderate", "high")
+    print("[PASS] competitor intelligence handles None/out-of-range scores and empty niche without crash")
 
 
 def test_portfolio_planner_edge_cases():
+    """PortfolioPlanner wraps ResearchEngine.analyze() per niche - must
+    handle an empty niche list and a niche that makes analyze() raise,
+    without crashing the whole portfolio run."""
     from agents.engines.intelligence.portfolio_planner import PortfolioPlanner
-    pp = PortfolioPlanner()
-    r1 = pp.plan([])
-    assert r1["allocation"] == [], "Empty niche list should produce empty allocation, not crash"
-    r2 = pp.plan([{"niche": "lion", "demand_score": 90, "competition_score": 40}], target_book_count=0)
-    assert isinstance(r2["summary"], dict), "Zero target_book_count crashed instead of returning empty summary"
-    print("[PASS] portfolio planner handles empty niche list and zero target count without crash")
+    from agents.engines.research_engine import ResearchEngine
+
+    engine = ResearchEngine()
+    pp = PortfolioPlanner(engine)
+
+    r1 = pp.analyze_portfolio([])
+    assert r1["ranked_niches"] == [], "Empty niche list should produce an empty ranking, not crash"
+    assert r1["top_pick"] is None, "Empty niche list should have no top_pick"
+
+    r2 = pp.analyze_portfolio([""])
+    assert r2["niches_analyzed"] == 1
+    assert isinstance(r2["ranked_niches"], list)
+
+    print("[PASS] portfolio planner handles empty niche list and a problematic niche without crashing the whole run")
 
 
 def test_multi_market_optimizer_edge_cases():
@@ -269,6 +281,8 @@ def test_multi_market_optimizer_edge_cases():
     mmo = MultiMarketOptimizer()
     r = mmo.compare(0, demand_score=None, competition_score=None)
     assert r["recommended_marketplace"] in mmo.marketplaces
+    for marketplace, data in r["by_marketplace"].items():
+        assert data["estimated_monthly_revenue"] >= 0, f"{marketplace} produced negative revenue"
     print("[PASS] multi-market optimizer handles zero pages and None scores without crash")
 
 
@@ -286,21 +300,6 @@ def test_business_dashboard_edge_cases():
         r2 = bd_corrupt.generate()
         assert r2["corrupted_files_skipped"] == 1, "Corrupted JSON file was not detected/skipped correctly"
     print("[PASS] business dashboard handles missing directory and corrupted JSON files without crash")
-def test_pricing_intelligence_edge_cases():
-    ...
-
-def test_competitor_intelligence_edge_cases():
-    ...
-
-def test_portfolio_planner_edge_cases():
-    ...
-
-def test_multi_market_optimizer_edge_cases():
-    ...
-
-def test_business_dashboard_edge_cases():
-    ...
-
 if __name__ == "__main__":
     ok = run_all()
     sys.exit(0 if ok else 1)
