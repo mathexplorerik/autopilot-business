@@ -235,9 +235,6 @@ def test_pricing_intelligence_edge_cases():
     print("[PASS] pricing intelligence handles zero/negative pages, out-of-range scores, unknown marketplace, None scores")
 
 
-if __name__ == "__main__":
-    ok = run_all()
-    sys.exit(0 if ok else 1)
 
 
 def test_pricing_intelligence_edge_cases():

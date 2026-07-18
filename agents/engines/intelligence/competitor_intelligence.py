@@ -51,7 +51,7 @@ class CompetitorIntelligence:
         }
         return strategies[tier]
 
-    def analyze(self, competition_score: float) -> dict:
+    def analyze(self, niche: str, competition_score: float = 50) -> dict:
         competition_score = max(0, min(100, competition_score if competition_score is not None else 50))
         tier = self._tier(competition_score)
         strategy = self._strategy_for_tier(tier)
