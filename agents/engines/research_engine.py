@@ -18,6 +18,7 @@ from agents.engines.trend_engine.trend_engine import TrendEngine
 from agents.engines.intelligence.keyword_intelligence import KeywordIntelligence
 from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
 from agents.engines.intelligence.competitor_intelligence import CompetitorIntelligence
+from agents.engines.intelligence.revenue_predictor import RevenuePredictor
 
 
 class ResearchEngine:
@@ -38,6 +39,7 @@ class ResearchEngine:
         self.keyword_intelligence = KeywordIntelligence()
         self.pricing_intelligence = PricingIntelligence()
         self.competitor_intelligence = CompetitorIntelligence()
+        self.revenue_predictor = RevenuePredictor()
 
     # --------------------------------------------------
 
@@ -101,6 +103,13 @@ class ResearchEngine:
             competition_score=trend_data["competition"],
         )
 
+        revenue_data = self.revenue_predictor.predict(
+            demand_score=trend_data["demand"],
+            opportunity_score=trend_data["opportunity"],
+            suggested_price=pricing_data["suggested_price"],
+            royalty_per_sale=pricing_data["estimated_royalty_per_sale"],
+        )
+
         # ----------------------------------------
         # Build Report
         # ----------------------------------------
@@ -151,6 +160,7 @@ class ResearchEngine:
                 "keyword_intelligence": keyword_data,
                 "pricing": pricing_data,
                 "competitor": competitor_data,
+                "revenue": revenue_data,
 
                 "market": market_data,
 
