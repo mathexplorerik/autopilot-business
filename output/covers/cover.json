@@ -1,16 +1,16 @@
 {
-    "title": "Jungle Animals Coloring Books",
-    "subtitle": "A Fun Jungle Animals Activity Book for Kids Ages 4-8 Years",
-    "niche": "jungle animals",
+    "title": "Lion Story",
+    "subtitle": "A Fun Lion Activity Book for Kids Ages 4-8 Years",
+    "niche": "lion",
     "size": "8.5 x 11 inches",
     "full_wrap_size": "17.5 x 11.25 inches",
     "dpi": 300,
     "color_mode": "RGB",
-    "created_at": "2026-07-18 15:12:24",
+    "created_at": "2026-07-19 13:34:33",
     "prompts": {
-        "front": "Professional kids coloring book cover, title 'Jungle Animals Coloring Books', cute cartoon jungle animals characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age 4-8 Years, high quality illustration, no text overlap, centered composition",
-        "back": "Back cover of kids coloring book, simple design, white background, small cute jungle animals illustration, space for book description, barcode placeholder at bottom right, Amazon KDP back cover style",
-        "spine": "Book spine design, title 'Jungle Animals Coloring Books', vertical text, colorful background, Amazon KDP spine style",
+        "front": "Professional kids coloring book cover, title 'Lion Story', cute cartoon lion characters, bright vivid colors, bold typography, clean layout, white background, Amazon KDP style, bestseller design, target age 4-8 Years, high quality illustration, no text overlap, centered composition",
+        "back": "Back cover of kids coloring book, simple design, white background, small cute lion illustration, space for book description, barcode placeholder at bottom right, Amazon KDP back cover style",
+        "spine": "Book spine design, title 'Lion Story', vertical text, colorful background, Amazon KDP spine style",
         "negative": "no blurry images, no watermark, no adult content, no dark themes, no violence, no scary elements, no copyright characters, no text errors"
     },
     "kdp_specs": {

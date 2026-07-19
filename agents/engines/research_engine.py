@@ -18,6 +18,7 @@ from agents.engines.trend_engine.trend_engine import TrendEngine
 from agents.engines.intelligence.keyword_intelligence import KeywordIntelligence
 from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
 from agents.engines.intelligence.competitor_intelligence import CompetitorIntelligence
+from agents.engines.intelligence.bestseller_intelligence import BestsellerIntelligence
 from agents.engines.intelligence.revenue_predictor import RevenuePredictor
 
 
@@ -39,6 +40,7 @@ class ResearchEngine:
         self.keyword_intelligence = KeywordIntelligence()
         self.pricing_intelligence = PricingIntelligence()
         self.competitor_intelligence = CompetitorIntelligence()
+        self.bestseller_intelligence = BestsellerIntelligence()
         self.revenue_predictor = RevenuePredictor()
 
     # --------------------------------------------------
@@ -102,6 +104,11 @@ class ResearchEngine:
             niche_data["resolved_niche"],
             competition_score=trend_data["competition"],
         )
+        bestseller_data = self.bestseller_intelligence.analyze(
+            demand_score=trend_data["demand"],
+            competition_score=trend_data["competition"],
+            evergreen_score=trend_data["evergreen"],
+        )
 
         revenue_data = self.revenue_predictor.predict(
             demand_score=trend_data["demand"],
@@ -160,6 +167,7 @@ class ResearchEngine:
                 "keyword_intelligence": keyword_data,
                 "pricing": pricing_data,
                 "competitor": competitor_data,
+                "bestseller": bestseller_data,
                 "revenue": revenue_data,
 
                 "market": market_data,

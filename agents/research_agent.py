@@ -101,5 +101,16 @@ class ResearchAgent:
         print(f"Evergreen      : {report.evergreen_score}/100")
         print(f"Opportunity    : {report.opportunity_score}/100")
         print(f"Recommendation : {report.recommendation}")
+        print(f"Suggested Price: ${report.suggested_price}")
+
+        competitor = report.metadata.get("competitor") or {}
+        if competitor:
+            print(f"Competition Tier: {competitor.get('competition_tier', 'unknown')}")
+            print(f"Positioning    : {competitor.get('positioning', 'n/a')}")
+
+        keyword_intel = report.metadata.get("keyword_intelligence") or []
+        if keyword_intel:
+            top_keyword = keyword_intel[0]
+            print(f"Top Keyword    : {top_keyword.get('keyword')} (opportunity={top_keyword.get('opportunity')})")
 
         print("\nResearch Complete ✅")
