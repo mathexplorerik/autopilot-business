@@ -45,8 +45,9 @@ class MasterCommand:
         if not args:
             return self._show_help()
 
-        # ✅ Extract niche
-        niche   = args[0].strip()
+        # ✅ Extract niche (--portfolio/--dashboard are niche-less
+        # commands, so the first arg may itself be a flag)
+        niche = args[0].strip() if not args[0].startswith("--") else ""
         season  = None
         pages   = None
         age       = "kids"
@@ -54,7 +55,7 @@ class MasterCommand:
         book_type = "coloring_books"
 
         # ✅ Parse flags
-        i = 1
+        i = 0 if args[0].startswith("--") else 1
         while i < len(args):
             if args[i] == "--season" and i+1 < len(args):
                 season = args[i+1]
@@ -73,6 +74,12 @@ class MasterCommand:
                 i += 1
             elif args[i] == "--story":
                 book_type = "story"
+                i += 1
+            elif args[i] == "--portfolio":
+                command = "portfolio"
+                i += 1
+            elif args[i] == "--dashboard":
+                command = "dashboard"
                 i += 1
             else:
                 i += 1
@@ -113,8 +120,78 @@ class MasterCommand:
             return self._run_bundle(config)
         elif config['command'] == "tracing":
             return self._run_tracing(config)
+        elif config['command'] == "portfolio":
+            return self._run_portfolio(config)
+        elif config['command'] == "dashboard":
+            return self._run_dashboard(config)
         else:
             return self._run_book(config)
+
+    def _run_portfolio(self, config):
+        """Scan all known niches and rank them by opportunity + revenue potential"""
+        print(f"{BOLD}{CYAN}▶ Running Portfolio Analysis...{RESET}\n")
+
+        from agents.engines.research_engine import ResearchEngine
+        from agents.engines.intelligence.portfolio_planner import PortfolioPlanner
+        from agents.data.subjects import SUBJECTS
+
+        engine = ResearchEngine()
+        planner = PortfolioPlanner(engine)
+
+        niches = list(SUBJECTS.keys())
+        top_n = 5
+        result = planner.top_n(niches, n=top_n, season=config.get("season", ""))
+
+        print(f"{BOLD}Top {top_n} Niches by Portfolio Score{RESET}")
+        print("-" * 55)
+        for r in result:
+            if "error" in r:
+                print(f"  {r['niche']:20} ERROR: {r['error']}")
+                continue
+            print(
+                f"  {r['niche']:20} score={r['portfolio_score']:5} "
+                f"opp={r['opportunity_score']:3} "
+                f"revenue=${r['estimated_monthly_revenue']}"
+            )
+        print("-" * 55)
+
+        elapsed = time.time() - self.start_time
+        print(f"\n{BOLD}{'=' * 55}{RESET}")
+        print(f"{BOLD}{GREEN}   Done ({elapsed:.0f}s){RESET}")
+        print(f"{BOLD}{'=' * 55}{RESET}\n")
+        return result
+
+    def _run_dashboard(self, config):
+        """Generate a business-wide dashboard snapshot across all niches"""
+        print(f"{BOLD}{CYAN}▶ Generating Business Dashboard...{RESET}\n")
+
+        from agents.engines.research_engine import ResearchEngine
+        from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
+        from agents.engines.intelligence.revenue_predictor import RevenuePredictor
+        from agents.engines.intelligence.multi_market_optimizer import MultiMarketOptimizer
+        from agents.engines.intelligence.portfolio_planner import PortfolioPlanner
+        from agents.engines.intelligence.business_dashboard import BusinessDashboard
+        from agents.data.subjects import SUBJECTS
+
+        engine = ResearchEngine()
+        pricing = PricingIntelligence()
+        revenue = RevenuePredictor()
+        mmo = MultiMarketOptimizer(pricing, revenue)
+        portfolio = PortfolioPlanner(engine)
+        dashboard = BusinessDashboard(engine, portfolio, mmo)
+
+        niches = list(SUBJECTS.keys())
+        snapshot = dashboard.generate(niches, season=config.get("season", ""), top_n=5)
+
+        dashboard.print_summary(snapshot)
+        saved_path = dashboard.save(snapshot)
+        print(f"\n  📄 Saved: {saved_path}")
+
+        elapsed = time.time() - self.start_time
+        print(f"\n{BOLD}{'=' * 55}{RESET}")
+        print(f"{BOLD}{GREEN}   Done ({elapsed:.0f}s){RESET}")
+        print(f"{BOLD}{'=' * 55}{RESET}\n")
+        return snapshot
 
     def _run_book(self, config):
         """Single book generate karo"""
