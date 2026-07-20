@@ -2,71 +2,61 @@
 =========================================
 Multi-Market Optimizer (V13)
 =========================================
-Given a book's page count and trend scores (demand,
-competition, opportunity), computes suggested pricing and
-estimated revenue side-by-side across every supported
-marketplace, so a publisher can compare Amazon vs Etsy vs
-Gumroad at a glance.
+Compares pricing/royalty across all supported
+marketplaces (Amazon, Etsy, Gumroad) for the
+same book, and recommends where to launch
+first based on real per-sale profitability -
+not just list price.
 """
-
-from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
-from agents.engines.intelligence.revenue_predictor import RevenuePredictor
 
 
 class MultiMarketOptimizer:
 
-    def __init__(self):
-        self.pricing = PricingIntelligence()
-        self.revenue = RevenuePredictor()
-        self.marketplaces = list(PricingIntelligence.MARKETPLACE_CONFIG.keys())
+    def __init__(self, pricing_intelligence, revenue_predictor):
+        self.pricing_intelligence = pricing_intelligence
+        self.revenue_predictor = revenue_predictor
 
-    def compare(
+    def compare_marketplaces(
         self,
         pages: int,
         demand_score: float = 50,
         competition_score: float = 50,
-        opportunity_score: float = None,
+        opportunity_score: float = 50,
     ) -> dict:
-        demand_score = max(0, min(100, demand_score if demand_score is not None else 50))
-        competition_score = max(0, min(100, competition_score if competition_score is not None else 50))
-        if opportunity_score is None:
-            opportunity_score = max(0, min(100, demand_score - competition_score))
+        marketplaces = list(self.pricing_intelligence.MARKETPLACE_CONFIG.keys())
+        results = []
 
-        results = {}
-        for marketplace in self.marketplaces:
-            pricing = self.pricing.suggest_price(
+        for marketplace in marketplaces:
+            pricing = self.pricing_intelligence.suggest_price(
                 pages=pages,
                 demand_score=demand_score,
                 competition_score=competition_score,
                 marketplace=marketplace,
             )
 
-            prediction = self.revenue.predict(
+            revenue = self.revenue_predictor.predict(
                 demand_score=demand_score,
                 opportunity_score=opportunity_score,
                 suggested_price=pricing["suggested_price"],
                 royalty_per_sale=pricing["estimated_royalty_per_sale"],
             )
 
-            results[marketplace] = {
+            results.append({
+                "marketplace": marketplace,
                 "suggested_price": pricing["suggested_price"],
-                "royalty_per_sale": prediction["royalty_per_sale"],
-                "estimated_monthly_units": prediction["estimated_monthly_units"],
-                "estimated_monthly_revenue": prediction["estimated_monthly_revenue"],
-                "estimated_annual_revenue": prediction["estimated_annual_revenue"],
-                "confidence": prediction["confidence"],
-            }
+                "estimated_royalty_per_sale": pricing["estimated_royalty_per_sale"],
+                "print_cost": pricing["print_cost"],
+                "estimated_monthly_units": revenue["estimated_monthly_units"],
+                "estimated_monthly_revenue": revenue["estimated_monthly_revenue"],
+            })
 
-        best_marketplace = max(
-            results, key=lambda m: results[m]["estimated_monthly_revenue"]
-        )
+        results.sort(key=lambda r: r["estimated_monthly_revenue"], reverse=True)
 
         return {
-            "by_marketplace": results,
-            "recommended_marketplace": best_marketplace,
-            "disclaimer": (
-                "Based on heuristic pricing/revenue estimates - actual "
-                "marketplace performance depends on each platform's own "
-                "audience, fees, and discoverability, not modeled in full here."
+            "marketplace_comparison": results,
+            "best_marketplace": results[0]["marketplace"] if results else None,
+            "recommendation": (
+                "Launch on " + results[0]["marketplace"] + " first - highest estimated monthly revenue ($" + str(results[0]["estimated_monthly_revenue"]) + ")"
+                if results else "No marketplace data available"
             ),
         }

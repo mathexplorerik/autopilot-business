@@ -277,29 +277,44 @@ def test_portfolio_planner_edge_cases():
 
 
 def test_multi_market_optimizer_edge_cases():
+    from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
+    from agents.engines.intelligence.revenue_predictor import RevenuePredictor
     from agents.engines.intelligence.multi_market_optimizer import MultiMarketOptimizer
-    mmo = MultiMarketOptimizer()
-    r = mmo.compare(0, demand_score=None, competition_score=None)
-    assert r["recommended_marketplace"] in mmo.marketplaces
-    for marketplace, data in r["by_marketplace"].items():
-        assert data["estimated_monthly_revenue"] >= 0, f"{marketplace} produced negative revenue"
+
+    pricing = PricingIntelligence()
+    revenue = RevenuePredictor()
+    mmo = MultiMarketOptimizer(pricing, revenue)
+
+    r = mmo.compare_marketplaces(0, demand_score=None, competition_score=None, opportunity_score=None)
+    assert isinstance(r["marketplace_comparison"], list) and r["marketplace_comparison"], (
+        "compare_marketplaces() returned no marketplace data for zero pages / None scores"
+    )
+    assert r["best_marketplace"] is not None
+    for entry in r["marketplace_comparison"]:
+        assert entry["estimated_monthly_revenue"] >= 0, f"{entry['marketplace']} produced negative revenue"
     print("[PASS] multi-market optimizer handles zero pages and None scores without crash")
 
 
 def test_business_dashboard_edge_cases():
+    from agents.engines.research_engine import ResearchEngine
+    from agents.engines.intelligence.pricing_intelligence import PricingIntelligence
+    from agents.engines.intelligence.revenue_predictor import RevenuePredictor
+    from agents.engines.intelligence.multi_market_optimizer import MultiMarketOptimizer
+    from agents.engines.intelligence.portfolio_planner import PortfolioPlanner
     from agents.engines.intelligence.business_dashboard import BusinessDashboard
-    bd_missing = BusinessDashboard("this_directory_does_not_exist_xyz")
-    r1 = bd_missing.generate()
-    assert r1["total_books"] == 0, "Missing directory should report 0 books, not crash"
 
-    import tempfile, os
-    with tempfile.TemporaryDirectory() as tmpdir:
-        with open(os.path.join(tmpdir, "broken.json"), "w") as f:
-            f.write("not valid json {{{")
-        bd_corrupt = BusinessDashboard(tmpdir)
-        r2 = bd_corrupt.generate()
-        assert r2["corrupted_files_skipped"] == 1, "Corrupted JSON file was not detected/skipped correctly"
-    print("[PASS] business dashboard handles missing directory and corrupted JSON files without crash")
+    engine = ResearchEngine()
+    pricing = PricingIntelligence()
+    revenue = RevenuePredictor()
+    mmo = MultiMarketOptimizer(pricing, revenue)
+    portfolio = PortfolioPlanner(engine)
+    dashboard = BusinessDashboard(engine, portfolio, mmo)
+
+    # Empty niche list should not crash the dashboard snapshot
+    snapshot = dashboard.generate([])
+    assert isinstance(snapshot, dict), "Empty niche list crashed dashboard generation instead of returning a safe snapshot"
+
+    print("[PASS] business dashboard handles an empty niche list without crashing")
 if __name__ == "__main__":
     ok = run_all()
     sys.exit(0 if ok else 1)

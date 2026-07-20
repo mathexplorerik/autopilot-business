@@ -27,6 +27,12 @@ class RevenuePredictor:
         return max(1, units)
 
     def predict(self, demand_score=50, opportunity_score=50, suggested_price=6.99, royalty_per_sale=None):
+        # Clamp/default here (not just inside _estimate_monthly_units) so
+        # the confidence-band check below never sees a raw None and
+        # crashes with "'>=' not supported between NoneType and int".
+        demand_score = max(0, min(100, demand_score if demand_score is not None else 50))
+        opportunity_score = max(0, min(100, opportunity_score if opportunity_score is not None else 50))
+
         estimated_units = self._estimate_monthly_units(demand_score, opportunity_score)
 
         if royalty_per_sale is None:
