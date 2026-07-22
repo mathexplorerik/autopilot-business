@@ -13,12 +13,6 @@ Replace/extend this with a LiveMarketDataSource
 (real APIs) later, without touching TrendEngine.
 """
 
-from agents.engines.trend_engine.demand_analyzer import DemandAnalyzer
-from agents.engines.trend_engine.competition_analyzer import CompetitionAnalyzer
-from agents.engines.trend_engine.profit_analyzer import ProfitAnalyzer
-from agents.engines.trend_engine.evergreen_analyzer import EvergreenAnalyzer
-from agents.engines.trend_engine.seasonal_analyzer import SeasonalAnalyzer
-from agents.engines.trend_engine.marketplace_analyzer import MarketplaceAnalyzer
 
 from .base_market_data_source import BaseMarketDataSource
 
@@ -26,6 +20,21 @@ from .base_market_data_source import BaseMarketDataSource
 class HeuristicMarketDataSource(BaseMarketDataSource):
 
     def __init__(self):
+        from agents.engines.trend_engine.demand_analyzer import DemandAnalyzer
+        from agents.engines.trend_engine.competition_analyzer import CompetitionAnalyzer
+        from agents.engines.trend_engine.profit_analyzer import ProfitAnalyzer
+        from agents.engines.trend_engine.evergreen_analyzer import EvergreenAnalyzer
+        from agents.engines.trend_engine.seasonal_analyzer import SeasonalAnalyzer
+        from agents.engines.trend_engine.marketplace_analyzer import MarketplaceAnalyzer
+
+        # ✅ Lazy imports — circular import avoid karo
+        from agents.engines.trend_engine.demand_analyzer import DemandAnalyzer
+        from agents.engines.trend_engine.competition_analyzer import CompetitionAnalyzer
+        from agents.engines.trend_engine.profit_analyzer import ProfitAnalyzer
+        from agents.engines.trend_engine.evergreen_analyzer import EvergreenAnalyzer
+        from agents.engines.trend_engine.seasonal_analyzer import SeasonalAnalyzer
+        from agents.engines.trend_engine.marketplace_analyzer import MarketplaceAnalyzer
+
         self._demand = DemandAnalyzer()
         self._competition = CompetitionAnalyzer()
         self._profit = ProfitAnalyzer()
