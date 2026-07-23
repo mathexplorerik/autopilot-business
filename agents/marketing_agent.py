@@ -10,6 +10,15 @@ class MarketingAgent:
         title = book["title"]
         subtitle = book["subtitle"]
 
+        # Derive a niche-specific hashtag from the book's actual
+        # keyword/niche instead of hardcoding "#animals" for every
+        # book regardless of subject (e.g. dinosaurs, space, etc.).
+        niche_raw = book.get("keyword") or book.get("niche") or "coloring"
+        niche_tag = "".join(ch for ch in niche_raw.lower().replace(" ", "") if ch.isalnum())
+        niche_hashtag = f"#{niche_tag}coloring" if niche_tag else "#coloring"
+
+        target_age = str(book.get("target_age") or "4-8").replace(" Years", "").replace("Years", "").strip()
+
         pinterest = f"{title} | {subtitle}"
 
         instagram = f"""
@@ -17,9 +26,9 @@ class MarketingAgent:
 
 {subtitle}
 
-Perfect for kids ages 4-8.
+Perfect for kids ages {target_age}.
 
-#coloringbook #kidscoloring #amazonkdp #activitybook #animals
+#coloringbook #kidscoloring #amazonkdp #activitybook {niche_hashtag}
 """
 
         facebook = f"""
@@ -29,14 +38,14 @@ NEW RELEASE!
 
 {subtitle}
 
-40 fun coloring pages for kids.
+{book.get('total_pages', book.get('pages', 40))} fun coloring pages for kids.
 Perfect gift for boys and girls.
 """
 
-        hashtags = """
+        hashtags = f"""
 #coloringbook
 #kidscoloring
-#animalcoloring
+{niche_hashtag}
 #amazonkdp
 #activitybook
 #homeschool
