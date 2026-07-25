@@ -150,6 +150,29 @@ def test_analytics_reflects_failed_quality():
     print("[PASS] analytics status correctly reflects failed quality check")
 
 
+def test_trend_engine_with_google_books_source_never_crashes():
+    """
+    If/when GoogleBooksMarketDataSource is wired into TrendEngine,
+    it must never crash TrendEngine.analyze() - whether the live
+    API call succeeds, fails, or is rate-limited (429), every
+    method must still return a valid int.
+    """
+    from agents.engines.trend_engine.trend_engine import TrendEngine
+    from agents.engines.intelligence.data_sources.google_books_market_data_source import GoogleBooksMarketDataSource
+
+    gb_source = GoogleBooksMarketDataSource()
+    engine = TrendEngine(data_source=gb_source)
+
+    result = engine.analyze("lion", book_type="coloring_books", age_group="kids")
+
+    for field in ("demand", "competition", "profit", "evergreen", "seasonal", "marketplace"):
+        value = result.get(field)
+        assert isinstance(value, (int, float)), f"{field} did not return a number: {value!r}"
+        assert 0 <= value <= 100, f"{field}={value} is out of the expected 0-100 range"
+
+    print(f"[PASS] TrendEngine with GoogleBooksMarketDataSource never crashes (fields: {result})")
+
+
 def run_all():
     tests = [
         test_invalid_subject_does_not_crash,
@@ -321,26 +344,3 @@ if __name__ == "__main__":
     sys.exit(0 if ok else 1)
 
 
-def test_trend_engine_with_google_books_source_never_crashes():
-    """
-    If/when GoogleBooksMarketDataSource is wired into TrendEngine,
-    it must never crash TrendEngine.analyze() - whether the live
-    API call succeeds, fails, or is rate-limited (429), every
-    method must still return a valid int and the confidence
-    that TrendEngine can always compute demand/competition/etc.
-    must hold even with a real (occasionally-failing) data source.
-    """
-    from agents.engines.trend_engine.trend_engine import TrendEngine
-    from agents.engines.intelligence.data_sources.google_books_market_data_source import GoogleBooksMarketDataSource
-
-    gb_source = GoogleBooksMarketDataSource()
-    engine = TrendEngine(data_source=gb_source)
-
-    result = engine.analyze("lion", book_type="coloring_books", age_group="kids")
-
-    for field in ("demand", "competition", "profit", "evergreen", "seasonal", "marketplace"):
-        value = result.get(field)
-        assert isinstance(value, (int, float)), f"{field} did not return a number: {value!r}"
-        assert 0 <= value <= 100, f"{field}={value} is out of the expected 0-100 range"
-
-    print(f"[PASS] TrendEngine with GoogleBooksMarketDataSource never crashes (fields: {result})")
