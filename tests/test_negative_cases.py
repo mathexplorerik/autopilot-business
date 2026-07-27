@@ -173,6 +173,28 @@ def test_trend_engine_with_google_books_source_never_crashes():
     print(f"[PASS] TrendEngine with GoogleBooksMarketDataSource never crashes (fields: {result})")
 
 
+def test_trend_engine_with_open_library_source_never_crashes():
+    """
+    Same guarantee as the GoogleBooksMarketDataSource test: whether
+    the live Open Library API call succeeds or fails, TrendEngine
+    must always get back valid 0-100 ints for every field.
+    """
+    from agents.engines.trend_engine.trend_engine import TrendEngine
+    from agents.engines.intelligence.data_sources.open_library_market_data_source import OpenLibraryMarketDataSource
+
+    ol_source = OpenLibraryMarketDataSource()
+    engine = TrendEngine(data_source=ol_source)
+
+    result = engine.analyze("lion", book_type="coloring_books", age_group="kids")
+
+    for field in ("demand", "competition", "profit", "evergreen", "seasonal", "marketplace"):
+        value = result.get(field)
+        assert isinstance(value, (int, float)), f"{field} did not return a number: {value!r}"
+        assert 0 <= value <= 100, f"{field}={value} is out of the expected 0-100 range"
+
+    print(f"[PASS] TrendEngine with OpenLibraryMarketDataSource never crashes (fields: {result})")
+
+
 def run_all():
     tests = [
         test_invalid_subject_does_not_crash,
@@ -185,6 +207,7 @@ def run_all():
         test_analytics_reflects_failed_quality,
         test_content_safety_blocks_unsafe_prompt,
         test_trend_engine_with_google_books_source_never_crashes,
+        test_trend_engine_with_open_library_source_never_crashes,
         test_pricing_intelligence_edge_cases,
         test_bestseller_intelligence_edge_cases,
         test_competitor_intelligence_edge_cases,
@@ -342,5 +365,7 @@ def test_business_dashboard_edge_cases():
 if __name__ == "__main__":
     ok = run_all()
     sys.exit(0 if ok else 1)
+
+
 
 
