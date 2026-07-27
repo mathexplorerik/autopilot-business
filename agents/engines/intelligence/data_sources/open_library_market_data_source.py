@@ -51,13 +51,53 @@ class OpenLibraryMarketDataSource(BaseMarketDataSource):
         self._cache[niche] = data
         return data
 
-    def competition(self, niche: str) -> int:
+    def _competition_result(self, niche: str):
+        from .source_value import SourceValue
+
         try:
             data = self._fetch(niche)
             num_found = data.get("numFound", 0)
-            return min(100, round((num_found / self.COMPETITION_CEILING) * 100))
+            value = min(
+                100,
+                round((num_found / self.COMPETITION_CEILING) * 100),
+            )
+            return SourceValue(
+                value=value,
+                source="open_library",
+                mode="real",
+            )
         except Exception:
-            return self.fallback.competition(niche)
+            return SourceValue(
+                value=self.fallback.competition(niche),
+                source=self.fallback.source_name,
+                mode="fallback",
+            )
+
+    def competition(self, niche: str) -> int:
+        return self._competition_result(niche).value
+
+    def value_with_provenance(self, field: str, key: str):
+        from .source_value import SourceValue
+
+        if field == "competition":
+            return self._competition_result(key)
+
+        allowed = {
+            "demand",
+            "profit",
+            "evergreen",
+            "seasonal",
+            "marketplace",
+        }
+        if field not in allowed:
+            raise ValueError(f"Unknown market-data field: {field}")
+
+        value = getattr(self.fallback, field)(key)
+        return SourceValue(
+            value=value,
+            source=self.fallback.source_name,
+            mode="fallback",
+        )
 
     def demand(self, niche: str) -> int:
         return self.fallback.demand(niche)

@@ -49,3 +49,32 @@ class BaseMarketDataSource(ABC):
     @property
     def source_name(self) -> str:
         return self.__class__.__name__
+
+    def value_with_provenance(self, field: str, key: str):
+        """
+        Return a SourceValue for an existing score method without
+        changing the legacy int-returning API.
+
+        Concrete real-data sources may override this method to mark
+        individual fields as real or fallback.
+        """
+        from .source_value import SourceValue
+
+        allowed = {
+            "demand",
+            "competition",
+            "profit",
+            "evergreen",
+            "seasonal",
+            "marketplace",
+        }
+        if field not in allowed:
+            raise ValueError(f"Unknown market-data field: {field}")
+
+        value = getattr(self, field)(key)
+
+        return SourceValue(
+            value=value,
+            source=self.source_name,
+            mode="heuristic",
+        )
