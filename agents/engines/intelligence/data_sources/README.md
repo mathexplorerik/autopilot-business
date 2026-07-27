@@ -104,9 +104,32 @@ new market-data source implements `BaseMarketDataSource`.
 |---|---|---|
 | `heuristic_market_data_source.py` | everything (JSON/analyzer-backed) | n/a (this IS the fallback) |
 | `google_books_market_data_source.py` | competition, demand (when rating data available) | profit, evergreen, seasonal, marketplace, and demand/competition on request failure |
+| `open_library_market_data_source.py` | competition (via numFound) | demand, profit, evergreen, seasonal, marketplace, and competition on request failure |
 
 `google_books_market_data_source.py` is built and tested but **not
 yet wired into `TrendEngine`** — Google's unauthenticated API quota
 is rate-limited (HTTP 429 observed in testing within ~1 request).
 Wiring it in requires either accepting frequent fallback-to-heuristic
 behavior, or obtaining a free Google API key to raise the quota.
+
+`open_library_market_data_source.py` is built and tested, also **not
+yet wired into `TrendEngine`** by default — kept consistent with
+google_books until a deliberate decision is made on which live
+source(s) to enable in production. Both have integration tests
+(`tests/test_negative_cases.py`) confirming TrendEngine never
+crashes with either source, whether the live API call succeeds
+or fails.
+
+## Update — Open Library added
+
+| File | Real signal for | Falls back for |
+|---|---|---|
+| `open_library_market_data_source.py` | competition (via numFound) | demand, profit, evergreen, seasonal, marketplace, and competition on request failure |
+
+`open_library_market_data_source.py` is built and tested, also
+**not yet wired into `TrendEngine`** by default — kept consistent
+with `google_books_market_data_source.py` until a deliberate
+decision is made on which live source(s) to enable in production.
+Both have integration tests (`tests/test_negative_cases.py`)
+confirming `TrendEngine` never crashes with either source, whether
+the live API call succeeds or fails.
