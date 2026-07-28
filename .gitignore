@@ -14,3 +14,10 @@ venv/
 # Generated Files
 output/
 downloads/
+# Generated output artifacts (regenerated on every run, not source code)
+output/analytics/
+output/covers/
+output/prompts/
+output/pdfs/
+output/business_dashboard/
+output/research_cache/
