@@ -1,5 +1,6 @@
 from .opportunity_analyzer import OpportunityAnalyzer
 from .recommendation_engine import RecommendationEngine
+from .confidence_scorer import ConfidenceScorer
 from agents.engines.intelligence.data_sources.heuristic_market_data_source import HeuristicMarketDataSource
 
 
@@ -13,6 +14,7 @@ class TrendEngine:
         self.data_source = data_source or HeuristicMarketDataSource()
         self.opportunity = OpportunityAnalyzer()
         self.recommendation = RecommendationEngine()
+        self.confidence = ConfidenceScorer()
 
     def analyze(
         self,
@@ -46,6 +48,7 @@ class TrendEngine:
 
         if provenance:
             report["provenance"] = provenance
+            report["confidence"] = self.confidence.analyze(provenance)
 
         report["opportunity"] = self.opportunity.analyze(report)
         report["recommendation"] = self.recommendation.analyze(

@@ -41,6 +41,16 @@ def test_open_library_provenance():
     # Unsupported Open Library fields must honestly report fallback.
     assert result["provenance"]["profit"]["mode"] == "fallback"
 
+    # Only competition is backed by real Open Library data here.
+    assert result["confidence"]["score"] == 20
+    assert result["confidence"]["level"] == "LOW"
+    assert result["confidence"]["real_fields"] == ["competition"]
+    assert result["confidence"]["real_field_count"] == 1
+    assert result["confidence"]["total_field_count"] == 6
+
+    # Confidence metadata must not alter the opportunity calculation.
+    assert result["opportunity"] == 58
+
     # Existing score contract stays unchanged.
     for field in (
         "demand",
@@ -77,7 +87,14 @@ def test_heuristic_provenance():
         assert meta["value"] == result[field]
         assert meta["mode"] == "heuristic"
 
-    print("[PASS] TrendEngine exposes heuristic provenance")
+    # Pure heuristic data contains no externally verified real fields.
+    assert result["confidence"]["score"] == 0
+    assert result["confidence"]["level"] == "LOW"
+    assert result["confidence"]["real_fields"] == []
+    assert result["confidence"]["real_field_count"] == 0
+    assert result["confidence"]["total_field_count"] == 6
+
+    print("[PASS] TrendEngine exposes heuristic provenance + confidence")
 
 
 def run_all():
