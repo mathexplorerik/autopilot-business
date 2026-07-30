@@ -1,5 +1,6 @@
 from .opportunity_analyzer import OpportunityAnalyzer
 from .recommendation_engine import RecommendationEngine
+from .confidence_scorer import ConfidenceScorer
 from agents.engines.intelligence.data_sources.heuristic_market_data_source import HeuristicMarketDataSource
 
 
@@ -13,6 +14,7 @@ class TrendEngine:
         self.data_source = data_source or HeuristicMarketDataSource()
         self.opportunity = OpportunityAnalyzer()
         self.recommendation = RecommendationEngine()
+        self.confidence = ConfidenceScorer()
 
     def analyze(
         self,
@@ -24,12 +26,30 @@ class TrendEngine:
         report["keyword"] = keyword
         report["book_type"] = book_type
         report["age_group"] = age_group
-        report["demand"] = self.data_source.demand(keyword)
-        report["competition"] = self.data_source.competition(keyword)
-        report["profit"] = self.data_source.profit(keyword)
-        report["evergreen"] = self.data_source.evergreen(keyword)
-        report["seasonal"] = self.data_source.seasonal(keyword)
-        report["marketplace"] = self.data_source.marketplace(book_type)
+        field_keys = {
+            "demand": keyword,
+            "competition": keyword,
+            "profit": keyword,
+            "evergreen": keyword,
+            "seasonal": keyword,
+            "marketplace": book_type,
+        }
+
+        provenance = {}
+
+        for field, key in field_keys.items():
+            if hasattr(self.data_source, "value_with_provenance"):
+                result = self.data_source.value_with_provenance(field, key)
+                report[field] = result.value
+                provenance[field] = result.as_dict()
+            else:
+                # Backward compatibility for older/custom data sources.
+                report[field] = getattr(self.data_source, field)(key)
+
+        if provenance:
+            report["provenance"] = provenance
+            report["confidence"] = self.confidence.analyze(provenance)
+
         report["opportunity"] = self.opportunity.analyze(report)
         report["recommendation"] = self.recommendation.analyze(
             report["opportunity"]
