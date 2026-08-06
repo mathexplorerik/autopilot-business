@@ -195,6 +195,39 @@ def test_trend_engine_with_open_library_source_never_crashes():
     print(f"[PASS] TrendEngine with OpenLibraryMarketDataSource never crashes (fields: {result})")
 
 
+def test_series_planner_edge_cases():
+    """SeriesPlanner must handle zero/negative planned_books, single-book series, and out-of-range book numbers without crashing."""
+    from agents.engines.series_engine.series_planner import SeriesPlanner
+
+    planner = SeriesPlanner()
+
+    # Zero planned_books should not crash create_series or summary
+    series_zero = planner.create_series("Test Series", subject="lion", planned_books=0)
+    summary_zero = planner.get_series_summary(series_zero)
+    assert summary_zero["books_remaining"] == 0, "Zero planned_books should report 0 remaining, not negative"
+
+    # Single-book series: cross-promotion for the only book should
+    # fall back gracefully, not return an empty/broken string
+    series = planner.create_series("Lion Adventures", subject="lion", planned_books=3)
+    series = planner.add_book_to_series(series, "Lion's First Day")
+    promo_text_only_book = planner.get_cross_promotion_text(series, current_book_number=1)
+    assert "Lion Adventures" in promo_text_only_book, "Cross-promotion text should still mention the series name with only one book"
+
+    # Multi-book series: cross-promotion must exclude the current book, not list it
+    series = planner.add_book_to_series(series, "Lion's Big Adventure")
+    series = planner.add_book_to_series(series, "Lion's Bedtime")
+    promo_text = planner.get_cross_promotion_text(series, current_book_number=2)
+    assert "Lion's Big Adventure" not in promo_text, "Cross-promotion text should exclude the CURRENT book"
+    assert "Lion's First Day" in promo_text and "Lion's Bedtime" in promo_text, "Cross-promotion text should list the OTHER books"
+
+    # Requesting cross-promotion for a book number that doesn't exist
+    # should not crash - should just list everything (no "current" to exclude)
+    promo_text_invalid = planner.get_cross_promotion_text(series, current_book_number=999)
+    assert isinstance(promo_text_invalid, str), "Cross-promotion with an out-of-range book number crashed instead of returning text"
+
+    print("[PASS] series planner handles zero planned_books, single-book series, and invalid book numbers without crash")
+
+
 def run_all():
     tests = [
         test_invalid_subject_does_not_crash,
@@ -208,6 +241,7 @@ def run_all():
         test_content_safety_blocks_unsafe_prompt,
         test_trend_engine_with_google_books_source_never_crashes,
         test_trend_engine_with_open_library_source_never_crashes,
+        test_series_planner_edge_cases,
         test_pricing_intelligence_edge_cases,
         test_bestseller_intelligence_edge_cases,
         test_competitor_intelligence_edge_cases,
@@ -227,15 +261,6 @@ def run_all():
             print(f"[ERROR] {test.__name__}: {type(e).__name__}: {e}")
 
     print()
-    if failed:
-        print(f"{failed}/{len(tests)} negative tests FAILED")
-    else:
-        print(f"All {len(tests)} negative tests PASSED")
-    return failed == 0
-
-
-
-
 def test_content_safety_blocks_unsafe_prompt():
     """A book containing a clearly unsafe word must fail quality validation."""
     from agents.engines.book_engine.quality_checker import QualityChecker
@@ -365,6 +390,8 @@ def test_business_dashboard_edge_cases():
 if __name__ == "__main__":
     ok = run_all()
     sys.exit(0 if ok else 1)
+
+
 
 
 
