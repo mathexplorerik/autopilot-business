@@ -14,11 +14,33 @@ class PortfolioPlanner:
     def __init__(self, research_engine):
         self.research_engine = research_engine
 
+    # Confidence-aware ranking: a niche whose demand/competition
+    # numbers are mostly heuristic-fallback (LOW confidence) is
+    # discounted relative to one backed by real external data
+    # (HIGH confidence), so two niches with the same raw opportunity
+    # score don'''t rank identically when one is far less trustworthy.
+    # This never changes the underlying opportunity/revenue numbers
+    # themselves - only how heavily they count toward ranking.
+    CONFIDENCE_MULTIPLIERS = {
+        "HIGH": 1.0,
+        "MEDIUM": 0.9,
+        "LOW": 0.75,
+        None: 0.75,  # missing confidence metadata treated as LOW (safe default)
+    }
+
+    def _confidence_multiplier(self, report):
+        confidence = report.metadata.get("trend", {}).get("confidence") or {}
+        level = confidence.get("level")
+        return self.CONFIDENCE_MULTIPLIERS.get(level, self.CONFIDENCE_MULTIPLIERS[None])
+
     def _score_niche(self, report):
         """
         Combined ranking score: opportunity is the primary
         driver (how easy to succeed), revenue potential is
-        the secondary driver (how much it is worth succeeding).
+        the secondary driver (how much it is worth succeeding),
+        both discounted by data confidence (see
+        _confidence_multiplier) so ranking reflects evidence
+        quality, not just raw optimism.
         """
         opportunity = report.opportunity_score or 0
         revenue = report.metadata.get("revenue", {})
@@ -28,7 +50,8 @@ class PortfolioPlanner:
         # (very rough: $1000/month treated as a strong ceiling for this heuristic)
         revenue_scaled = min(100, (monthly_revenue / 1000) * 100)
 
-        return round((opportunity * 0.6) + (revenue_scaled * 0.4), 1)
+        base_score = (opportunity * 0.6) + (revenue_scaled * 0.4)
+        return round(base_score * self._confidence_multiplier(report), 1)
 
     def analyze_portfolio(self, niches: list, season: str = "") -> dict:
         """
@@ -50,6 +73,8 @@ class PortfolioPlanner:
 
             revenue = report.metadata.get("revenue", {})
 
+            confidence = report.metadata.get("trend", {}).get("confidence") or {}
+
             results.append({
                 "niche": niche,
                 "resolved_niche": report.resolved_niche,
@@ -60,6 +85,8 @@ class PortfolioPlanner:
                 "estimated_monthly_revenue": revenue.get("estimated_monthly_revenue", 0),
                 "recommendation": report.recommendation,
                 "portfolio_score": self._score_niche(report),
+                "confidence_level": confidence.get("level", "LOW"),
+                "confidence_score": confidence.get("score", 0),
             })
 
         results.sort(key=lambda r: r["portfolio_score"], reverse=True)
