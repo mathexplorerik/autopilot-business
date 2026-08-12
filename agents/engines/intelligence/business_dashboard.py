@@ -23,6 +23,28 @@ class BusinessDashboard:
         self.portfolio_planner = portfolio_planner
         self.multi_market_optimizer = multi_market_optimizer
 
+    def _confidence_summary(self, ranked_niches: list) -> dict:
+        """
+        Aggregate confidence across all ranked niches - how many
+        are backed by real external data (HIGH/MEDIUM) versus
+        fallback-only (LOW), so the dashboard can show at a glance
+        how much of this snapshot to trust.
+        """
+        valid = [n for n in ranked_niches if "error" not in n]
+        if not valid:
+            return {"high": 0, "medium": 0, "low": 0, "total": 0}
+
+        counts = {"high": 0, "medium": 0, "low": 0}
+        for n in valid:
+            level = (n.get("confidence_level") or "LOW").lower()
+            if level in counts:
+                counts[level] += 1
+            else:
+                counts["low"] += 1
+
+        counts["total"] = len(valid)
+        return counts
+
     def generate(self, niches: list, season: str = "", top_n: int = 5) -> dict:
         portfolio = self.portfolio_planner.analyze_portfolio(niches, season=season)
         top_niches = portfolio["ranked_niches"][:top_n]
@@ -46,6 +68,7 @@ class BusinessDashboard:
             "top_pick": top_pick,
             "top_pick_marketplace_comparison": marketplace_comparison,
             "total_estimated_monthly_revenue_if_all_built": portfolio["total_estimated_monthly_revenue_if_all_built"],
+            "confidence_summary": self._confidence_summary(portfolio["ranked_niches"]),
         }
 
         return snapshot
@@ -73,7 +96,16 @@ class BusinessDashboard:
                     continue
                 f.write(
                     f"  {i}. {n['niche']:20} score={n['portfolio_score']:5} "
-                    f"opp={n['opportunity_score']:3} monthly_rev=${n['estimated_monthly_revenue']}\n"
+                    f"opp={n['opportunity_score']:3} monthly_rev=${n['estimated_monthly_revenue']} "
+                    f"[confidence={n.get('confidence_level', 'LOW')}]\n"
+                )
+
+            conf = snapshot.get("confidence_summary", {})
+            if conf.get("total"):
+                f.write(
+                    f"\n  Data confidence: {conf.get('high', 0)} HIGH, "
+                    f"{conf.get('medium', 0)} MEDIUM, {conf.get('low', 0)} LOW "
+                    f"(out of {conf['total']} niches)\n"
                 )
 
             if snapshot.get("top_pick_marketplace_comparison"):
@@ -101,7 +133,20 @@ class BusinessDashboard:
             if "error" in n:
                 print(f"    {i}. {n['niche']}: ERROR")
                 continue
-            print(f"    {i}. {n['niche']:20} score={n['portfolio_score']:5} monthly_rev=${n['estimated_monthly_revenue']}")
+            print(
+                f"    {i}. {n['niche']:20} score={n['portfolio_score']:5} "
+                f"monthly_rev=${n['estimated_monthly_revenue']} "
+                f"[confidence={n.get('confidence_level', 'LOW')}]"
+            )
+
+        conf = snapshot.get("confidence_summary", {})
+        if conf.get("total"):
+            print()
+            print(
+                f"  Data confidence: {conf.get('high', 0)} HIGH, "
+                f"{conf.get('medium', 0)} MEDIUM, {conf.get('low', 0)} LOW "
+                f"(out of {conf['total']} niches)"
+            )
         if snapshot.get("top_pick_marketplace_comparison"):
             print()
             print("  " + snapshot["top_pick_marketplace_comparison"]["recommendation"])
