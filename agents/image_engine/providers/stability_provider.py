@@ -24,7 +24,7 @@ class StabilityProvider(BaseProvider):
     def __init__(self):
         pass
 
-    def generate(
+    def _generate_once(
         self,
         prompt: str,
         negative_prompt: str,

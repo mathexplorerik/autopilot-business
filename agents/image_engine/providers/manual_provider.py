@@ -19,7 +19,7 @@ class ManualProvider(BaseProvider):
 
     VERSION = "1.0.0"
 
-    def generate(
+    def _generate_once(
         self,
         prompt: str,
         negative_prompt: str,
