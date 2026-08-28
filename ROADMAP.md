@@ -32,11 +32,11 @@
 - Confidence Scoring (HIGH/MEDIUM/LOW per report)
 - Confidence-Aware Ranking (Portfolio/Dashboard rank by evidence quality, not just raw optimism)
 
-## V15 — Coloring Book Generator Deepening (IN PROGRESS)
-- Image Pipeline retry/backoff infrastructure - DONE (with_retry wrapper, BaseProvider integration)
-- Real provider implementation (Flux/Gemini/Stability/OpenAI) - BLOCKED: needs API keys + network, must be done on developer machine, not this sandbox
-- Scene Planner refinements - NOT STARTED
-- Prompt Builder refinements - NOT STARTED
+## V15 — Coloring Book Generator Deepening (PAUSED)
+- Image Pipeline retry/backoff infrastructure - DONE
+- Real provider implementation (Flux/Gemini/Stability/OpenAI) - BLOCKED: needs API keys + network
+- Scene Planner refinements - EVALUATED: low-impact (only used for 3-page preview, not real generation) - skipped
+- Prompt Builder refinements - EVALUATED: already mature (verified via real sample output), no genuine gap found - skipped
 
 ## V16 — Book Builder
 - PDF Generator refinements
