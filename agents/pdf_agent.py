@@ -18,6 +18,8 @@ class PDFAgent:
 
         safe_title = sanitize_filename(book["title"])
         pdf_path   = f"output/pdfs/{safe_title}.pdf"
+        book_keyword = book.get("keyword", safe_title)
+        image_folder = f"output/{book_keyword}"
 
         # ✅ Exact KDP size — 8.5 x 11 inch
         c = canvas.Canvas(
@@ -52,7 +54,7 @@ class PDFAgent:
         missing = 0
 
         for page in range(1, total + 1):
-            image_path = f"output/images/page_{page:03}.png"
+            image_path = f"{image_folder}/page_{page:03}.png"
 
             if os.path.exists(image_path):
                 try:
