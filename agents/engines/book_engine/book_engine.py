@@ -10,6 +10,7 @@ from .character_profile_generator import CharacterProfileGenerator
 from .recurring_motifs_generator import RecurringMotifsGenerator
 from agents.engines.generation_pipeline.generation_pipeline import GenerationPipeline
 from agents.engines.education_engine.education_engine import EducationEngine
+from agents.analytics.cost_tracker import CostTracker
 from agents.data.subjects import get_subjects
 import random
 from agents.data.animals.season_accessories import SEASON_ACCESSORIES
@@ -30,6 +31,7 @@ class BookEngine:
         self.character_profile_generator = CharacterProfileGenerator()
         self.recurring_motifs_generator = RecurringMotifsGenerator()
         self.education_engine = EducationEngine()
+        self.cost_tracker = CostTracker()
 
     def build(self, keyword, book_type, age_group, provider="manual", season=None, education_mode=None):
 
@@ -107,6 +109,13 @@ class BookEngine:
         )
 
         generated_pages = self.pipeline.generate()
+        images_found = sum(1 for p in generated_pages if p.get("image", {}).get("success") and p.get("image", {}).get("provider") != "manual")
+        cost_data = self.cost_tracker.calculate_book_cost(
+            provider=provider,
+            total_pages=pages["pages"],
+            images_generated=images_found,
+        )
+        self.cost_tracker.save_cost_record(title, cost_data)
         blueprint["generated_pages"] = generated_pages
 
         quality = self.quality_checker.validate(blueprint)
