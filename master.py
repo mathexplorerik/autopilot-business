@@ -53,6 +53,7 @@ class MasterCommand:
         age       = "kids"
         command   = "book"
         book_type = "coloring_books"
+        provider  = "manual"
 
         # ✅ Parse flags
         i = 0 if args[0].startswith("--") else 1
@@ -72,6 +73,9 @@ class MasterCommand:
             elif args[i] == "--tracing":
                 command = "tracing"
                 i += 1
+            elif args[i] == "--provider" and i+1 < len(args):
+                provider = args[i+1]
+                i += 2
             elif args[i] == "--story":
                 book_type = "story"
                 i += 1
@@ -91,6 +95,7 @@ class MasterCommand:
             "age":       age,
             "command":   command,
             "book_type": book_type,
+            "provider":  provider,
         }
 
     def run(self, args=None):
@@ -223,6 +228,7 @@ class MasterCommand:
             book_type=config.get("book_type", "coloring_books"),
             age_group=report.age_group,
             season=config.get("season"),
+            provider=config.get("provider", "manual"),
         )
         results['book'] = '✅'
 

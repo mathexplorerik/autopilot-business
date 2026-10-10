@@ -378,7 +378,6 @@ class GenerationPipeline:
                 scene=scene,
             )
 
-            self.generate_image(page_data)
 
             self.pages.append(page_data)
 
@@ -694,7 +693,7 @@ class GenerationPipeline:
         """
 
         metadata = ImageMetadata(
-            provider="manual",
+            provider=self.provider,
             prompt=page["prompt"],
             negative_prompt=page["negative"],
             output_path=f"output/{self.keyword}/page_{page['page']:03d}",

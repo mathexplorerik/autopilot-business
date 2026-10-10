@@ -78,6 +78,12 @@ class StabilityProvider(BaseProvider):
             timeout=60,
         )
 
+        if response.status_code in (400, 401, 402, 403, 404, 422):
+            # Permanent client-side errors (bad key, no credits, invalid
+            # request): retrying cannot fix these, so fail fast.
+            raise ValueError(
+                f"Stability API rejected the request ({response.status_code}): {response.text[:300]}"
+            )
         if response.status_code != 200:
             # Raise a plain Exception (not ValueError/NotImplementedError)
             # so the retry wrapper treats this as a transient failure

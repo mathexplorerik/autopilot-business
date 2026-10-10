@@ -84,6 +84,7 @@ class BookAgent:
         book_type: str = "coloring_books",
         age_group: str = "kids",
         season: str = None,
+        provider: str = "manual",
     ) -> Dict:
         """
         Generate a complete book blueprint.
@@ -110,6 +111,7 @@ class BookAgent:
             book_type=self.book_type,
             age_group=self.age_group,
             season=self.season,
+            provider=provider,
         )
 
         return self.book
