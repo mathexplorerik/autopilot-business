@@ -55,6 +55,12 @@ class PDFAgent:
 
         for page in range(1, total + 1):
             image_path = f"{image_folder}/page_{page:03}.png"
+            # Providers write either <folder>/page_NNN.png or
+            # <folder>/page_NNN/image.png (e.g. StabilityProvider).
+            if not os.path.exists(image_path):
+                nested_path = f"{image_folder}/page_{page:03}/image.png"
+                if os.path.exists(nested_path):
+                    image_path = nested_path
 
             if os.path.exists(image_path):
                 try:
