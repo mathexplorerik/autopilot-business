@@ -101,6 +101,25 @@ def test_niche_book_runs_successfully():
     print("[PASS] master.py niche-mode run completed with exit code 0")
 
 
+
+
+def test_pdf_reports_image_counts_honestly(stdout_text):
+    """
+    The PDF agent must report how many pages have real images vs
+    placeholders, and the numbers must add up to the page count.
+    With the manual provider no real images exist, so we expect 0
+    real images and all placeholders - and we want that stated
+    plainly rather than hidden behind a passing exit code.
+    """
+    with_images = re.search(r"With images\s*:\s*(\d+)", stdout_text)
+    placeholders = re.search(r"Placeholders\s*:\s*(\d+)", stdout_text)
+    assert with_images and placeholders, "PDF summary lines (With images / Placeholders) missing from output"
+    real = int(with_images.group(1))
+    fake = int(placeholders.group(1))
+    assert real + fake == 40, f"Image + placeholder count ({real}+{fake}) does not equal 40 pages"
+    print(f"[PASS] PDF image accounting adds up: {real} real, {fake} placeholder (manual provider = expect 0 real)")
+
+
 def run_all():
     tests_run = []
 
@@ -109,6 +128,9 @@ def run_all():
         tests_run.append(True)
 
         test_pdf_was_created(result.stdout)
+        tests_run.append(True)
+
+        test_pdf_reports_image_counts_honestly(result.stdout)
         tests_run.append(True)
 
         test_character_consistency_in_prompts()
