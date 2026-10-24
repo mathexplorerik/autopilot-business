@@ -284,6 +284,45 @@ class GenerationPipeline:
 
     # --------------------------------------------------
 
+    # --------------------------------------------------
+
+    def _prompt_fingerprint(self, prompt: str, negative: str) -> str:
+        """Short hash of everything that determines the image."""
+        import hashlib
+        raw = f"{self.provider}||{prompt}||{negative}"
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
+
+    def _existing_image_path(self, page_dir: str):
+        """Return the path of an already-generated, non-empty image, else None."""
+        import os
+        for candidate in (f"{page_dir}.png", os.path.join(page_dir, "image.png")):
+            if os.path.exists(candidate) and os.path.getsize(candidate) > 0:
+                return candidate
+        return None
+
+    def _image_already_generated(self, page_dir: str, fingerprint: str) -> bool:
+        """
+        True only if a real image exists AND was generated from the
+        same prompt/negative/provider. The manual provider never makes
+        an image, so it can never be skipped.
+        """
+        import os
+        if self.provider == "manual":
+            return False
+        if self._existing_image_path(page_dir) is None:
+            return False
+        stamp = os.path.join(page_dir, ".prompt_hash")
+        if not os.path.exists(stamp):
+            return False
+        with open(stamp) as f:
+            return f.read().strip() == fingerprint
+
+    def _write_fingerprint(self, page_dir: str, fingerprint: str):
+        import os
+        os.makedirs(page_dir, exist_ok=True)
+        with open(os.path.join(page_dir, ".prompt_hash"), "w") as f:
+            f.write(fingerprint)
+
     def build_page(
         self,
         page: int,
@@ -300,14 +339,28 @@ class GenerationPipeline:
         )
 
         prompt = prompt_data["positive"]
+        negative = scene["negative"]
+        page_dir = f"output/{self.keyword}/page_{page:03d}"
+        fingerprint = self._prompt_fingerprint(prompt, negative)
 
         metadata = ImageMetadata(
             provider=self.provider,
             prompt=prompt,
-            output_path=f"output/{self.keyword}/page_{page:03d}",
+            negative_prompt=negative,
+            output_path=page_dir,
         )
 
-        result = self.image_engine.generate(metadata)
+        if self._image_already_generated(page_dir, fingerprint):
+            result = {
+                "success": True,
+                "skipped": True,
+                "provider": self.provider,
+                "image_path": self._existing_image_path(page_dir),
+            }
+        else:
+            result = self.image_engine.generate(metadata)
+            if self.provider != "manual" and result.get("success"):
+                self._write_fingerprint(page_dir, fingerprint)
 
         return {
 
