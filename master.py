@@ -245,6 +245,16 @@ class MasterCommand:
         seo_agent = SEOAgent()
         seo = seo_agent.generate(book)
         results['seo'] = '✅'
+        # The listing title is the single source of truth. PDF, cover and
+        # listing must show the same title, so copy it into the book before
+        # the PDF and cover agents run. Keeps the old title if SEO gave nothing usable.
+        seo_title = seo.get("title") if isinstance(seo, dict) else None
+        seo_subtitle = seo.get("subtitle") if isinstance(seo, dict) else None
+        if isinstance(seo_title, str) and 20 <= len(seo_title.strip()) <= 200:
+            book["internal_title"] = book.get("title")
+            book["title"] = seo_title.strip()
+            if isinstance(seo_subtitle, str) and seo_subtitle.strip():
+                book["subtitle"] = seo_subtitle.strip()
 
         # PDF
         self._step("PDF")

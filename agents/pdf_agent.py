@@ -1,7 +1,7 @@
 import os
 from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
-from reportlab.lib.utils import ImageReader
+from reportlab.lib.utils import ImageReader, simpleSplit
 from agents.utils.filename_sanitizer import sanitize_filename
 
 class PDFAgent:
@@ -27,25 +27,27 @@ class PDFAgent:
             pagesize=(self.PAGE_WIDTH, self.PAGE_HEIGHT)
         )
 
-        # ✅ Title Page
-        c.setFont("Helvetica-Bold", 28)
-        c.drawCentredString(
-            self.PAGE_WIDTH / 2,
-            self.PAGE_HEIGHT - 2 * inch,
-            book["title"]
-        )
-        c.setFont("Helvetica", 16)
-        c.drawCentredString(
-            self.PAGE_WIDTH / 2,
-            self.PAGE_HEIGHT - 2.6 * inch,
-            book.get("subtitle", "")
-        )
+        # Title Page (long titles wrap onto several lines)
+        center_x = self.PAGE_WIDTH / 2
+        max_text_width = self.PAGE_WIDTH - 2 * inch
+        y = self.PAGE_HEIGHT - 2 * inch
+
+        title_font, title_size, title_lead = "Helvetica-Bold", 28, 34
+        c.setFont(title_font, title_size)
+        for text_line in simpleSplit(book["title"], title_font, title_size, max_text_width):
+            c.drawCentredString(center_x, y, text_line)
+            y -= title_lead
+
+        y -= 0.3 * inch
+        sub_font, sub_size, sub_lead = "Helvetica", 16, 20
+        c.setFont(sub_font, sub_size)
+        for text_line in simpleSplit(book.get("subtitle", "") or "", sub_font, sub_size, max_text_width):
+            c.drawCentredString(center_x, y, text_line)
+            y -= sub_lead
+
+        y -= 0.3 * inch
         c.setFont("Helvetica", 12)
-        c.drawCentredString(
-            self.PAGE_WIDTH / 2,
-            self.PAGE_HEIGHT - 3.2 * inch,
-            f"Ages {book.get('target_age', '4-8 Years')}"
-        )
+        c.drawCentredString(center_x, y, f"Ages {book.get('target_age', '4-8 Years')}")
         c.showPage()
 
         # ✅ Interior Pages — full bleed
