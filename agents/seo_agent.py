@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from datetime import datetime
+from agents.seo_scorer import SEOScorer
 
 class SEOAgent:
 
@@ -47,6 +48,8 @@ class SEOAgent:
             }
         }
 
+        # Checklist score of the finished listing (not a ranking prediction)
+        seo["score"] = SEOScorer().score(seo, niche)
         self._save(seo)
         self._print_summary(seo)
         return seo
@@ -222,4 +225,8 @@ Is this the perfect gift you've been looking for? YES! This amazing {niche_title
         print(f"  📖 Subtitle : {seo['subtitle'][:50]}...")
         print(f"  🔑 Keywords : {len(seo['keywords'])} generated")
         print(f"  📂 Category : {seo['categories'][0][:40]}...")
+        score = seo.get("score", {})
+        print(f"  📊 SEO score: {score.get('score', 'n/a')}/100")
+        for problem in score.get("failed", []):
+            print(f"     - {problem}")
         print(f"  ✅ SEO Complete!")
