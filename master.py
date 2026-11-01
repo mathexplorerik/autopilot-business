@@ -5,6 +5,7 @@ Master Command System
 ==========================================================
 """
 import sys
+import json
 import time
 from datetime import datetime
 from agents.utils.filename_sanitizer import sanitize_filename
@@ -276,10 +277,44 @@ class MasterCommand:
         marketing_agent.generate(book)
         results['marketing'] = '✅'
 
+        # Readiness: is this book actually fit to upload?
+        import os, json
+        from agents.publish_readiness import PublishReadiness
+        pdf_report = getattr(pdf_agent, "last_report", None) or {}
+        price = getattr(report, "suggested_price", None)
+        cover_path = None
+        for cover_name in ("cover.pdf", "cover.png", "cover.jpg", "cover.jpeg"):
+            candidate = os.path.join("output", "covers", cover_name)
+            if os.path.isfile(candidate):
+                cover_path = candidate
+                break
+        try:
+            readiness = PublishReadiness().assess(
+                seo=seo,
+                price=price,
+                total_pages=pdf_report.get("total"),
+                images_found=pdf_report.get("real_images"),
+                cover_path=cover_path,
+                interior_pdf_path=pdf_path,
+            )
+        except Exception as e:
+            readiness = {
+                "verdict": "NOT READY",
+                "ready": False,
+                "blockers": ["readiness check crashed: " + type(e).__name__ + ": " + str(e)],
+                "warnings": [],
+            }
+        os.makedirs("output/publish", exist_ok=True)
+        with open("output/publish/readiness.json", "w", encoding="utf-8") as f:
+            json.dump(readiness, f, indent=4)
+        book["readiness"] = readiness
+        if not readiness["ready"]:
+            book["status"] = "Needs Review"
+
         # Publish
         self._step("Publish")
         publish_agent = PublishAgent()
-        publish_agent.generate(book, seo)
+        publish_agent.generate(book, seo, readiness=readiness, price=price)
         results['publish'] = '✅'
 
         # Analytics
@@ -288,6 +323,12 @@ class MasterCommand:
         analytics_agent.generate(report, book)
         results['analytics'] = '✅'
 
+        print()
+        print("  Publish readiness: " + readiness["verdict"])
+        for item in readiness["blockers"]:
+            print("    ✘ " + item)
+        for item in readiness["warnings"]:
+            print("    ! " + item)
         self._summary(config['niche'], book, pdf_path, results)
         return book
 

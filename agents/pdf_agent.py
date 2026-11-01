@@ -104,6 +104,7 @@ class PDFAgent:
         print(f"  📐 Page size    : 8.5 x 11 inch (KDP standard)")
         print(f"  {'='*40}\n")
 
+        self.last_report = {"total": total, "real_images": found, "placeholders": missing}
         return pdf_path
 
     def _placeholder(self, c, page_num, width, height):

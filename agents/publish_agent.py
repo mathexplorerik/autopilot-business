@@ -4,7 +4,7 @@ import json
 
 class PublishAgent:
 
-    def generate(self, book, seo):
+    def generate(self, book, seo, readiness=None, price=None):
 
         print("\n📦 Publish Agent Running...\n")
 
@@ -15,24 +15,14 @@ class PublishAgent:
             "subtitle": seo["subtitle"],
             "description": seo["description"],
             "keywords": seo["keywords"],
+            "categories": seo.get("categories", []),
+            "price": price,
             "pages": book.get("pages") or book.get("total_pages", 40),
             "language": "English",
             "trim_size": "8.5 x 11"
         }
 
-        checklist = """
-KDP Upload Checklist
-
-✔ Interior PDF
-✔ Cover PDF
-✔ Title
-✔ Subtitle
-✔ Description
-✔ Keywords
-✔ Categories
-✔ Pricing
-✔ Preview Before Publish
-"""
+        checklist = self._checklist(readiness)
 
         # JSON
         with open("output/publish/metadata.json", "w", encoding="utf-8") as f:
@@ -57,3 +47,26 @@ KDP Upload Checklist
         print("✅ Publish files created.")
 
         return metadata
+
+    def _checklist(self, readiness):
+        """The checklist only states what the readiness check found. It never ticks anything on its own."""
+        if not isinstance(readiness, dict):
+            return (
+                "KDP upload readiness: NOT CHECKED\n\n"
+                "The readiness check was not run for this book, so nothing is confirmed.\n"
+            )
+
+        blockers = readiness.get("blockers") or []
+        warnings = readiness.get("warnings") or []
+
+        lines = ["KDP upload readiness: " + str(readiness.get("verdict", "NOT CHECKED")), ""]
+        lines.append("Blocking problems (fix before uploading):" if blockers else "Blocking problems: none")
+        for item in blockers:
+            lines.append("  ✘ " + str(item))
+        lines.append("")
+        lines.append("Warnings:" if warnings else "Warnings: none")
+        for item in warnings:
+            lines.append("  ! " + str(item))
+        lines.append("")
+        lines.append("Always open the book in the KDP previewer and check it before you publish.")
+        return "\n".join(lines) + "\n"
