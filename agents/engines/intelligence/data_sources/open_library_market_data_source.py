@@ -38,15 +38,23 @@ class OpenLibraryMarketDataSource(BaseMarketDataSource):
 
     def _fetch(self, niche: str) -> dict:
         if niche in self._cache:
-            return self._cache[niche]
+            cached = self._cache[niche]
+            if isinstance(cached, Exception):
+                raise cached
+            return cached
 
         query = f"{niche} coloring book"
         params = urllib.parse.urlencode({"q": query, "limit": 20})
         url = f"{self.API_URL}?{params}"
         req = urllib.request.Request(url, headers={"User-Agent": "autopilot-business-research/1.0"})
 
-        with urllib.request.urlopen(req, timeout=self.TIMEOUT_SECONDS) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        try:
+            with urllib.request.urlopen(req, timeout=self.TIMEOUT_SECONDS) as response:
+                data = json.loads(response.read().decode("utf-8"))
+        except Exception as exc:
+            # Remember the failure so every field does not retry a dead network
+            self._cache[niche] = exc
+            raise
 
         self._cache[niche] = data
         return data

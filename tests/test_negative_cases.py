@@ -150,6 +150,30 @@ def test_analytics_reflects_failed_quality():
     print("[PASS] analytics status correctly reflects failed quality check")
 
 
+def _offline_unless_network_tests(func):
+    """
+    Network tests are offline by default: urlopen is made to fail, which
+    exercises the same never-crash fallback path without the internet.
+    Set RUN_NETWORK_TESTS=1 to hit the real APIs.
+    """
+    import functools
+    from unittest import mock
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if os.environ.get("RUN_NETWORK_TESTS") == "1":
+            return func(*args, **kwargs)
+
+        def _offline(*a, **k):
+            raise OSError("network disabled for tests (set RUN_NETWORK_TESTS=1 to enable)")
+
+        with mock.patch("urllib.request.urlopen", _offline):
+            return func(*args, **kwargs)
+
+    return wrapper
+
+
+@_offline_unless_network_tests
 def test_trend_engine_with_google_books_source_never_crashes():
     """
     If/when GoogleBooksMarketDataSource is wired into TrendEngine,
@@ -173,6 +197,7 @@ def test_trend_engine_with_google_books_source_never_crashes():
     print(f"[PASS] TrendEngine with GoogleBooksMarketDataSource never crashes (fields: {result})")
 
 
+@_offline_unless_network_tests
 def test_trend_engine_with_open_library_source_never_crashes():
     """
     Same guarantee as the GoogleBooksMarketDataSource test: whether
