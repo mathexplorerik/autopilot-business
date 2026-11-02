@@ -1,5 +1,21 @@
 # Changelog
 
+## V16 - Honest publishing (not yet confirmed with a real image)
+- PublishReadiness: READY only with real images, cover, price, categories, safe listing
+- upload_checklist.txt reports blockers instead of ticking everything
+- SEO title is the single title across listing, cover and PDF
+- SEOScorer (checklist score, limits UNVERIFIED), ImageQA (thresholds UNVERIFIED)
+- Resume per page by prompt fingerprint; negative prompt now reaches providers
+- --provider flag wired; duplicate image call and hardcoded "manual" removed
+- PDF reads output/{keyword}/ (stale PNGs no longer counted as found)
+- Retry/backoff with fail-fast on permanent errors; StabilityProvider written, UNVERIFIED
+- Cost tracker, pinned requirements, GitHub Actions workflow (run UNSEEN)
+
+## V13-V14 - Market intelligence and evidence-aware data
+- Research, keyword, competitor, pricing, revenue, portfolio, multi-market, dashboard
+- Pluggable data sources (heuristic, Google Books, Open Library), provenance, confidence
+
+
 ## V12.5 — Educational Modes
 - Added alphabet, numbers, colors, shapes coloring book generation
 - Integrated via `book_type="educational"` in BookEngine.build()
