@@ -11,16 +11,18 @@ and edit the constants if they have changed.
 
 import re
 
+from agents import kdp_rules
+
 
 class SEOScorer:
 
-    MIN_TITLE_CHARS = 30
-    MAX_TITLE_CHARS = 200
-    TITLE_KEYWORD_WINDOW = 60
-    MIN_DESCRIPTION_CHARS = 300
-    MAX_DESCRIPTION_CHARS = 4000
-    KEYWORD_SLOTS = 7
-    MAX_KEYWORD_CHARS = 50
+    MIN_TITLE_CHARS = kdp_rules.MIN_TITLE_CHARS
+    MAX_TITLE_CHARS = kdp_rules.MAX_TITLE_CHARS
+    TITLE_KEYWORD_WINDOW = kdp_rules.TITLE_KEYWORD_WINDOW
+    MIN_DESCRIPTION_CHARS = kdp_rules.MIN_DESCRIPTION_CHARS
+    MAX_DESCRIPTION_CHARS = kdp_rules.MAX_DESCRIPTION_CHARS
+    KEYWORD_SLOTS = kdp_rules.KEYWORD_SLOTS
+    MAX_KEYWORD_CHARS = kdp_rules.MAX_KEYWORD_CHARS
 
     AGE_RANGE = re.compile(r"[0-9]+ *- *[0-9]+")
     WORDS = re.compile(r"[a-z0-9]+")

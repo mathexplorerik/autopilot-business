@@ -10,12 +10,14 @@ checked against the current KDP help pages.
 
 import os
 
+from agents import kdp_rules
+
 from agents.safety.content_safety import check_text
 
 
 class PublishReadiness:
 
-    EXPECTED_KEYWORDS = 7
+    EXPECTED_KEYWORDS = kdp_rules.KEYWORD_SLOTS
     WARN_BELOW_SEO_SCORE = 80
 
     def _text(self, value):
