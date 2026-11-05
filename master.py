@@ -187,11 +187,35 @@ class MasterCommand:
         dashboard = BusinessDashboard(engine, portfolio, mmo)
 
         niches = list(SUBJECTS.keys())
-        snapshot = dashboard.generate(niches, season=config.get("season", ""), top_n=5)
+        # Rank every niche (the strategy needs the whole list), then show only the top 5 as before
+        full_snapshot = dashboard.generate(niches, season=config.get("season", ""), top_n=len(niches))
+        ranked = list(full_snapshot.get("top_niches") or [])
+        snapshot = dict(full_snapshot)
+        snapshot["top_niches"] = ranked[:5]
 
         dashboard.print_summary(snapshot)
         saved_path = dashboard.save(snapshot)
         print(f"\n  📄 Saved: {saved_path}")
+
+        # Planning aid: launch order and bundles (heuristic scores, not market research)
+        import os
+        from agents.engines.intelligence.publishing_strategy import PublishingStrategy, BundlePlanner
+        strategy = PublishingStrategy().plan(ranked, full_snapshot.get("top_pick_marketplace_comparison"))
+        bundles = BundlePlanner().suggest(ranked)
+        print()
+        print("  Launch plan (planning aid built on heuristic scores, not market research):")
+        for item in strategy["launch_order"][:10]:
+            print("    " + str(item["order"]) + ". " + item["niche"] + " - " + item["action"] + " (" + item["reasons"][1] + ")")
+        if len(strategy["launch_order"]) > 10:
+            print("    ... " + str(len(strategy["launch_order"]) - 10) + " more in strategy.json")
+        if strategy["first_marketplace"]:
+            print("  First marketplace by royalty only: " + strategy["first_marketplace"])
+        for bundle in bundles["bundles"][:5]:
+            print("  Bundle (" + bundle["group"] + "): " + ", ".join(bundle["niches"]) + " | est. $" + str(bundle["combined_monthly_revenue_estimate"]) + "/month | weakest confidence " + bundle["weakest_confidence"])
+        os.makedirs("output/business_dashboard", exist_ok=True)
+        with open("output/business_dashboard/strategy.json", "w", encoding="utf-8") as f:
+            json.dump({"strategy": strategy, "bundles": bundles}, f, indent=4)
+        print("  Saved: output/business_dashboard/strategy.json")
 
         elapsed = time.time() - self.start_time
         print(f"\n{BOLD}{'=' * 55}{RESET}")
