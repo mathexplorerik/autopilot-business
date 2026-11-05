@@ -420,5 +420,13 @@ class MasterCommand:
 
 
 if __name__ == "__main__":
-    cmd = MasterCommand()
-    cmd.run()
+    from agents.utils.run_log import start_run_log, stop_run_log
+
+    log_path = start_run_log(argv=sys.argv)
+    try:
+        cmd = MasterCommand()
+        cmd.run()
+    finally:
+        stop_run_log()
+        if log_path:
+            print("Log saved: " + log_path)
