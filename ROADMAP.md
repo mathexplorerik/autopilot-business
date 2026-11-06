@@ -1,10 +1,11 @@
 # Roadmap
 
-## Done and verified by the QA gate (9 suites)
+## Done and verified by the QA gate (12 suites)
 Story engine, character memory, season accessories, educational modes,
 market intelligence, data sources with provenance and confidence, SEO title
 and score, ImageQA (synthetic images only), resume, retry/backoff,
-publish readiness, honest upload checklist, cost tracker.
+publish readiness, honest upload checklist, cost tracker, run log,
+bundle and launch-plan suggestions (heuristic), dashboard CLI test.
 
 ## Blocked on a real image
 1. A valid image-provider key (Stability key currently returns 401).
@@ -20,5 +21,5 @@ Spine width depends on page count and paper; check the current KDP calculator.
 Limits in the Unverified section of ARCHITECTURE.md, and bleed size.
 
 ## Later
-Logging, extra trim sizes, bundles, niche discovery, other image providers,
-command system.
+Extra trim sizes and bleed (need KDP numbers), niche discovery (needs real data),
+other image providers, command system.

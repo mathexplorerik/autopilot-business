@@ -44,3 +44,15 @@ Status as of this writing. Things marked UNVERIFIED have not been confirmed by a
   description 4000, 7 slots, cover and price rules).
 - The Stability request format and key.
 - The GitHub Actions workflow result.
+
+## Added since the first refresh
+
+    agents/utils/run_log.py                              run log for master.py (output/logs)
+    agents/engines/intelligence/publishing_strategy.py   BundlePlanner, PublishingStrategy
+    agents/kdp_rules.py                                  KDP listing limits, VERIFIED_AGAINST_KDP = False
+    agents/seo_scorer.py, agents/publish_readiness.py    read their limits from kdp_rules
+
+- master.py --dashboard prints a launch plan and bundles and writes output/business_dashboard/strategy.json. They use heuristic scores, and every niche currently has LOW confidence, so every niche says "test small".
+- Data sources cache a failed fetch, so a dead network is tried once.
+- The two tests that call the Google Books and Open Library APIs run offline by default (RUN_NETWORK_TESTS=1 uses the real APIs).
+- The QA gate has 12 suites.
