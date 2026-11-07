@@ -117,8 +117,14 @@ class MasterCommand:
         if config['season']:
             print(f"  🎄 Season  : {config['season']}")
         if config['pages']:
-            print(f"  📄 Pages   : {config['pages']}")
-        print(f"  👶 Age     : {config['age']}")
+            if config['command'] in ('book', 'bundle'):
+                print(f"  📄 Pages   : {config['pages']}  (IGNORED: this build uses the default page count)")
+            else:
+                print(f"  📄 Pages   : {config['pages']}")
+        if config['command'] in ('book', 'bundle') and config['age'] != 'kids':
+            print(f"  👶 Age     : {config['age']}  (IGNORED: age comes from the niche research)")
+        else:
+            print(f"  👶 Age     : {config['age']}")
         print()
 
         # ✅ Execute
