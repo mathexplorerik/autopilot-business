@@ -99,12 +99,50 @@ class MasterCommand:
             "provider":  provider,
         }
 
+    def _ask_to_args(self, words):
+        """
+        Turn a plain request into master.py arguments, show what it understood,
+        and return the arguments only if the user confirms. Returns None when
+        nothing should run (error, cancelled, or no terminal to confirm in).
+        """
+        from agents.command_parser import CommandParser
+
+        text = " ".join(words)
+        result = CommandParser().parse(text)
+
+        print(f"  Request : {text}")
+        for note in result["notes"]:
+            print(f"  note    : {note}")
+        for warning in result["warnings"]:
+            print(f"  ! {warning}")
+
+        if not result["ok"]:
+            for error in result["errors"]:
+                print(f"  ✘ {error}")
+            return None
+
+        print(f"  Command : {result['command_line']}")
+
+        if not sys.stdin.isatty():
+            print("  Not running: there is no terminal to confirm in. Run the command above yourself.")
+            return None
+
+        answer = input("  Run this? [y/N] ").strip().lower()
+        if answer not in ("y", "yes"):
+            print("  Cancelled.")
+            return None
+        return result["argv"]
+
     def run(self, args=None):
         """Main entry point"""
         if args is None:
             args = sys.argv[1:]
 
         self._header()
+        if args and args[0] == "--ask":
+            args = self._ask_to_args(args[1:])
+            if args is None:
+                return None
 
         if not args or args[0] == "help":
             return self._show_help()

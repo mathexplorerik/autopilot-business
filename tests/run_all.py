@@ -86,6 +86,7 @@ SUITES = [
     ("Strategy", "test_publishing_strategy", "run_all", None),
     ("DashboardCLI", "test_dashboard_cli", "run_all", None),
     ("Command", "test_command_parser", "run_all", None),
+    ("Ask", "test_master_ask", "run_all", None),
     ("Pipeline",   "test_pipeline", "run_all", None),
     ("Stress",     "test_stress_500_books", "main", {"total_books": 500}),
 ]
