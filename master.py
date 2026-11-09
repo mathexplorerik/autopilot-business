@@ -41,6 +41,15 @@ class MasterCommand:
     def __init__(self):
         self.start_time = time.time()
 
+    def _valid_seasons(self):
+        # The same list the engine uses for festive accessories
+        from agents.data.animals.season_accessories import SEASON_ACCESSORIES
+        return sorted(SEASON_ACCESSORIES.keys())
+
+    def _valid_providers(self):
+        from agents.image_engine.provider_manager import ProviderManager
+        return ProviderManager().providers()
+
     def _fail(self, message):
         # A clear error and exit code 2, instead of a traceback or a silent skip
         print('  ✘ ' + message)
@@ -74,7 +83,9 @@ class MasterCommand:
                     self._fail(arg + ' needs a value, for example: ' + arg + ' <value>')
                 value = args[i + 1]
                 if arg == '--season':
-                    season = value
+                    season = value.strip().lower()
+                    if season not in self._valid_seasons():
+                        self._fail('unknown season ' + repr(value) + '. Known seasons: ' + ', '.join(self._valid_seasons()))
                 elif arg == '--pages':
                     try:
                         pages = int(value)
@@ -85,7 +96,9 @@ class MasterCommand:
                 elif arg == '--age':
                     age = value
                 else:
-                    provider = value
+                    provider = value.strip().lower()
+                    if provider not in self._valid_providers():
+                        self._fail('unknown provider ' + repr(value) + '. Known providers: ' + ', '.join(self._valid_providers()))
                 i += 2
             elif arg in switch_flags:
                 if arg == '--bundle':

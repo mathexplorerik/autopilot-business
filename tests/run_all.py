@@ -88,6 +88,7 @@ SUITES = [
     ("Command", "test_command_parser", "run_all", None),
     ("Ask", "test_master_ask", "run_all", None),
     ("Args", "test_master_args", "run_all", None),
+    ("Choices", "test_master_choices", "run_all", None),
     ("Pipeline",   "test_pipeline", "run_all", None),
     ("Stress",     "test_stress_500_books", "main", {"total_books": 500}),
 ]
