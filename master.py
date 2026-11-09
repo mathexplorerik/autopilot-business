@@ -41,6 +41,11 @@ class MasterCommand:
     def __init__(self):
         self.start_time = time.time()
 
+    def _fail(self, message):
+        # A clear error and exit code 2, instead of a traceback or a silent skip
+        print('  ✘ ' + message)
+        raise SystemExit(2)
+
     def parse(self, args):
         """Parse command line arguments"""
         if not args:
@@ -57,37 +62,47 @@ class MasterCommand:
         provider  = "manual"
 
         # ✅ Parse flags
-        i = 0 if args[0].startswith("--") else 1
+        from agents.command_parser import CommandParser
+        pages_min, pages_max = CommandParser.MIN_PAGES, CommandParser.MAX_PAGES
+        i = 0 if args[0].startswith('--') else 1
+        value_flags = ('--season', '--pages', '--age', '--provider')
+        switch_flags = ('--bundle', '--tracing', '--story', '--portfolio', '--dashboard')
         while i < len(args):
-            if args[i] == "--season" and i+1 < len(args):
-                season = args[i+1]
+            arg = args[i]
+            if arg in value_flags:
+                if i + 1 >= len(args) or args[i + 1].startswith('--'):
+                    self._fail(arg + ' needs a value, for example: ' + arg + ' <value>')
+                value = args[i + 1]
+                if arg == '--season':
+                    season = value
+                elif arg == '--pages':
+                    try:
+                        pages = int(value)
+                    except ValueError:
+                        self._fail('--pages needs a whole number, got ' + repr(value))
+                    if pages < pages_min or pages > pages_max:
+                        self._fail('--pages must be between ' + str(pages_min) + ' and ' + str(pages_max) + ', got ' + str(pages))
+                elif arg == '--age':
+                    age = value
+                else:
+                    provider = value
                 i += 2
-            elif args[i] == "--pages" and i+1 < len(args):
-                pages = int(args[i+1])
-                i += 2
-            elif args[i] == "--age" and i+1 < len(args):
-                age = args[i+1]
-                i += 2
-            elif args[i] == "--bundle":
-                command = "bundle"
+            elif arg in switch_flags:
+                if arg == '--bundle':
+                    command = 'bundle'
+                elif arg == '--tracing':
+                    command = 'tracing'
+                elif arg == '--story':
+                    book_type = 'story'
+                elif arg == '--portfolio':
+                    command = 'portfolio'
+                else:
+                    command = 'dashboard'
                 i += 1
-            elif args[i] == "--tracing":
-                command = "tracing"
-                i += 1
-            elif args[i] == "--provider" and i+1 < len(args):
-                provider = args[i+1]
-                i += 2
-            elif args[i] == "--story":
-                book_type = "story"
-                i += 1
-            elif args[i] == "--portfolio":
-                command = "portfolio"
-                i += 1
-            elif args[i] == "--dashboard":
-                command = "dashboard"
-                i += 1
+            elif arg.startswith('--'):
+                self._fail('unknown option ' + arg + ' (see: python3 master.py help)')
             else:
-                i += 1
+                self._fail('unexpected argument ' + repr(arg) + '. If the niche has more than one word, put it in quotes, for example: python3 master.py "jungle animals"')
 
         return {
             "niche":     niche,
