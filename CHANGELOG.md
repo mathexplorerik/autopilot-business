@@ -1,12 +1,16 @@
 # Changelog
 
 ## V16 - Honest publishing (not yet confirmed with a real image)
+- Command parser (agents/command_parser.py): turns a plain request ("50 page dinosaurs story book for christmas") into master.py arguments. Rule-based, English plus a few Hinglish words, not an AI model
+- master.py --ask "<request>": shows what was understood plus warnings, runs only after you answer y, never runs without a terminal or on an invalid request
+- master.py rejects bad arguments with a clear error and exit code 2: --pages that is not a whole number or outside 1-300, unknown options, a flag with no value, stray words (an unquoted two-word niche), an unknown --season or --provider (lists come from the engine's own lists)
+- master.py says so when --pages or --age is given for a book run: both are still ignored by the build (page count and age come from the engine defaults and the niche research)
 - Run log (agents/utils/run_log.py): every master.py run is saved to output/logs/run_<time>.log, colour codes removed, newest 30 kept
 - BundlePlanner and PublishingStrategy: launch order with reasons, and bundles of related niches. Shown by master.py --dashboard and saved to output/business_dashboard/strategy.json. Built on heuristic scores; all 23 niches have LOW confidence, so every niche says "test small"
 - Test for master.py --dashboard (deletes old outputs first, runs it for real)
 - KDP listing limits moved to agents/kdp_rules.py (values still unverified)
 - Data sources remember a failed fetch (Google Books made 2 attempts, now 1); the two network tests run offline unless RUN_NETWORK_TESTS=1
-- QA gate is now 12 suites
+- QA gate is now 16 suites
 - PublishReadiness: READY only with real images, cover, price, categories, safe listing
 - upload_checklist.txt reports blockers instead of ticking everything
 - SEO title is the single title across listing, cover and PDF

@@ -1,11 +1,12 @@
 # Roadmap
 
-## Done and verified by the QA gate (12 suites)
+## Done and verified by the QA gate (16 suites)
 Story engine, character memory, season accessories, educational modes,
 market intelligence, data sources with provenance and confidence, SEO title
 and score, ImageQA (synthetic images only), resume, retry/backoff,
 publish readiness, honest upload checklist, cost tracker, run log,
-bundle and launch-plan suggestions (heuristic), dashboard CLI test.
+bundle and launch-plan suggestions (heuristic), dashboard CLI test,
+command parser and --ask, argument and choice checks in master.py.
 
 ## Blocked on a real image
 1. A valid image-provider key (Stability key currently returns 401).
@@ -22,4 +23,6 @@ Limits in the Unverified section of ARCHITECTURE.md, and bleed size.
 
 ## Later
 Extra trim sizes and bleed (need KDP numbers), niche discovery (needs real data),
-other image providers, command system.
+other image providers. Job queue only after one real book exists.
+--pages and --age are ignored by the build today; making them work touches
+the story engine (40 beats) and age-specific prompts.

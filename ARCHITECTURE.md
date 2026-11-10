@@ -55,4 +55,15 @@ Status as of this writing. Things marked UNVERIFIED have not been confirmed by a
 - master.py --dashboard prints a launch plan and bundles and writes output/business_dashboard/strategy.json. They use heuristic scores, and every niche currently has LOW confidence, so every niche says "test small".
 - Data sources cache a failed fetch, so a dead network is tried once.
 - The two tests that call the Google Books and Open Library APIs run offline by default (RUN_NETWORK_TESTS=1 uses the real APIs).
-- The QA gate has 12 suites.
+- The QA gate has 16 suites.
+
+## Command layer
+
+    agents/command_parser.py   plain request -> master.py arguments (rule-based, not AI)
+    master.py --ask            shows the parsed command and its warnings, asks y/N
+
+- --ask never runs without a terminal to confirm in, and never runs an invalid request.
+- master.py validates its own arguments: bad --pages, unknown options, missing values, stray words, unknown --season or --provider all stop with exit code 2 before any book is built.
+- CommandParser keeps its own season and provider lists; a test checks they match the engine's lists.
+- --pages and --age are still ignored by the build. The parser and master.py both say so in a warning.
+- There is no job queue yet. It needs one real book to be worth building.
