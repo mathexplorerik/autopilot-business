@@ -33,7 +33,7 @@ class BookEngine:
         self.education_engine = EducationEngine()
         self.cost_tracker = CostTracker()
 
-    def build(self, keyword, book_type, age_group, provider="manual", season=None, education_mode=None):
+    def build(self, keyword, book_type, age_group, provider="manual", season=None, education_mode=None, total_pages=None):
 
         if book_type == "educational":
             return self._build_educational_book(
@@ -46,6 +46,9 @@ class BookEngine:
         theme = self.theme_planner.plan(keyword)
 
         pages = self.page_planner.plan(book_type, age_group)
+        if total_pages is not None:
+            pages = dict(pages)
+            pages["pages"] = total_pages
 
         character_profile = {}
         recurring_motifs = []

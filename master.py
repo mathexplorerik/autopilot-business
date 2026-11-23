@@ -50,6 +50,14 @@ class MasterCommand:
         from agents.image_engine.provider_manager import ProviderManager
         return ProviderManager().providers()
 
+    def _pages_for_build(self, config):
+        # --pages is only honoured for story books and 10-60 pages: that is the only
+        # range the story engine has been checked at. Anything else keeps the default.
+        pages = config.get('pages')
+        if pages is None or config.get('book_type') != 'story':
+            return None
+        return pages if 10 <= pages <= 60 else None
+
     def _fail(self, message):
         # A clear error and exit code 2, instead of a traceback or a silent skip
         print('  ✘ ' + message)
@@ -184,7 +192,10 @@ class MasterCommand:
             print(f"  🎄 Season  : {config['season']}")
         if config['pages']:
             if config['command'] in ('book', 'bundle'):
-                print(f"  📄 Pages   : {config['pages']}  (IGNORED: this build uses the default page count)")
+                if self._pages_for_build(config) is not None:
+                    print(f"  📄 Pages   : {config['pages']}")
+                else:
+                    print(f"  📄 Pages   : {config['pages']}  (IGNORED: --pages only works with --story and a value of 10-60)")
             else:
                 print(f"  📄 Pages   : {config['pages']}")
         if config['command'] in ('book', 'bundle') and config['age'] != 'kids':
@@ -326,8 +337,18 @@ class MasterCommand:
             age_group=report.age_group,
             season=config.get("season"),
             provider=config.get("provider", "manual"),
+            total_pages=self._pages_for_build(config),
         )
         results['book'] = '✅'
+        # One page count for every later step. The blueprint only has total_pages, so
+        # without this the SEO agent falls back to 40 and analytics keeps the research value.
+        built_pages = book.get("total_pages")
+        if isinstance(built_pages, int) and built_pages > 0:
+            book["pages"] = built_pages
+            try:
+                report.pages = built_pages
+            except Exception:
+                pass
 
         # Prompts
         self._step("Prompts")
