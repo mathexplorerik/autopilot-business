@@ -187,9 +187,13 @@ class AnimalEngine:
         # ✅ Negative prompt
 
         negative = (
-            "color fills, shading, gradients, gray areas, "
-            "realistic, photo, watermark, text, signature, "
-            "blurry, low quality, extra limbs, deformed"
+            "color, color fills, colored background, grayscale, "
+            "shading, gradients, shadows, gray areas, "
+            "solid dark background, filled background, "
+            "dense background scenery, large black filled areas, "
+            "photorealistic, photography, 3d render, "
+            "watermark, text, signature, blurry, low quality, "
+            "extra limbs, deformed anatomy"
         )
 
         return {
@@ -288,6 +292,10 @@ class AnimalEngine:
             "large open coloring spaces",
 
             "simple uncluttered composition",
+            "mostly blank pure white background",
+            "sparse background details drawn only as thin black outlines",
+            "large areas of untouched white paper",
+            "no solid filled background areas",
 
             "easy to color",
 

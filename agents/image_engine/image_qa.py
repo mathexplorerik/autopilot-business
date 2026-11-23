@@ -69,9 +69,21 @@ class ImageQA:
 
         total = width * height
 
-        # Colour
-        saturation = img.convert("HSV").split()[1].histogram()
-        colourful = sum(saturation[self.COLOUR_SATURATION_CUTOFF:]) / total
+        # Colour: ignore near-black pixels to avoid false positives
+        hsv = img.convert("HSV")
+        saturation_channel = hsv.getchannel("S")
+        brightness_channel = hsv.getchannel("V")
+
+        saturation_mask = saturation_channel.point(
+            lambda value: 255 if value > self.COLOUR_SATURATION_CUTOFF else 0
+        )
+        brightness_mask = brightness_channel.point(
+            lambda value: 255 if value >= 32 else 0
+        )
+
+        from PIL import ImageChops
+        colour_mask = ImageChops.multiply(saturation_mask, brightness_mask)
+        colourful = sum(colour_mask.histogram()[1:]) / total
         metrics["colourful_fraction"] = round(colourful, 4)
         if colourful > self.MAX_COLOURFUL_FRACTION:
             issues.append(
